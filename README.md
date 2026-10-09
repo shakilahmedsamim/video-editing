@@ -14,5 +14,6 @@ Shakil's Claude + HyperFrames video editing workspace.
 | --- | --- | --- |
 | `videos/conversion-tracking-portfolio` | dark-tech explainer | `exports/conversion-tracking-portfolio-1080p.mp4` (2:12) |
 | `videos/conversion-tracking-promo` | color-block promo + SFX | `exports/conversion-tracking-promo-1080p.mp4` (2:12) |
+| `videos/asad-fiverr-gig` | talking-head edit (client footage, local only) | `exports/asad-fiverr-gig-1080p.mp4` (0:53) |
 
 Each video folder has its own `README.md` with the exact rebuild commands.

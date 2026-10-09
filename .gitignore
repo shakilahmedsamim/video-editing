@@ -10,3 +10,8 @@ __pycache__/
 videos/*/voice-ref/
 videos/*/assets/audio/voice-clone.wav
 videos/*/exports/*myvoice*
+
+# client footage: kept local, not pushed (ask before committing)
+videos/asad-fiverr-gig/assets/footage/
+videos/asad-fiverr-gig/assets/audio/voice.wav
+videos/asad-fiverr-gig/exports/

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #b4519e; }
+      :root { --magenta: #b4519e; --orange: #f4a51c; --lime: #b6d334; --plum: #3a1648; --ink: #2a0f35; --ok: #1fa971; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--magenta); font-family: Montserrat, sans-serif; }
+      [data-composition-id="root"] > div[data-composition-src] { position: absolute; inset: 0; }
+      #ft-bg { position: absolute; inset: 0; background: var(--magenta); }
+      #ft-frame { position: absolute; inset: 0; overflow: hidden; border-radius: 0; }
+      #ft-zoom { position: absolute; inset: 0; }
+      #ft { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="root" data-width="1920" data-height="1080" data-duration="53.5">
+      <div id="ft-bg" class="clip" data-start="0" data-duration="53.5" data-track-index="0"></div>
+      <div id="ft-frame">
+        <div id="ft-zoom">
+          <video id="ft" class="clip" src="assets/footage/raw.mp4" muted playsinline data-start="0" data-duration="50.9" data-track-index="1"></video>
+        </div>
+      </div>
+      <div id="slot-overlays" data-composition-id="overlays" data-composition-src="compositions/overlays.html"
+        data-start="0" data-duration="53.5" data-track-index="3" data-width="1920" data-height="1080"></div>
+      <audio id="vo" src="assets/audio/voice.wav" data-start="0" data-duration="50.94" data-track-index="10" data-volume="1"></audio>
+      <audio id="bgm" src="assets/audio/music.wav" data-start="0" data-duration="53.5" data-track-index="11" data-volume="0.12"></audio>
+      <audio id="sfx" src="assets/audio/sfx.wav" data-start="0" data-duration="53.5" data-track-index="12" data-volume="0.3"></audio>
+    </div>
+    <script>
+      // Camera: punch-ins on key words (#ft-zoom) and a split-screen frame for the "one-stop solution" beat (#ft-frame).
+      const tl = gsap.timeline({ paused: true });
+      const Z = (s, t, d = 0.3, ease = "power3.out") => tl.to("#ft-zoom", { scale: s, duration: d, ease }, t);
+      tl.set("#ft-zoom", { scale: 1, transformOrigin: "50% 38%" }, 0);
+      Z(1.06, 0, 5.0, "none");
+      Z(1.18, 5.2, 0.25);        // "seven years"
+      Z(1.06, 6.4, 0.4);
+      Z(1.15, 12.0, 0.25);       // "data driven"
+      Z(1.0, 14.5, 0.4);
+      Z(1.12, 19.3, 0.25);       // "killer advertising strategy"
+      Z(1.04, 21.9, 0.4);
+      Z(1.14, 28.6, 2.7, "sine.inOut"); // slow push "every single buck"
+      Z(1.0, 31.5, 0.4);
+      tl.to("#ft-frame", { x: 400, y: 20, scale: 0.56, borderRadius: 40, duration: 0.6, ease: "power3.inOut" }, 32.0);
+      tl.to("#ft-frame", { x: 0, y: 0, scale: 1, borderRadius: 0, duration: 0.6, ease: "power3.inOut" }, 36.6);
+      Z(1.12, 37.1, 0.25);       // "message button"
+      Z(1.0, 39.5, 0.4);
+      Z(1.08, 41.0, 6.2, "sine.inOut");
+      Z(1.0, 47.4, 0.4);
+      window.__timelines["root"] = tl;
+    </script>
+  </body>
+</html>

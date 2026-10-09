@@ -39,3 +39,10 @@ Declare per scene: `const SFX = /*SFX*/[["pop","c[1]+0.2",0.7]]/*ENDSFX*/;` (nam
 
 `scripts/music.py`: promo = 100 BPM light pop (kick, clap, hats, plucked C G Am F, sub bass);
 dark = slow ambient pad. Both synthesized, no licensing. Volume 0.16 (promo) under the voice.
+
+## Talking-head overlays (`videos/asad-fiverr-gig/compositions/overlays.html`)
+
+Name lower-third with role pill, side chip stacks (services, audiences), big stat card (7+ years), up-arrow chips,
+full-screen color slide with circle wipe in and out, "How I work" step card with sliding orange highlight,
+split screen (footage into a rounded frame + headline and chips on magenta), button with cursor click,
+checklist card with lime ticks, center-wipe end card. Camera punch-ins in its `index.html`.

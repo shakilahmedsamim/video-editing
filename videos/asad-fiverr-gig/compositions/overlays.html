@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; font-family: Montserrat, sans-serif; color: var(--ink); }
+        .paper { background: #fff; border-radius: 22px; box-shadow: 0 24px 60px rgba(42,15,53,0.28); }
+        .pill { display: inline-flex; align-items: center; border-radius: 999px; font-weight: 800; }
+        .chip { height: 74px; padding: 0 26px; margin-bottom: 14px; font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 14px; }
+        .chip i { width: 14px; height: 14px; border-radius: 7px; background: var(--magenta); flex: none; }
+        .L { position: absolute; left: 60px; } .R { position: absolute; right: 60px; }
+        /* name */
+        #nm { top: 620px; width: 640px; padding: 24px 30px; }
+        #nm b { display: block; font-size: 54px; font-weight: 800; letter-spacing: -0.03em; }
+        #nm .pill { margin-top: 10px; height: 50px; padding: 0 20px; font-size: 21px; white-space: nowrap; background: var(--orange); }
+        #sv { top: 200px; width: 420px; }
+        #yr { top: 230px; width: 380px; height: 300px; border-radius: 28px; background: var(--magenta); color: #fff; padding: 34px 38px;
+          box-shadow: 0 24px 60px rgba(42,15,53,0.3); }
+        #yr b { display: block; font-size: 150px; font-weight: 800; line-height: 1; letter-spacing: -0.05em; }
+        #yr span { display: block; margin-top: 12px; font-size: 30px; font-weight: 700; }
+        #who { top: 170px; width: 420px; }
+        #who .lbl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; color: #fff; text-transform: uppercase; margin-bottom: 14px;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+        #up { top: 240px; width: 420px; }
+        #up .chip { height: 96px; font-size: 32px; }
+        .arr { width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-bottom: 22px solid var(--ok); flex: none; }
+        /* full color slide */
+        .slide { position: absolute; inset: 0; clip-path: circle(0% at 50% 50%); }
+        .slide .big { position: absolute; left: 150px; top: 330px; width: 1500px; font-size: 140px; font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; }
+        #s1 { background: var(--lime); }
+        #s1 .w { color: #fff; }
+        /* process */
+        #pr { top: 150px; width: 470px; padding: 28px 28px 18px; }
+        #pr .ttl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); margin-bottom: 12px; }
+        .st { position: relative; height: 82px; margin-bottom: 10px; border-radius: 16px; padding: 0 20px; display: flex; align-items: center; gap: 14px;
+          font-size: 24px; font-weight: 800; color: #9a86a3; }
+        .st small { font-size: 18px; color: var(--magenta); }
+        #hl { position: absolute; left: 28px; top: 62px; width: 414px; height: 82px; border-radius: 16px; background: var(--orange); }
+        #ev { top: 560px; width: 440px; padding: 24px 28px; font-size: 30px; font-weight: 800; line-height: 1.25; }
+        #ev em { font-style: normal; color: var(--magenta); }
+        /* split */
+        #one { position: absolute; left: 110px; top: 250px; width: 700px; color: #fff; opacity: 0; }
+        #one b { display: block; font-size: 104px; font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; }
+        #one b span { color: var(--orange); }
+        #one .chip { margin-top: 0; width: 520px; color: var(--ink); }
+        #one-chips { margin-top: 36px; }
+        /* cta */
+        #cta { top: 300px; width: 460px; }
+        #btn { height: 104px; padding: 0 44px; font-size: 38px; background: var(--orange); box-shadow: 0 20px 40px rgba(42,15,53,0.3); }
+        #cur { position: absolute; left: 300px; top: 150px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
+          border-bottom: 44px solid #fff; transform: rotate(-30deg); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); }
+        #qc { margin-top: 26px; width: 420px; }
+        /* intro session */
+        #ss { top: 170px; width: 470px; padding: 28px 30px; }
+        #ss .ttl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); margin-bottom: 8px; }
+        .ck { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 26px; font-weight: 800; line-height: 1.2; }
+        .box { width: 42px; height: 42px; border-radius: 12px; border: 3px solid #e1d3e6; position: relative; flex: none; }
+        .tk { position: absolute; inset: -3px; border-radius: 12px; background: var(--lime); display: flex; align-items: center; justify-content: center;
+          font-size: 26px; font-weight: 900; }
+        /* end */
+        #end { background: var(--magenta); color: #fff; }
+        #end-box { position: absolute; left: 0; right: 0; top: 270px; display: flex; flex-direction: column; align-items: center; }
+        #end-h { font-size: 128px; font-weight: 800; letter-spacing: -0.035em; }
+        #end-s { margin-top: 10px; font-size: 44px; font-weight: 700; }
+        #end-s span { color: var(--orange); }
+        #end-btn { margin-top: 60px; height: 104px; padding: 0 54px; font-size: 38px; background: var(--orange); color: var(--ink); }
+        #end-n { margin-top: 34px; font-size: 28px; font-weight: 600; opacity: 0.9; }
+      </style>
+
+      <div id="root" data-composition-id="overlays" data-width="1920" data-height="1080">
+        <div id="nm" class="paper L"><b>Asad</b><div class="pill">Advertising, Analytics &amp; Conversion Tracking</div></div>
+        <div id="sv" class="R">
+          <div class="paper chip"><i></i>Advertising</div>
+          <div class="paper chip"><i></i>Analytics</div>
+          <div class="paper chip"><i></i>Conversion tracking</div>
+        </div>
+        <div id="yr" class="R"><b>7+</b><span>years of experience</span></div>
+        <div id="who" class="L">
+          <div class="lbl">Who I help</div>
+          <div class="paper chip"><i></i>DTC brands</div>
+          <div class="paper chip"><i></i>E-commerce</div>
+          <div class="paper chip"><i></i>Local businesses</div>
+          <div class="paper chip"><i></i>Service businesses</div>
+        </div>
+        <div id="up" class="R">
+          <div class="paper chip"><span class="arr"></span>Online visibility</div>
+          <div class="paper chip"><span class="arr"></span>Sales</div>
+        </div>
+        <div id="s1" class="slide"><div class="big">Data-driven <span class="w">digital marketing</span> strategy</div></div>
+        <div id="pr" class="paper R">
+          <div class="ttl">How I work</div>
+          <div id="hl"></div>
+          <div class="st"><small>01</small>Accurate tracking</div>
+          <div class="st"><small>02</small>Ad strategy</div>
+          <div class="st"><small>03</small>Business research</div>
+          <div class="st"><small>04</small>Campaign setup</div>
+          <div class="st"><small>05</small>Manage and optimize</div>
+        </div>
+        <div id="ev" class="paper L">Every dollar you spend, <em>with a reason.</em></div>
+        <div id="one">
+          <b>One-stop <span>solution</span></b>
+          <div id="one-chips">
+            <div class="paper chip"><i></i>Advertising</div>
+            <div class="paper chip"><i></i>Analytics</div>
+            <div class="paper chip"><i></i>Conversion tracking</div>
+          </div>
+        </div>
+        <div id="cta" class="R">
+          <div id="btn" class="pill">Message me</div>
+          <div id="cur"></div>
+          <div id="qc" class="paper chip"><i></i>Quick conversation</div>
+        </div>
+        <div id="ss" class="paper L">
+          <div class="ttl">In the intro session</div>
+          <div class="ck"><div class="box"><div class="tk">&#10003;</div></div>Review your marketing strategy</div>
+          <div class="ck"><div class="box"><div class="tk">&#10003;</div></div>Find growth opportunities</div>
+          <div class="ck"><div class="box"><div class="tk">&#10003;</div></div>Personal recommendations</div>
+        </div>
+        <div id="end" class="slide">
+          <div id="end-box">
+            <div id="end-h">Let's collaborate</div>
+            <div id="end-s">and bring your vision <span>to life</span></div>
+            <div id="end-btn" class="pill">Hit the message button</div>
+            <div id="end-n">Asad | Advertising, Analytics &amp; Conversion Tracking</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // absolute times (s), from the burned-in captions (transcript-ocr.json). Read by scripts/build.mjs.
+          const SFX = /*SFX*/[["swoosh",0.95],["pop",1.3],["pop",2.6],["pop",3.3],["pop",3.7],["thud",5.2,0.6],["pop",5.25],
+            ["pop",6.9],["pop",7.4],["pop",8.5],["pop",9.3],["pop",10.7],["pop",11.5],["whoosh",12.2],["whoosh",14.3,0.7],
+            ["swoosh",14.6],["tick",16.8],["tick",19.3],["tick",21.8],["tick",25.8],["tick",27.0],["pop",28.7],
+            ["whoosh",32.0],["pop",33.3],["pop",34.7],["pop",35.3],["whoosh",36.6,0.6],["pop",36.9],["tick",37.4],["pop",37.45],["pop",38.5],
+            ["swoosh",40.6],["tick",41.6],["tick",44.4],["tick",46.2],["ding",46.5,0.7],["whoosh",48.2],["pop",48.9],["pop",49.8],["ding",50.4,0.8]]/*ENDSFX*/;
+          const tl = gsap.timeline({ paused: true });
+          const inL = (s, t) => tl.fromTo(s, { opacity: 0, x: -90 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.5)" }, t);
+          const inR = (s, t) => tl.fromTo(s, { opacity: 0, x: 90 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.5)" }, t);
+          const out = (s, t) => tl.to(s, { opacity: 0, y: -20, duration: 0.3, ease: "power2.in" }, t);
+          const wipe = (s, t, at, d = 0.6) => tl.fromTo(s, { clipPath: `circle(0% at ${at})` }, { clipPath: `circle(150% at ${at})`, duration: d, ease: "power2.inOut" }, t);
+          const unwipe = (s, t, at) => tl.to(s, { clipPath: `circle(0% at ${at})`, duration: 0.5, ease: "power2.inOut" }, t);
+          // name + services
+          inL("#nm", 0.95); out("#nm", 4.6);
+          gsap.utils.toArray("#sv .chip").forEach((el, i) => inR(el, [2.6, 3.3, 3.7][i])); out("#sv", 5.0);
+          tl.fromTo("#yr", { opacity: 0, scale: 0.5, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 5.2); out("#yr", 6.6);
+          tl.fromTo("#who .lbl", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 6.8);
+          gsap.utils.toArray("#who .chip").forEach((el, i) => inL(el, [6.9, 7.4, 8.5, 9.3][i])); out("#who", 10.3);
+          gsap.utils.toArray("#up .chip").forEach((el, i) => inR(el, [10.7, 11.5][i]));
+          tl.fromTo("#up .arr", { y: 10 }, { y: -6, duration: 0.4, stagger: 0.8, ease: "back.out(3)" }, 10.9); out("#up", 12.2);
+          // color slide
+          wipe("#s1", 12.2, "6% 94%");
+          tl.fromTo("#s1 .big", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.5);
+          unwipe("#s1", 14.3, "94% 10%");
+          // process
+          inR("#pr", 14.6);
+          tl.fromTo("#hl", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 16.7);
+          const st = gsap.utils.toArray("#pr .st");
+          [16.8, 19.3, 21.8, 25.8, 27.0].forEach((t, i) => {
+            tl.to("#hl", { y: i * 92, duration: 0.4, ease: "power3.inOut" }, t);
+            tl.to(st[i], { color: "#2a0f35", duration: 0.3 }, t + 0.1);
+          });
+          out("#pr", 31.4);
+          inL("#ev", 28.7); out("#ev", 31.4);
+          // split screen
+          tl.to("#one", { opacity: 1, duration: 0.01 }, 32.3);
+          tl.fromTo("#one b", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 32.4);
+          gsap.utils.toArray("#one .chip").forEach((el, i) => inL(el, [33.3, 34.7, 35.3][i]));
+          out("#one", 36.5);
+          // cta
+          tl.fromTo("#btn", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 36.9);
+          tl.fromTo("#cur", { opacity: 0, x: 120, y: 120 }, { opacity: 1, x: 0, y: 0, duration: 0.45, ease: "power2.out" }, 37.0);
+          tl.to("#btn", { scale: 0.92, duration: 0.08, yoyo: true, repeat: 1 }, 37.4);
+          inR("#qc", 38.5); out("#cta", 39.7);
+          // intro session
+          inL("#ss", 40.6);
+          gsap.utils.toArray("#ss .tk").forEach((el, i) => tl.fromTo(el, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, [41.6, 44.4, 46.2][i]));
+          out("#ss", 47.3);
+          // end card
+          wipe("#end", 48.2, "50% 50%", 0.7);
+          tl.fromTo("#end-h", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 48.6);
+          tl.fromTo("#end-s", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 49.2);
+          tl.fromTo("#end-btn", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 49.8);
+          tl.fromTo("#end-n", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 50.3);
+          window.__timelines["overlays"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

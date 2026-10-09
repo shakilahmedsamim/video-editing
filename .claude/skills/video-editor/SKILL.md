@@ -134,9 +134,24 @@ Best to worst realism:
 Privacy: the user's raw recording (`voice-ref/`), `voice-clone.wav` and `*myvoice*` exports are git-ignored.
 Ask the user before committing any of them.
 
+## Talking-head edit recipe (user sends a raw or captioned clip)
+
+Template: `videos/asad-fiverr-gig` (copy it). Steps:
+1. Probe + contact sheet: `ffmpeg -vf "fps=30/<dur>,scale=320:-1,tile=6x5"` and one full frame to find free zones
+   (where the person is not, where burned captions and watermarks sit).
+2. Timing: whisper is blocked here. If the clip has burned-in captions, OCR them (rapidocr-onnxruntime, see the
+   project README). Otherwise ask the user for the script, or use `voice.py --recording` style silence splitting.
+3. Footage: video track muted (`assets/footage/raw.mp4`), voice extracted + cleaned to `assets/audio/voice.wav`.
+4. Camera in `index.html` root timeline on wrappers (`#ft-zoom` punch-ins, `#ft-frame` split screen), never on the `<video>`.
+5. All cards / slides / SFX in one `compositions/overlays.html` at absolute times. Keep cards out of the caption band.
+6. Render with `--workers 4`, loudnorm, check a tile of rendered frames.
+Never add a claim the speaker did not make; soften absolutes in graphics (speaker said "100% accurate", card says "Accurate tracking").
+Client footage and exports stay git-ignored unless the user says to push them.
+
 ## Log
 
 - 2026-10-09: Installed HyperFrames skills. Built `conversion-tracking-portfolio` (dark-tech, from the PDF playbook).
 - 2026-10-09: Built `conversion-tracking-promo` (color-block promo after the Outwitly reference) with SFX and upbeat music.
 - 2026-10-09: Added local voice clone (FreeVC) from the user's 58 s phone recording, `exports/conversion-tracking-promo-myvoice-1080p.mp4` (kept local).
 - 2026-10-09: Added `kit/` (setup, new-video, make with 4 render workers, voice.py recording mode) and `library/` (hooks, graphics, voice). User feedback: FreeVC clone still sounds AI, prefer real recording.
+- 2026-10-10: Edited `videos/asad-fiverr-gig` (talking-head Fiverr gig, 53.5 s): OCR timing from burned captions, punch-ins, split screen, synced cards, music, SFX. Render 2 min 49 s. Footage kept local.
