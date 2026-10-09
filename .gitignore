@@ -5,3 +5,8 @@ snapshots/
 !videos/*/exports/*.mp4
 .DS_Store
 __pycache__/
+
+# personal voice data: kept local, not pushed (ask before committing)
+videos/*/voice-ref/
+videos/*/assets/audio/voice-clone.wav
+videos/*/exports/*myvoice*

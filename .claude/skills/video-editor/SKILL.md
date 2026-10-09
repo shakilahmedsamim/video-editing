@@ -95,7 +95,27 @@ Keep the volumes equal to the `data-volume` values in `build.mjs`. Current mix: 
 - `check` contrast warnings on big decorative headlines (orange on magenta) are accepted for the promo style.
 - Music and SFX are synthesized in Python (no samples), so there is no licensing issue.
 
+## Using the user's own voice
+
+Best to worst realism:
+1. **Real recording of the script.** Put it at `assets/audio/voice.wav`; timings must then come from transcription
+   (whisper), not `voice.py`. Most real, no account needed.
+2. **Cloud voice clone (HeyGen or ElevenLabs).** Needs an API key and network access to `api.heygen.com` /
+   `api.elevenlabs.io` (blocked in the default cloud environment; the user must add the domain under the
+   environment's Network access > Allowed domains). HeyGen: `node .claude/skills/media-use/audio/scripts/heygen-voice.mjs clone take.mp3 --name "Shakil"`
+   then `heygen-tts.mjs --voice <id>` (returns word timestamps too). Needs 1 to 2 min of clean speech.
+3. **Local FreeVC (free, works offline here).** `scripts/clone_voice.py` in `videos/conversion-tracking-promo`
+   converts the Kokoro narration line by line into the timbre of `voice-ref/ref.wav` with identical timing,
+   so only an audio remix is needed (no video re-render). Measured speaker similarity to the user's recording:
+   Kokoro 0.61, FreeVC 0.76 (same person is usually 0.8+). Sounds closer, not identical. Accent and rhythm stay Kokoro's.
+   Setup and the ref-cleaning ffmpeg command are in the script header. huggingface.co is blocked here, so
+   XTTS / F5 / OpenVoice cannot be downloaded; FreeVC weights come from GitHub releases.
+
+Privacy: the user's raw recording (`voice-ref/`), `voice-clone.wav` and `*myvoice*` exports are git-ignored.
+Ask the user before committing any of them.
+
 ## Log
 
 - 2026-10-09: Installed HyperFrames skills. Built `conversion-tracking-portfolio` (dark-tech, from the PDF playbook).
 - 2026-10-09: Built `conversion-tracking-promo` (color-block promo after the Outwitly reference) with SFX and upbeat music.
+- 2026-10-09: Added local voice clone (FreeVC) from the user's 58 s phone recording, `exports/conversion-tracking-promo-myvoice-1080p.mp4` (kept local).
