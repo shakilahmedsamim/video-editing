@@ -21,5 +21,6 @@ Shakil's Claude + HyperFrames video editing workspace.
 | Folder | Type | Export |
 | --- | --- | --- |
 | `infographics/installed-not-working` | LinkedIn case-study infographic, 1080x1350 (HTML source) | `installed-not-working-1080x1350.png` + `@2x` (2160x2700), light cream "screenshot proof" style |
+| `infographics/tracking-burns-money` | LinkedIn post image, 1080x1350, navy flat vector (source: `build.py` -> `index.html`) | `tracking-burns-money-1080x1350.png` + `@2x` (2160x2700) |
 
 Each video folder has its own `README.md` with the exact rebuild commands.
