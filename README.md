@@ -16,4 +16,10 @@ Shakil's Claude + HyperFrames video editing workspace.
 | `videos/conversion-tracking-promo` | color-block promo + SFX | `exports/conversion-tracking-promo-1080p.mp4` (2:12) |
 | `videos/asad-fiverr-gig` | talking-head edit (client footage, local only) | `exports/asad-fiverr-gig-1080p.mp4` (0:53) |
 
+## Graphics
+
+| Folder | Type | Export |
+| --- | --- | --- |
+| `infographics/installed-not-working` | LinkedIn case-study infographic, 1080x1350 (HTML source) | `installed-not-working-1080x1350.png` |
+
 Each video folder has its own `README.md` with the exact rebuild commands.

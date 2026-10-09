@@ -1,0 +1,121 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Installed Not Working</title>
+<style>
+:root{--bg:#0B1426;--card:#121E36;--card2:#16243F;--line:#24365A;--w:#FFFFFF;--g:#B9C3D6;--dim:#7E8BA6;--ok:#22E584;--bad:#FF4D5E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--bg);overflow:hidden}
+body{font-family:Inter,"Inter Display",sans-serif;color:var(--w);position:relative;
+ background:radial-gradient(700px 420px at 85% 0%,rgba(34,229,132,.10),transparent 70%),radial-gradient(600px 400px at 0% 45%,rgba(255,77,94,.07),transparent 70%),var(--bg)}
+.wrap{position:absolute;inset:0;padding:64px 64px 0}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:96px;letter-spacing:-2.5px;line-height:1}
+h1 .ne{color:var(--ok);text-shadow:0 0 28px rgba(34,229,132,.45)}
+.sub{margin-top:16px;font-size:28px;color:var(--g);font-weight:500;display:flex;align-items:center;gap:14px}
+.sub i{display:inline-block;width:36px;height:4px;border-radius:2px;background:var(--ok)}
+.cards{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:24px;padding:28px 28px 26px;position:relative;overflow:hidden}
+.card.bad{border-color:rgba(255,77,94,.45);box-shadow:0 0 40px rgba(255,77,94,.12)}
+.card.ok{border-color:rgba(34,229,132,.45);box-shadow:0 0 40px rgba(34,229,132,.14)}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px}
+.card.bad::before{background:var(--bad)}.card.ok::before{background:var(--ok)}
+.tag{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:26px;letter-spacing:3px;padding:8px 16px;border-radius:12px}
+.bad .tag{color:var(--bad);background:rgba(255,77,94,.12)}.ok .tag{color:var(--ok);background:rgba(34,229,132,.12)}
+.card ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:16px}
+.card li{display:flex;gap:14px;align-items:flex-start;font-size:23px;line-height:1.3;color:#E6EBF5;font-weight:500}
+.card li svg{flex:none;margin-top:2px}
+.sec{margin-top:40px;font-size:20px;font-weight:700;letter-spacing:3px;color:var(--dim);text-transform:uppercase}
+.flow{margin-top:18px;height:260px;position:relative}
+.node{position:absolute;top:30px;width:178px;height:196px;background:var(--card);border:1.5px solid var(--line);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:26px!important;gap:14px;text-align:center;font-size:21px;font-weight:600;line-height:1.25;padding:0 12px}
+.node .ic{width:72px;height:72px;border-radius:18px;background:var(--card2);display:flex;align-items:center;justify-content:center}
+.node.srv{border-color:rgba(34,229,132,.5);box-shadow:0 0 36px rgba(34,229,132,.18)}
+.dest{position:absolute;left:700px;width:252px;height:50px;background:var(--card);border:1.5px solid rgba(34,229,132,.35);border-radius:14px;display:flex;align-items:center;padding-left:18px;gap:12px;font-size:21px;font-weight:700}
+.dest b{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+svg.ov{position:absolute;inset:0;overflow:visible}
+.loop{margin-top:18px;height:300px;position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:28px}
+.ln{position:absolute;justify-content:center;height:64px;background:var(--card2);border:1.5px solid var(--line);border-radius:16px;display:flex;align-items:center;gap:12px;padding:0 18px;font-size:21px;font-weight:700;white-space:nowrap}
+.ln.pay{border-color:rgba(34,229,132,.55);color:var(--ok)}
+.ln.gads{border-color:rgba(34,229,132,.55)}
+.back{position:absolute;font-size:19px;font-weight:600;color:var(--ok);background:var(--card);padding:0 12px;letter-spacing:.3px}
+.foot{position:absolute;left:64px;right:64px;bottom:50px;font-size:24px;color:var(--g);font-weight:500;display:flex;align-items:center;gap:14px}
+.foot strong{color:var(--w);font-weight:700}
+</style></head><body><div class="wrap">
+
+<h1>Installed <span class="ne">≠</span> Working</h1>
+<div class="sub"><i></i>Server-side tracking case study</div>
+
+<div class="cards">
+ <div class="card bad">
+  <span class="tag"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#FF4D5E" stroke-width="2.4"/><path d="M8 8l8 8M16 8l-8 8" stroke="#FF4D5E" stroke-width="2.4" stroke-linecap="round"/></svg>BEFORE</span>
+  <ul>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" stroke="#FF4D5E" stroke-width="2.6" stroke-linecap="round"/></svg>Server events: 0</li>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" stroke="#FF4D5E" stroke-width="2.6" stroke-linecap="round"/></svg>Data sent to Test Events only</li>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" stroke="#FF4D5E" stroke-width="2.6" stroke-linecap="round"/></svg>Algorithm optimizing blind</li>
+  </ul>
+ </div>
+ <div class="card ok">
+  <span class="tag"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#22E584" stroke-width="2.4"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="#22E584" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>AFTER</span>
+  <ul>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#22E584" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Browser + Server, deduplicated</li>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#22E584" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Consent-first tracking</li>
+   <li><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#22E584" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Real buying signals tracked</li>
+  </ul>
+ </div>
+</div>
+
+<div class="sec">How the data flows</div>
+<div class="flow">
+ <svg class="ov" width="952" height="260">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B9C3D6"/></marker>
+  <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22E584"/></marker></defs>
+  <path d="M184 128H234" stroke="#B9C3D6" stroke-width="3" marker-end="url(#ah)"/>
+  <path d="M424 128H474" stroke="#B9C3D6" stroke-width="3" marker-end="url(#ah)"/>
+  <g fill="none" stroke="#22E584" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M660 128H678"/><path d="M678 33V219"/>
+   <path d="M678 33H696" marker-end="url(#ag)"/><path d="M678 95H696" marker-end="url(#ag)"/>
+   <path d="M678 157H696" marker-end="url(#ag)"/><path d="M678 219H696" marker-end="url(#ag)"/>
+  </g>
+ </svg>
+ <div class="node" style="left:0">
+  <div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19"/><circle cx="5.5" cy="6.3" r=".5" fill="#fff"/><circle cx="7.7" cy="6.3" r=".5" fill="#fff"/><path d="M6 12.5h7M6 15.5h4"/></svg></div>
+  Website visitor</div>
+ <div class="node" style="left:240px">
+  <div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#22E584"/></svg></div>
+  Consent check</div>
+ <div class="node srv" style="left:480px">
+  <div class="ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3" width="17" height="5.2" rx="1.4"/><rect x="3.5" y="9.4" width="17" height="5.2" rx="1.4"/><rect x="3.5" y="15.8" width="17" height="5.2" rx="1.4"/><circle cx="7" cy="5.6" r=".7" fill="#22E584" stroke="#22E584"/><circle cx="7" cy="12" r=".7" fill="#22E584" stroke="#22E584"/><circle cx="7" cy="18.4" r=".7" fill="#22E584" stroke="#22E584"/><path d="M11 5.6h6M11 12h6M11 18.4h6"/></svg></div>
+  Own subdomain server</div>
+ <div class="dest" style="top:8px"><b></b>GA4</div>
+ <div class="dest" style="top:70px"><b></b>Google Ads</div>
+  <div class="dest" style="top:132px"><b></b>Meta</div>
+ <div class="dest" style="top:194px"><b></b>TikTok</div>
+</div>
+
+<div class="sec">The missing loop: Offline conversions</div>
+<div class="loop">
+ <svg class="ov" width="952" height="300">
+  <defs><marker id="al" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22E584"/></marker>
+  <filter id="gl"><feGaussianBlur stdDeviation="4"/></filter></defs>
+  <rect x="66" y="72" width="820" height="156" rx="78" fill="none" stroke="#22E584" stroke-width="10" opacity=".16" filter="url(#gl)"/>
+  <g fill="none" stroke="#22E584" stroke-width="3" stroke-linecap="round">
+   <path d="M298 72H350" marker-end="url(#al)"/>
+   <path d="M518 72H570" marker-end="url(#al)"/>
+   <path d="M832 72C902 72 902 228 840 228" marker-end="url(#al)"/>
+   <path d="M582 228H330" stroke-dasharray="2 9" marker-end="url(#al)"/>
+   <path d="M118 228C50 228 50 72 110 72" marker-end="url(#al)"/>
+  </g>
+ </svg>
+ <div class="ln" style="left:120px;top:40px;width:170px">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 7-6 2-2 6z"/><path d="M14 14l5 5"/></svg>Ad click</div>
+ <div class="ln" style="left:360px;top:40px;width:150px">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Lead</div>
+ <div class="ln" style="left:580px;top:40px;width:250px">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Sales call / CRM</div>
+ <div class="ln pay" style="left:590px;top:196px;width:240px">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E584" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 11l4-4 3 1.5 3-2 4 1 5 4"/><path d="M6.5 7L3 14l5 4.5 1.5-1 1.5 1.5 1.5-1 1.5 1.5 2-1.5 3.5-3.5"/><path d="M9.5 10.5l3 2.5"/></svg>Paid customer</div>
+ <div class="ln gads" style="left:120px;top:196px;width:200px">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E584" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><rect x="5" y="12" width="3" height="6" rx=".8"/><rect x="10.5" y="8" width="3" height="10" rx=".8"/><rect x="16" y="4" width="3" height="14" rx=".8"/></svg>Google Ads</div>
+ <div class="back" style="left:300px;top:168px;width:320px;text-align:center;white-space:nowrap;background:none">real revenue value sent back</div>
+</div>
+
+</div>
+<div class="foot"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22E584" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="#22E584"/></svg><span>Cheap leads were never the goal. <strong>Paying customers are.</strong></span></div>
+</body></html>
