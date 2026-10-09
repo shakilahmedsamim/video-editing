@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #ev-wrap { position: absolute; inset: 0; }
+        #ev-head { position: absolute; left: 140px; top: 70px; }
+        #ev-h { margin-top: 10px; font-size: 54px; font-weight: 800; letter-spacing: -0.03em; }
+        #ev-ladder { position: absolute; left: 140px; width: 980px; top: 230px; }
+        .ev-row { height: 128px; margin-bottom: 22px; padding: 0 34px; display: flex; align-items: center; gap: 26px; }
+        .ev-ic { width: 54px; height: 54px; border-radius: 27px; flex: none; display: flex; align-items: center; justify-content: center;
+          font-size: 28px; font-weight: 900; }
+        .ev-tx b { display: block; font-size: 32px; font-weight: 700; }
+        .ev-tx small { display: block; margin-top: 6px; font-size: 22px; color: var(--muted); }
+        #ev-r0 .ev-ic { background: #26324a; color: var(--muted); }
+        #ev-r0 { border-style: dashed; }
+        .ev-okc { background: var(--ok); color: #062b1e; }
+        #ev-r3 { border-color: var(--ok); }
+        #ev-note { position: absolute; right: 140px; top: 230px; width: 560px; height: 576px; padding: 36px 40px; }
+        .ev-ttl { font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+        .ev-li { margin-top: 40px; font-size: 30px; line-height: 1.4; display: flex; gap: 16px; }
+        .ev-li i { flex: none; width: 12px; height: 12px; margin-top: 13px; border-radius: 6px; background: var(--blue); }
+        .ev-li.w i { background: var(--warn); }
+      </style>
+
+      <div id="root" data-composition-id="evidence" data-width="1920" data-height="1080">
+        <div id="ev-wrap">
+          <div id="ev-head">
+            <div class="eyebrow">Proof, not assumptions</div>
+            <div id="ev-h">A tag firing is not proof by itself</div>
+          </div>
+          <div id="ev-ladder">
+            <div id="ev-r0" class="card ev-row"><div class="ev-ic">?</div><div class="ev-tx"><b>Tag fired</b><small>a starting signal, not a confirmed conversion</small></div></div>
+            <div id="ev-r1" class="card ev-row"><div class="ev-ic ev-okc">&#10003;</div><div class="ev-tx"><b>Correct event</b><small>the right action, at the right stage</small></div></div>
+            <div id="ev-r2" class="card ev-row"><div class="ev-ic ev-okc">&#10003;</div><div class="ev-tx"><b>Right values and rules</b><small>parameters, IDs, consent, qualifying orders</small></div></div>
+            <div id="ev-r3" class="card ev-row"><div class="ev-ic ev-okc">&#10003;</div><div class="ev-tx"><b>Received by the destination</b><small>confirmed where access allows</small></div></div>
+          </div>
+          <div id="ev-note" class="card">
+            <div class="ev-ttl">QA documentation</div>
+            <div class="ev-li"><i></i>Test steps and results</div>
+            <div class="ev-li"><i></i>Event and parameter evidence</div>
+            <div class="ev-li w"><i></i>Known limitations</div>
+            <div class="ev-li w"><i></i>Items that still need review</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const K = /*CUES*/{"c":[0.4,4.67,7.7,9.97,12.69],"d":18.576}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          const row = (sel, t) => tl.fromTo(sel, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, t);
+          tl.fromTo("#ev-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#ev-head", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, c[0]);
+          row("#ev-r0", c[0] + 1.2);
+          row("#ev-r1", c[1]);
+          row("#ev-r2", c[2]);
+          row("#ev-r3", c[3]);
+          tl.fromTo("#ev-r3", { boxShadow: "0 0 0px rgba(52,211,153,0)" }, { boxShadow: "0 0 40px rgba(52,211,153,0.35)", duration: 0.6 }, c[3] + 0.4);
+          tl.fromTo("#ev-note", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, c[4] - 0.2);
+          tl.fromTo("#ev-note .ev-li", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.45 }, c[4] + 0.3);
+          tl.to("#ev-wrap", { opacity: 0, duration: 0.4 }, D - 0.45);
+          window.__timelines["evidence"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

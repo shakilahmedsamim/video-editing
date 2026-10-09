@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #in-wrap { position: absolute; inset: 0; }
+        #in-title { position: absolute; left: 0; right: 0; top: 300px; display: flex; flex-direction: column; align-items: center; }
+        #in-eyebrow { font-size: 24px; }
+        #in-name { margin-top: 28px; font-size: 112px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; }
+        #in-role { margin-top: 22px; font-size: 40px; color: var(--muted); font-weight: 500; }
+        #in-role b { color: var(--text); font-weight: 600; }
+        #in-bar { margin-top: 36px; width: 160px; height: 5px; border-radius: 3px; background: var(--blue); transform-origin: center; }
+        /* diagram */
+        #in-diag { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+        .in-node { position: absolute; width: 300px; height: 120px; display: flex; flex-direction: column; align-items: center;
+          justify-content: center; font-size: 32px; font-weight: 700; }
+        .in-node small { font-size: 19px; color: var(--muted); font-weight: 500; margin-top: 6px; }
+        #in-web { left: 170px; top: 530px; }
+        #in-gtm { left: 650px; top: 530px; border-color: var(--blue); background: #12224a; }
+        #in-ga4 { left: 1250px; top: 380px; }
+        #in-ads { left: 1250px; top: 530px; }
+        #in-crm { left: 1250px; top: 680px; }
+        .in-ln { position: absolute; height: 3px; background: var(--blue); transform-origin: left center; }
+        #in-l0 { left: 470px; top: 589px; width: 180px; }
+        #in-l1 { left: 950px; top: 589px; width: 300px; }
+        #in-l2 { left: 950px; top: 589px; width: 335px; transform: rotate(-26.5deg); }
+        #in-l3 { left: 950px; top: 589px; width: 335px; transform: rotate(26.5deg); }
+        #in-pills { position: absolute; left: 0; right: 0; top: 860px; display: flex; justify-content: center; gap: 24px; }
+        .in-pill { font-size: 24px; font-weight: 600; padding: 10px 22px; border-radius: 30px; background: var(--blue-soft); color: #9cc0ff; }
+      </style>
+
+      <div id="root" data-composition-id="intro" data-width="1920" data-height="1080">
+        <div id="in-wrap">
+          <div id="in-title">
+            <div id="in-eyebrow" class="eyebrow">Conversion Tracking &amp; Web Analytics</div>
+            <div id="in-name">Shakil Ahmed Samim</div>
+            <div id="in-role"><b>Conversion Tracking Specialist</b> &nbsp;|&nbsp; Shakil (Tracking Guru)</div>
+            <div id="in-bar"></div>
+          </div>
+          <div id="in-diag">
+            <div id="in-l0" class="in-ln"></div>
+            <div id="in-l1" class="in-ln"></div>
+            <div id="in-l2" class="in-ln"></div>
+            <div id="in-l3" class="in-ln"></div>
+            <div id="in-web" class="card in-node">Website<small>user actions</small></div>
+            <div id="in-gtm" class="card in-node">GTM<small>tag management</small></div>
+            <div id="in-ga4" class="card in-node">Analytics<small>GA4</small></div>
+            <div id="in-ads" class="card in-node">Ad platforms<small>Google Ads, Meta</small></div>
+            <div id="in-crm" class="card in-node">CRM<small>leads and deals</small></div>
+          </div>
+          <div id="in-pills">
+            <div class="in-pill">Diagnose</div>
+            <div class="in-pill">Test</div>
+            <div class="in-pill">Maintain</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const K = /*CUES*/{"c":[0.4,2.5,6.19,9.76],"d":14.232}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#in-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#in-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5 }, 0.1);
+          tl.fromTo("#in-name", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, c[0]);
+          tl.fromTo("#in-role", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, c[1]);
+          tl.fromTo("#in-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, c[1] + 0.2);
+          // move title up, reveal the data path
+          const s = c[2] - 0.2;
+          tl.to("#in-title", { y: -200, scale: 0.62, duration: 0.7, ease: "power3.inOut" }, s);
+          tl.to(["#in-eyebrow", "#in-bar"], { opacity: 0, duration: 0.3 }, s);
+          tl.fromTo("#in-web", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45 }, s + 0.5);
+          tl.fromTo("#in-l0", { scaleX: 0 }, { scaleX: 1, duration: 0.35 }, s + 0.8);
+          tl.fromTo("#in-gtm", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45 }, s + 1.0);
+          tl.fromTo("#in-l2", { scaleX: 0 }, { scaleX: 1, duration: 0.35 }, s + 1.4);
+          tl.fromTo("#in-l1", { scaleX: 0 }, { scaleX: 1, duration: 0.35 }, s + 1.5);
+          tl.fromTo("#in-l3", { scaleX: 0 }, { scaleX: 1, duration: 0.35 }, s + 1.6);
+          tl.fromTo(["#in-ga4", "#in-ads", "#in-crm"], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.12 }, s + 1.7);
+          tl.fromTo("#in-pills .in-pill", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.25 }, c[3] + 0.6);
+          tl.to("#in-wrap", { opacity: 0, duration: 0.4 }, D - 0.45);
+          window.__timelines["intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

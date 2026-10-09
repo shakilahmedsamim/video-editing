@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #hook-wrap { position: absolute; inset: 0; }
+        #hook-tag { position: absolute; right: 96px; top: 72px; }
+        #hook-cards { position: absolute; left: 0; right: 0; top: 190px; display: flex; justify-content: center; gap: 120px; }
+        .hk-card { width: 560px; height: 380px; padding: 44px 48px; display: flex; flex-direction: column; }
+        .hk-src { font-size: 24px; color: var(--muted); font-weight: 500; }
+        .hk-label { margin-top: 44px; font-size: 26px; color: var(--muted); }
+        .hk-num { font-size: 150px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-top: 8px; }
+        .hk-unit { font-size: 22px; color: var(--dim); margin-top: 16px; }
+        #hook-neq { position: absolute; left: 50%; top: 330px; width: 120px; height: 120px; margin-left: -60px;
+          border-radius: 60px; background: var(--bad); color: #fff; font-size: 72px; font-weight: 800;
+          display: flex; align-items: center; justify-content: center; }
+        #hook-lead { position: absolute; left: 50%; top: 650px; width: 1180px; margin-left: -590px; height: 96px;
+          padding: 0 36px; display: flex; align-items: center; gap: 24px; font-size: 30px; }
+        #hook-lead .dot { width: 18px; height: 18px; border-radius: 9px; background: var(--bad); }
+        #hook-lead .miss { margin-left: auto; color: var(--bad); font-weight: 700; font-size: 26px; }
+        /* flow diagram */
+        #hook-flow { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+        #hook-flow-title { position: absolute; left: 0; right: 0; top: 170px; text-align: center; font-size: 56px; font-weight: 700; letter-spacing: -0.02em; }
+        .hk-node { position: absolute; top: 420px; width: 340px; height: 150px; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; font-size: 34px; font-weight: 700; }
+        .hk-node small { font-size: 20px; color: var(--muted); font-weight: 500; margin-top: 8px; }
+        #hk-n1 { left: 170px; } #hk-n2 { left: 790px; } #hk-n3 { left: 1410px; }
+        .hk-link { position: absolute; top: 494px; height: 4px; background: var(--blue); transform-origin: left center; }
+        #hk-l1 { left: 510px; width: 280px; }
+        #hk-l2a { left: 1130px; width: 110px; background: var(--bad); }
+        #hk-l2b { left: 1300px; width: 110px; background: var(--bad); }
+        #hk-break { position: absolute; left: 1190px; top: 420px; width: 160px; height: 160px; border-radius: 80px;
+          border: 4px solid var(--bad); }
+        #hk-break-label { position: absolute; left: 1070px; top: 620px; width: 400px; text-align: center; color: var(--bad); font-size: 28px; font-weight: 700; }
+      </style>
+
+      <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+        <div id="hook-wrap">
+          <div id="hook-tag" class="demo-tag">DEMO DATA</div>
+          <div id="hook-cards">
+            <div id="hook-c1" class="card hk-card">
+              <div class="hk-src">Ad platform report</div>
+              <div class="hk-label">Purchases</div>
+              <div id="hook-n1" class="hk-num">48</div>
+              <div class="hk-unit">reported conversions</div>
+            </div>
+            <div id="hook-c2" class="card hk-card">
+              <div class="hk-src">Store backend</div>
+              <div class="hk-label">Orders</div>
+              <div id="hook-n2" class="hk-num">31</div>
+              <div class="hk-unit">completed orders</div>
+            </div>
+          </div>
+          <div id="hook-neq">&ne;</div>
+          <div id="hook-lead" class="card">
+            <div class="dot"></div>
+            <div>Lead form submitted</div>
+            <div class="miss">Not recorded</div>
+          </div>
+          <div id="hook-flow">
+            <div id="hook-flow-title">Where does the data break?</div>
+            <div id="hk-n1" class="card hk-node">Website<small>user action</small></div>
+            <div id="hk-n2" class="card hk-node">Tag Manager<small>tags and triggers</small></div>
+            <div id="hk-n3" class="card hk-node">Destination<small>analytics / ads / CRM</small></div>
+            <div id="hk-l1" class="hk-link"></div>
+            <div id="hk-l2a" class="hk-link"></div>
+            <div id="hk-l2b" class="hk-link"></div>
+            <div id="hk-break"></div>
+            <div id="hk-break-label">data breaks here</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const K = /*CUES*/{"c":[0.5,2.89,6.66,9.68],"d":14.223}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#hook-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#hook-tag", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.2);
+          tl.fromTo("#hook-c1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+          tl.fromTo("#hook-c2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.25);
+          const n1 = { v: 0 }, n2 = { v: 0 };
+          tl.to(n1, { v: 48, duration: 1.2, ease: "power2.out", onUpdate: () => { document.getElementById("hook-n1").textContent = Math.round(n1.v); } }, 0.3);
+          tl.to(n2, { v: 31, duration: 1.2, ease: "power2.out", onUpdate: () => { document.getElementById("hook-n2").textContent = Math.round(n2.v); } }, 0.45);
+          tl.fromTo("#hook-neq", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, c[1]);
+          tl.fromTo("#hook-c1", { borderColor: "#24324d" }, { borderColor: "#f2555a", duration: 0.4 }, c[1] + 0.2);
+          tl.fromTo("#hook-lead", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, c[2]);
+          // switch to the flow diagram
+          const sw = c[3] - 0.3;
+          tl.to(["#hook-cards", "#hook-neq", "#hook-lead"], { opacity: 0, y: -30, duration: 0.45, ease: "power2.in" }, sw);
+          tl.fromTo("#hook-flow-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5 }, sw + 0.35);
+          tl.fromTo(["#hk-n1", "#hk-n2", "#hk-n3"], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.15, ease: "power3.out" }, sw + 0.45);
+          tl.fromTo("#hk-l1", { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, sw + 1.0);
+          tl.fromTo("#hk-l2a", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, sw + 1.35);
+          tl.fromTo("#hk-l2b", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, sw + 1.55);
+          tl.fromTo("#hk-break", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, sw + 1.9);
+          tl.fromTo("#hk-break-label", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, sw + 2.1);
+          tl.to("#hk-break", { scale: 1.08, duration: 0.6, yoyo: true, repeat: 3, ease: "sine.inOut" }, sw + 2.5);
+          tl.to("#hook-wrap", { opacity: 0, duration: 0.4 }, D - 0.45);
+          window.__timelines["hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

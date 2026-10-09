@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #st-wrap { position: absolute; inset: 0; }
+        #st-head { position: absolute; left: 160px; top: 110px; }
+        #st-h { margin-top: 14px; font-size: 64px; font-weight: 800; letter-spacing: -0.03em; }
+        #st-cols { position: absolute; left: 160px; right: 160px; top: 330px; display: flex; gap: 32px; }
+        .st-col { flex: 1; }
+        .st-cat { font-size: 21px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600;
+          padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+        .st-chip { height: 96px; padding: 0 26px; margin-bottom: 18px; display: flex; align-items: center; gap: 18px;
+          font-size: 29px; font-weight: 600; }
+        .st-chip i { width: 14px; height: 14px; border-radius: 7px; background: var(--blue); flex: none; }
+      </style>
+
+      <div id="root" data-composition-id="stack" data-width="1920" data-height="1080">
+        <div id="st-wrap">
+          <div id="st-head">
+            <div class="eyebrow">The tracking stack</div>
+            <div id="st-h">Browser, server, and CRM</div>
+          </div>
+          <div id="st-cols">
+            <div class="st-col">
+              <div class="st-cat">Analytics</div>
+              <div id="st-a1" class="card st-chip"><i></i>GA4</div>
+              <div id="st-a2" class="card st-chip"><i></i>Google Tag Manager</div>
+            </div>
+            <div class="st-col">
+              <div class="st-cat">Ad platforms</div>
+              <div id="st-b1" class="card st-chip"><i></i>Google Ads conversions</div>
+              <div id="st-b2" class="card st-chip"><i></i>Enhanced Conversions</div>
+              <div id="st-b3" class="card st-chip"><i></i>Meta Pixel</div>
+              <div id="st-b4" class="card st-chip"><i></i>Meta Conversions API</div>
+            </div>
+            <div class="st-col">
+              <div class="st-cat">Server and data</div>
+              <div id="st-c1" class="card st-chip"><i></i>Server-side tracking</div>
+              <div id="st-c2" class="card st-chip"><i></i>Ecommerce events</div>
+            </div>
+            <div class="st-col">
+              <div class="st-cat">CRM</div>
+              <div id="st-d1" class="card st-chip"><i></i>HubSpot</div>
+              <div id="st-d2" class="card st-chip"><i></i>Lead and deal data</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const K = /*CUES*/{"c":[0.4,4.17,8.46,11.82,14.85],"d":18.854}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.35, ease: "power3.out" }, t);
+          tl.fromTo("#st-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#st-head", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0);
+          tl.fromTo(".st-cat", { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.1 }, 0.3);
+          pop(["#st-a1", "#st-a2"], c[0] + 0.2);
+          pop(["#st-b1", "#st-b2"], c[1] + 0.2);
+          pop(["#st-b3", "#st-b4"], c[2] + 0.2);
+          pop(["#st-c1", "#st-c2"], c[3] + 0.2);
+          pop(["#st-d1", "#st-d2"], c[4] + 0.3);
+          tl.to("#st-wrap", { opacity: 0, duration: 0.4 }, D - 0.45);
+          window.__timelines["stack"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

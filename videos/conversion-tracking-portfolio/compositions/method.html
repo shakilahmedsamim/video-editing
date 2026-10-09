@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #me-wrap { position: absolute; inset: 0; }
+        #me-head { position: absolute; left: 140px; top: 70px; }
+        #me-h { margin-top: 10px; font-size: 54px; font-weight: 800; letter-spacing: -0.03em; }
+        #me-steps { position: absolute; left: 140px; right: 140px; top: 220px; height: 130px; display: flex; gap: 20px; }
+        .me-step { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 28px; }
+        .me-step span { font-size: 18px; color: var(--dim); font-weight: 700; letter-spacing: 0.12em; }
+        .me-step div { margin-top: 6px; font-size: 32px; font-weight: 700; color: var(--muted); }
+        #me-low { position: absolute; left: 140px; right: 140px; top: 400px; height: 440px; }
+        /* trace path */
+        #me-trace { position: absolute; inset: 0; }
+        .me-tn { position: absolute; top: 120px; width: 300px; height: 110px; display: flex; flex-direction: column; align-items: center;
+          justify-content: center; font-size: 28px; font-weight: 700; }
+        .me-tn small { font-size: 18px; font-weight: 500; color: var(--muted); margin-top: 4px; }
+        #me-t1 { left: 0; } #me-t2 { left: 430px; } #me-t3 { left: 860px; } #me-t4 { left: 1340px; }
+        .me-ta { position: absolute; top: 174px; height: 3px; background: var(--blue); transform-origin: left center; }
+        #me-a1 { left: 300px; width: 130px; } #me-a2 { left: 730px; width: 130px; } #me-a3 { left: 1160px; width: 180px; }
+        #me-dot { position: absolute; left: 0; top: 165px; width: 22px; height: 22px; border-radius: 11px; background: #9cc0ff;
+          box-shadow: 0 0 24px #4c8dff; }
+        /* qa panel */
+        #me-qa { position: absolute; left: 0; top: 0; width: 760px; height: 440px; padding: 34px 40px; }
+        #me-code { position: absolute; right: 0; top: 0; width: 820px; height: 440px; padding: 34px 40px; font-size: 24px; line-height: 1.65; }
+        .me-ttl { font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 18px; }
+        .me-ck { height: 58px; display: flex; align-items: center; gap: 18px; font-size: 28px; }
+        .me-box { width: 32px; height: 32px; border-radius: 8px; border: 2px solid var(--line); position: relative; flex: none; }
+        .me-tick { position: absolute; inset: -2px; border-radius: 8px; background: var(--ok); display: flex; align-items: center;
+          justify-content: center; color: #062b1e; font-size: 22px; font-weight: 900; }
+        .k { color: #9cc0ff; } .s { color: #f0c27b; } .n { color: #7ee2b8; }
+        #me-code .demo-tag { position: absolute; right: 34px; top: 30px; }
+      </style>
+
+      <div id="root" data-composition-id="method" data-width="1920" data-height="1080">
+        <div id="me-wrap">
+          <div id="me-head">
+            <div class="eyebrow">The workflow</div>
+            <div id="me-h">A repeatable process</div>
+          </div>
+          <div id="me-steps">
+            <div id="me-s1" class="card me-step"><span>01</span><div>Audit</div></div>
+            <div id="me-s2" class="card me-step"><span>02</span><div>Trace</div></div>
+            <div id="me-s3" class="card me-step"><span>03</span><div>Implement</div></div>
+            <div id="me-s4" class="card me-step"><span>04</span><div>Validate</div></div>
+            <div id="me-s5" class="card me-step"><span>05</span><div>Document</div></div>
+          </div>
+          <div id="me-low">
+            <div id="me-trace">
+              <div id="me-t1" class="card me-tn">User action<small>click or submit</small></div>
+              <div id="me-t2" class="card me-tn">Data layer<small>event + values</small></div>
+              <div id="me-t3" class="card me-tn">Tags<small>GTM triggers</small></div>
+              <div id="me-t4" class="card me-tn">Destination<small>platform receipt</small></div>
+              <div id="me-a1" class="me-ta"></div><div id="me-a2" class="me-ta"></div><div id="me-a3" class="me-ta"></div>
+              <div id="me-dot"></div>
+            </div>
+            <div id="me-qa" class="card">
+              <div class="me-ttl">QA checklist</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Event parameters</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Identifiers</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Consent behavior</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Deduplication</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Receiving platform</div>
+            </div>
+            <div id="me-code" class="card mono">
+              <div class="demo-tag">DEMO DATA</div>
+              <div>{</div>
+              <div>&nbsp;&nbsp;<span class="k">"event"</span>: <span class="s">"purchase"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"transaction_id"</span>: <span class="s">"TEST-1042"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"value"</span>: <span class="n">49.00</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"currency"</span>: <span class="s">"USD"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"event_id"</span>: <span class="s">"evt_demo_7f3"</span></div>
+              <div>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const K = /*CUES*/{"c":[0.4,2.71,4.2,9.02,10.72,12.68,18.66],"d":23.743}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          const on = (sel, t) => {
+            tl.to(sel, { borderColor: "#4c8dff", backgroundColor: "#12224a", duration: 0.35 }, t);
+            tl.to(sel + " div", { color: "#e8eef8", duration: 0.35 }, t);
+            tl.to(sel + " span", { color: "#4c8dff", duration: 0.35 }, t);
+          };
+          tl.fromTo("#me-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+          tl.fromTo("#me-head", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, c[0]);
+          tl.fromTo(".me-step", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12 }, c[0] + 0.3);
+          on("#me-s1", c[1]);
+          on("#me-s2", c[2]);
+          // trace path
+          tl.fromTo(".me-tn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.3 }, c[2] + 0.3);
+          tl.fromTo("#me-a1", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, c[2] + 0.6);
+          tl.fromTo("#me-a2", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, c[2] + 0.9);
+          tl.fromTo("#me-a3", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, c[2] + 1.2);
+          tl.fromTo("#me-dot", { opacity: 0, x: 140 }, { opacity: 1, x: 140, duration: 0.2 }, c[2] + 1.5);
+          tl.to("#me-dot", { x: 1300, duration: 2.0, ease: "power1.inOut" }, c[2] + 1.7);
+          on("#me-s3", c[3]);
+          on("#me-s4", c[4]);
+          // switch to QA
+          tl.to("#me-trace", { opacity: 0, y: -20, duration: 0.4 }, c[5] - 0.5);
+          tl.fromTo("#me-qa", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, c[5] - 0.2);
+          tl.fromTo("#me-code", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, c[5]);
+          const ticks = gsap.utils.toArray("#me-qa .me-tick");
+          const tt = [c[5] + 0.6, c[5] + 1.3, c[5] + 2.0, c[5] + 2.8, c[6] + 0.5];
+          ticks.forEach((el, i) => tl.fromTo(el, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, tt[i]));
+          on("#me-s5", c[6] + 1.2);
+          tl.to("#me-wrap", { opacity: 0, duration: 0.4 }, D - 0.45);
+          window.__timelines["method"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

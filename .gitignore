@@ -1,5 +1,7 @@
 node_modules/
 renders/
+snapshots/
 *.mp4
-!assets/**/*.mp4
+!videos/*/exports/*.mp4
 .DS_Store
+__pycache__/
