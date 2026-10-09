@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #st-ast { left: 150px; top: 190px; color: #fff; }
+        #st-h { position: absolute; left: 150px; top: 300px; width: 700px; font-size: 140px; color: var(--ink); }
+        #st-h div { overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; } #st-h span { display: block; }
+        #st-h .w { color: #fff; }
+        #st-grid { position: absolute; left: 900px; top: 140px; width: 900px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 26px; }
+        .st-chip { height: 118px; padding: 0 28px; display: flex; flex-direction: column; justify-content: center; }
+        .st-chip b { font-size: 30px; font-weight: 800; }
+        .st-chip small { font-size: 19px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--magenta); margin-top: 4px; }
+        .st-chip.hl { background: var(--ink); color: #fff; }
+        .st-chip.hl small { color: var(--orange); }
+      </style>
+
+      <div id="root" data-composition-id="stack" data-width="1920" data-height="1080">
+        <div id="st-wipe" class="wipe">
+          <div class="fill" style="background: var(--lime)"></div>
+          <div id="st-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="st-h" class="big"><div><span>The</span></div><div><span class="w">tracking</span></div><div><span>stack</span></div></div>
+          <div id="st-grid">
+            <div class="paper st-chip"><b>GA4</b><small>Analytics</small></div>
+            <div class="paper st-chip"><b>Google Tag Manager</b><small>Tag management</small></div>
+            <div class="paper st-chip"><b>Google Ads conversions</b><small>Ad platform</small></div>
+            <div class="paper st-chip"><b>Enhanced Conversions</b><small>Ad platform</small></div>
+            <div class="paper st-chip"><b>Meta Pixel</b><small>Ad platform</small></div>
+            <div class="paper st-chip"><b>Conversions API</b><small>Meta, server</small></div>
+            <div class="paper st-chip hl"><b>Server-side tracking</b><small>Data quality</small></div>
+            <div class="paper st-chip"><b>Ecommerce events</b><small>Purchases</small></div>
+            <div class="paper st-chip hl"><b>HubSpot</b><small>CRM</small></div>
+            <div class="paper st-chip"><b>Lead and deal data</b><small>CRM</small></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["pop","c[0]+0.2"],["pop","c[0]+0.5"],["pop","c[1]+0.2"],["pop","c[1]+0.5"],["pop","c[2]+0.2"],["pop","c[2]+0.5"],
+            ["pop","c[3]+0.2"],["pop","c[3]+0.5"],["pop","c[4]+0.3"],["pop","c[4]+0.6"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,4.767,9.056,12.416,15.451],"d":19.454,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#st-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#st-ast", { rotation: 0, scale: 0 }, { rotation: 180, scale: 1, duration: 0.8, ease: "back.out(1.8)" }, 0.4);
+          tl.to("#st-ast", { rotation: 540, duration: D - 1.2, ease: "none" }, 1.2);
+          tl.fromTo("#st-h span", { yPercent: 110 }, { yPercent: 0, duration: 0.6, stagger: 0.15, ease: "power4.out" }, K.w + 0.05);
+          const chips = gsap.utils.toArray("#st-grid .st-chip");
+          const at = [c[0] + 0.2, c[0] + 0.5, c[1] + 0.2, c[1] + 0.5, c[2] + 0.2, c[2] + 0.5, c[3] + 0.2, c[3] + 0.5, c[4] + 0.3, c[4] + 0.6];
+          chips.forEach((el, i) => tl.fromTo(el, { opacity: 0, y: 50, rotation: i % 2 ? 4 : -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, at[i]));
+          window.__timelines["stack"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

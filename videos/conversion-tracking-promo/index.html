@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #b4519e; }
+      :root {
+        --magenta: #b4519e; --orange: #f4a51c; --lime: #b6d334; --plum: #3a1648; --cream: #f7f1ea;
+        --ink: #2a0f35; --white: #ffffff; --ok: #1fa971; --bad: #e23d5b;
+      }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--magenta);
+        font-family: Montserrat, sans-serif; color: var(--white); }
+      [data-composition-id="root"] > div[data-composition-src] { position: absolute; inset: 0; }
+      /* shared scene vocabulary */
+      .wipe { position: absolute; inset: 0; overflow: hidden; }
+      .fill { position: absolute; inset: 0; }
+      .big { font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; }
+      .glass { background: rgba(255, 255, 255, 0.16); border: 1.5px solid rgba(255, 255, 255, 0.35); border-radius: 22px;
+        box-shadow: 0 30px 60px rgba(42, 15, 53, 0.22); }
+      .paper { background: #ffffff; color: var(--ink); border-radius: 22px; box-shadow: 0 30px 70px rgba(42, 15, 53, 0.25); }
+      .pill { display: inline-flex; align-items: center; border-radius: 999px; font-weight: 700; }
+      .ast { position: absolute; width: 56px; height: 56px; }
+      .ast i { position: absolute; left: 22px; top: 0; width: 12px; height: 56px; border-radius: 6px; background: currentColor; }
+      .ast i:nth-child(2) { transform: rotate(60deg); } .ast i:nth-child(3) { transform: rotate(-60deg); }
+      .mono { font-family: "JetBrains Mono", monospace; }
+      .demo { position: absolute; font-size: 17px; letter-spacing: 0.14em; font-weight: 800; padding: 7px 14px; border-radius: 8px;
+        background: rgba(42, 15, 53, 0.78); color: #ffd27a; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="root" data-width="1920" data-height="1080" data-duration="131.968">
+      <div id="slot-hook" data-composition-id="hook" data-composition-src="compositions/hook.html"
+        data-start="0" data-duration="14.223" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="slot-intro" data-composition-id="intro" data-composition-src="compositions/intro.html"
+        data-start="13.623" data-duration="14.832" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="slot-stack" data-composition-id="stack" data-composition-src="compositions/stack.html"
+        data-start="27.855" data-duration="19.454" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="slot-problems" data-composition-id="problems" data-composition-src="compositions/problems.html"
+        data-start="46.709" data-duration="25.789" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="slot-method" data-composition-id="method" data-composition-src="compositions/method.html"
+        data-start="71.898" data-duration="24.343" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="slot-evidence" data-composition-id="evidence" data-composition-src="compositions/evidence.html"
+        data-start="95.641" data-duration="19.176" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="slot-cta" data-composition-id="cta" data-composition-src="compositions/cta.html"
+        data-start="114.217" data-duration="17.751" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="slot-captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
+        data-track-kind="captions" data-start="0" data-duration="131.968" data-track-index="5" data-width="1920" data-height="1080"></div>
+      <audio id="vo" src="assets/audio/voice.wav" data-start="0" data-duration="131.968" data-track-index="10" data-volume="1"></audio>
+      <audio id="bgm" src="assets/audio/music.wav" data-start="0" data-duration="131.968" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx" src="assets/audio/sfx.wav" data-start="0" data-duration="131.968" data-track-index="12" data-volume="0.3"></audio>
+    </div>
+    <script>
+      window.__timelines["root"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

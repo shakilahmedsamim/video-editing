@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #in-ast { left: 150px; top: 250px; color: var(--magenta); }
+        #in-t { position: absolute; left: 150px; top: 340px; width: 1500px; }
+        #in-hi { font-size: 40px; font-weight: 700; color: var(--magenta); }
+        #in-name { margin-top: 14px; font-size: 128px; color: var(--ink); }
+        #in-name div { overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+        #in-name span { display: block; }
+        #in-role { margin-top: 34px; height: 76px; padding: 0 34px; font-size: 34px; background: var(--orange); color: var(--ink); }
+        #in-alias { margin-top: 22px; font-size: 28px; font-weight: 600; color: #7a5a86; }
+        /* data path */
+        .in-node { position: absolute; width: 330px; height: 118px; padding: 0 28px; display: flex; flex-direction: column; justify-content: center;
+          font-size: 32px; font-weight: 800; }
+        .in-node small { font-size: 20px; font-weight: 600; color: #7a5a86; margin-top: 2px; }
+        #in-web { left: 960px; top: 300px; }
+        #in-gtm { left: 960px; top: 520px; background: var(--magenta); color: #fff; }
+        #in-gtm small { color: rgba(255,255,255,0.8); }
+        #in-ga4 { left: 1440px; top: 300px; } #in-ads { left: 1440px; top: 520px; } #in-crm { left: 1440px; top: 740px; }
+        .in-ln { position: absolute; height: 6px; border-radius: 3px; background: var(--magenta); transform-origin: left center; }
+        #in-l0 { left: 1121px; top: 418px; width: 102px; transform: rotate(90deg); }
+        #in-l1 { left: 1290px; top: 576px; width: 150px; }
+        #in-l2 { left: 1290px; top: 576px; width: 245px; transform: rotate(-52deg); }
+        #in-l3 { left: 1290px; top: 576px; width: 245px; transform: rotate(52deg); }
+        #in-pills { position: absolute; left: 150px; top: 820px; display: flex; gap: 18px; }
+        .in-pill { height: 64px; padding: 0 28px; font-size: 28px; color: #fff; }
+      </style>
+
+      <div id="root" data-composition-id="intro" data-width="1920" data-height="1080">
+        <div id="in-wipe" class="wipe">
+          <div class="fill" style="background: var(--cream)"></div>
+          <div id="in-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="in-t">
+            <div id="in-hi">Hi, I'm</div>
+            <div id="in-name" class="big"><div><span>Shakil</span></div><div><span>Ahmed Samim</span></div></div>
+            <div id="in-role" class="pill">Conversion Tracking &amp; Web Analytics Specialist</div>
+            <div id="in-alias">Shakil (Tracking Guru)</div>
+          </div>
+          <div id="in-l0" class="in-ln"></div>
+          <div id="in-l1" class="in-ln"></div><div id="in-l2" class="in-ln"></div><div id="in-l3" class="in-ln"></div>
+          <div id="in-web" class="paper in-node">Website<small>user actions</small></div>
+          <div id="in-gtm" class="paper in-node">GTM<small>tag management</small></div>
+          <div id="in-ga4" class="paper in-node">Analytics<small>GA4</small></div>
+          <div id="in-ads" class="paper in-node">Ad platforms<small>Google Ads, Meta</small></div>
+          <div id="in-crm" class="paper in-node">CRM<small>leads and deals</small></div>
+          <div id="in-pills">
+            <div class="pill in-pill" style="background: var(--magenta)">Diagnose</div>
+            <div class="pill in-pill" style="background: var(--orange); color: var(--ink)">Test</div>
+            <div class="pill in-pill" style="background: var(--lime); color: var(--ink)">Maintain</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["pop","c[0]-0.3"],["swoosh","c[0]+0.1"],["pop","c[1]+0.4"],["swoosh","c[2]-0.1",0.8],
+            ["pop","c[2]+0.5"],["pop","c[2]+0.9"],["pop","c[2]+1.5"],["pop","c[2]+1.65"],["pop","c[2]+1.8"],
+            ["tick","c[3]+0.7"],["tick","c[3]+1.0"],["tick","c[3]+1.3"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,3.095,6.786,10.364],"d":14.832,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#in-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#in-ast", { rotation: -180, scale: 0 }, { rotation: 0, scale: 1, duration: 0.8, ease: "back.out(1.8)" }, c[0] - 0.4);
+          tl.to("#in-ast", { rotation: 360, duration: D, ease: "none" }, c[0] + 0.4);
+          tl.fromTo("#in-hi", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4 }, c[0] - 0.2);
+          tl.fromTo("#in-name span", { yPercent: 110 }, { yPercent: 0, duration: 0.6, stagger: 0.18, ease: "power4.out" }, c[0] + 0.05);
+          tl.fromTo("#in-role", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: "power3.out", transformOrigin: "left center" }, c[1] + 0.3);
+          tl.fromTo("#in-alias", { opacity: 0 }, { opacity: 1, duration: 0.4 }, c[1] + 0.8);
+          // shrink the title block left, reveal the data path
+          const s = c[2] - 0.2;
+          tl.to("#in-t", { scale: 0.62, y: -150, x: 0, duration: 0.7, ease: "power3.inOut", transformOrigin: "left top" }, s);
+          tl.to("#in-ast", { opacity: 0, scale: 0.4, duration: 0.4, ease: "power2.in" }, s);
+          tl.fromTo("#in-web", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, s + 0.6);
+          tl.fromTo("#in-l0", { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, s + 0.85);
+          tl.fromTo("#in-gtm", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, s + 1.0);
+          tl.fromTo(["#in-l2", "#in-l1", "#in-l3"], { scaleX: 0 }, { scaleX: 1, duration: 0.3, stagger: 0.1 }, s + 1.4);
+          tl.fromTo(["#in-ga4", "#in-ads", "#in-crm"], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.15, ease: "back.out(1.5)" }, s + 1.6);
+          tl.fromTo("#in-pills .in-pill", { opacity: 0, y: 30, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.3, ease: "back.out(2)" }, c[3] + 0.6);
+          window.__timelines["intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

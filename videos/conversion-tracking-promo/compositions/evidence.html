@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #ev-ast { left: 96px; top: 84px; color: #fff; }
+        #ev-h { position: absolute; left: 150px; top: 250px; width: 760px; font-size: 118px; }
+        #ev-h .o { color: var(--orange); }
+        #ev-sub { position: absolute; left: 154px; top: 640px; width: 700px; font-size: 32px; font-weight: 600; line-height: 1.35; }
+        #ev-lad { position: absolute; left: 980px; top: 150px; width: 800px; }
+        .ev-r { height: 128px; margin-bottom: 24px; padding: 0 32px; display: flex; align-items: center; gap: 24px; }
+        .ev-ic { width: 66px; height: 66px; border-radius: 33px; flex: none; display: flex; align-items: center; justify-content: center;
+          font-size: 34px; font-weight: 900; background: var(--lime); color: var(--ink); }
+        .ev-r b { display: block; font-size: 32px; font-weight: 800; }
+        .ev-r small { display: block; margin-top: 4px; font-size: 21px; font-weight: 600; color: #7a5a86; }
+        #ev-r0 { background: rgba(255,255,255,0.16); border: 2px dashed rgba(255,255,255,0.6); box-shadow: none; color: #fff; }
+        #ev-r0 small { color: rgba(255,255,255,0.85); }
+        #ev-r0 .ev-ic { background: rgba(255,255,255,0.25); color: #fff; }
+        #ev-r3 { background: var(--lime); }
+        #ev-r3 .ev-ic { background: var(--ink); color: var(--lime); }
+        #ev-doc { position: absolute; left: 980px; top: 150px; width: 800px; height: 600px; padding: 44px 48px; }
+        .ev-ttl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); }
+        .ev-li { margin-top: 36px; display: flex; gap: 20px; align-items: center; font-size: 34px; font-weight: 700; }
+        .ev-li i { width: 18px; height: 18px; border-radius: 9px; background: var(--magenta); flex: none; }
+        .ev-li.w i { background: var(--orange); }
+      </style>
+
+      <div id="root" data-composition-id="evidence" data-width="1920" data-height="1080">
+        <div id="ev-wipe" class="wipe">
+          <div class="fill" style="background: var(--magenta)"></div>
+          <div id="ev-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="ev-h" class="big">Evidence, <span class="o">not guesses.</span></div>
+          <div id="ev-sub">A tag firing is a starting signal, not proof of a conversion.</div>
+          <div id="ev-lad">
+            <div id="ev-r0" class="paper ev-r"><div class="ev-ic">?</div><div><b>Tag fired</b><small>not proof by itself</small></div></div>
+            <div id="ev-r1" class="paper ev-r"><div class="ev-ic">&#10003;</div><div><b>Correct event</b><small>the right action, at the right stage</small></div></div>
+            <div id="ev-r2" class="paper ev-r"><div class="ev-ic">&#10003;</div><div><b>Right values and rules</b><small>parameters, IDs, consent, qualifying orders</small></div></div>
+            <div id="ev-r3" class="paper ev-r"><div class="ev-ic">&#10003;</div><div><b>Received by the destination</b><small style="color: var(--ink)">confirmed where access allows</small></div></div>
+          </div>
+          <div id="ev-doc" class="paper">
+            <div class="ev-ttl">QA documentation</div>
+            <div class="ev-li"><i></i>Test steps and results</div>
+            <div class="ev-li"><i></i>Event and parameter evidence</div>
+            <div class="ev-li w"><i></i>Known limitations</div>
+            <div class="ev-li w"><i></i>Items that still need review</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["swoosh","c[0]+0.1"],["pop","c[0]+1.3"],["pop","c[1]"],["pop","c[2]"],["ding","c[3]+0.1"],
+            ["whoosh","c[4]-0.4",0.7],["tick","c[4]+0.4"],["tick","c[4]+0.85"],["tick","c[4]+1.3"],["tick","c[4]+1.75"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,5.274,8.297,10.571,13.287],"d":19.176,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#ev-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#ev-ast", { scale: 0 }, { scale: 1, rotation: 180, duration: 0.8, ease: "back.out(1.6)" }, 0.4);
+          tl.to("#ev-ast", { rotation: 540, duration: D - 1.2, ease: "none" }, 1.2);
+          tl.fromTo("#ev-h", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[0] + 0.1);
+          tl.fromTo("#ev-sub", { opacity: 0 }, { opacity: 1, duration: 0.4 }, c[0] + 0.7);
+          const row = (sel, t) => tl.fromTo(sel, { opacity: 0, x: 120, rotation: 3 }, { opacity: 1, x: 0, rotation: 0, duration: 0.55, ease: "back.out(1.4)" }, t);
+          row("#ev-r0", c[0] + 1.3);
+          row("#ev-r1", c[1]);
+          row("#ev-r2", c[2]);
+          row("#ev-r3", c[3]);
+          tl.fromTo("#ev-r3", { scale: 1 }, { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut" }, c[3] + 0.5);
+          tl.to("#ev-lad", { opacity: 0, x: -60, duration: 0.4 }, c[4] - 0.45);
+          tl.fromTo("#ev-doc", { opacity: 0, x: 140, rotation: 4 }, { opacity: 1, x: 0, rotation: -1, duration: 0.6, ease: "back.out(1.3)" }, c[4] - 0.2);
+          tl.fromTo("#ev-doc .ev-li", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.45 }, c[4] + 0.4);
+          window.__timelines["evidence"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "voice": "am_michael",
+  "speed": 0.92,
+  "scenes": [
+    { "id": "hook", "lead": 0.5, "tail": 1.0, "lines": [
+      "When conversion tracking is wrong,",
+      "ad platforms can optimize toward the wrong actions,",
+      "or miss valuable leads and purchases.",
+      "The challenge is finding exactly where the data breaks."
+    ]},
+    { "id": "intro", "lead": 0.4, "tail": 1.0, "lines": [
+      "I'm Shakil Ahmed Samim,",
+      "a Conversion Tracking and Web Analytics Specialist.",
+      "I help businesses diagnose tracking problems,",
+      "and build measurement systems they can test and maintain."
+    ]},
+    { "id": "stack", "lead": 0.4, "tail": 1.0, "lines": [
+      "I work with GA4, Google Tag Manager,",
+      "Google Ads conversion tracking, and Enhanced Conversions,",
+      "Meta Pixel and the Conversions API,",
+      "server-side tracking, ecommerce events,",
+      "and CRM integrations such as HubSpot."
+    ]},
+    { "id": "problems", "lead": 0.4, "tail": 1.1, "lines": [
+      "Some problems need more than adding a tag.",
+      "A checkout boundary can complicate click ID capture.",
+      "A purchase event can fire more than once.",
+      "A server-side integration can send an event before an order qualifies.",
+      "And a lead form can lose important fields before they reach the CRM.",
+      "Each issue needs its own diagnosis."
+    ]},
+    { "id": "method", "lead": 0.4, "tail": 1.0, "lines": [
+      "My workflow is straightforward.",
+      "Audit the setup.",
+      "Trace the event, from the user action, through the data layer and tags.",
+      "Implement the fix,",
+      "and test the full journey.",
+      "I check event parameters, identifiers, consent behavior, and deduplication,",
+      "and the receiving platform, wherever the available tools allow."
+    ]},
+    { "id": "evidence", "lead": 0.4, "tail": 1.0, "lines": [
+      "I focus on evidence, not just whether a tag fired.",
+      "The goal is to confirm that the correct event,",
+      "with the right values and rules,",
+      "reaches the intended destination.",
+      "I also document limitations, and anything that still needs review."
+    ]},
+    { "id": "cta", "lead": 0.4, "tail": 4.5, "lines": [
+      "If your tracking is unreliable, or your conversions don't reconcile,",
+      "or your website and CRM aren't sharing the right data,",
+      "let's review the setup, and find the next fix."
+    ]}
+  ]
+}

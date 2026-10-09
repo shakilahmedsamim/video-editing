@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #me-ast { right: 96px; top: 84px; color: var(--orange); }
+        #me-h { position: absolute; left: 150px; top: 110px; font-size: 96px; color: var(--ink); }
+        #me-h span { color: var(--magenta); }
+        #me-row { position: absolute; left: 150px; top: 290px; width: 1620px; height: 120px; }
+        #me-hl { position: absolute; left: 0; top: 0; width: 308px; height: 120px; border-radius: 60px; background: var(--orange); }
+        .me-st { position: absolute; top: 0; width: 308px; height: 120px; display: flex; align-items: center; justify-content: center; gap: 12px;
+          font-size: 34px; font-weight: 800; color: var(--ink); }
+        .me-st small { font-size: 22px; color: var(--magenta); }
+        #me-low { position: absolute; left: 150px; top: 470px; width: 1620px; height: 400px; }
+        .me-tn { position: absolute; top: 90px; width: 330px; height: 130px; padding: 0 28px; display: flex; flex-direction: column; justify-content: center;
+          font-size: 30px; font-weight: 800; }
+        .me-tn small { font-size: 20px; font-weight: 600; color: #7a5a86; margin-top: 4px; }
+        #me-t1 { left: 0; } #me-t2 { left: 430px; } #me-t3 { left: 860px; } #me-t4 { left: 1290px; background: var(--magenta); color: #fff; }
+        #me-t4 small { color: rgba(255,255,255,0.85); }
+        .me-ar { position: absolute; top: 151px; height: 8px; border-radius: 4px; background: var(--magenta); transform-origin: left center; }
+        #me-a1 { left: 330px; width: 100px; } #me-a2 { left: 760px; width: 100px; } #me-a3 { left: 1190px; width: 100px; }
+        #me-qa { position: absolute; left: 0; top: 0; width: 760px; height: 400px; padding: 34px 40px; }
+        .me-ttl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); margin-bottom: 12px; }
+        .me-ck { height: 62px; display: flex; align-items: center; gap: 18px; font-size: 28px; font-weight: 700; }
+        .me-box { width: 40px; height: 40px; border-radius: 12px; border: 3px solid #e1d3e6; position: relative; flex: none; }
+        .me-tick { position: absolute; inset: -3px; border-radius: 12px; background: var(--lime); color: var(--ink); display: flex; align-items: center;
+          justify-content: center; font-size: 26px; font-weight: 900; }
+        #me-code { position: absolute; right: 0; top: 0; width: 820px; height: 400px; padding: 40px 44px; border-radius: 22px; background: var(--plum);
+          color: #fff; font-size: 26px; line-height: 1.6; box-shadow: 0 30px 70px rgba(42,15,53,0.25); }
+        #me-code .k { color: #ffb8e6; } #me-code .s { color: var(--orange); } #me-code .n { color: var(--lime); }
+        #me-code .demo { right: 30px; top: 28px; background: rgba(255,255,255,0.12); }
+      </style>
+
+      <div id="root" data-composition-id="method" data-width="1920" data-height="1080">
+        <div id="me-wipe" class="wipe">
+          <div class="fill" style="background: var(--cream)"></div>
+          <div id="me-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="me-h" class="big">My <span>workflow</span></div>
+          <div id="me-row">
+            <div id="me-hl"></div>
+            <div class="me-st" style="left:0"><small>01</small>Audit</div>
+            <div class="me-st" style="left:328px"><small>02</small>Trace</div>
+            <div class="me-st" style="left:656px"><small>03</small>Implement</div>
+            <div class="me-st" style="left:984px"><small>04</small>Validate</div>
+            <div class="me-st" style="left:1312px"><small>05</small>Document</div>
+          </div>
+          <div id="me-low">
+            <div id="me-trace">
+              <div id="me-t1" class="paper me-tn">User action<small>click or submit</small></div>
+              <div id="me-t2" class="paper me-tn">Data layer<small>event and values</small></div>
+              <div id="me-t3" class="paper me-tn">Tags<small>GTM triggers</small></div>
+              <div id="me-t4" class="paper me-tn">Destination<small>platform receipt</small></div>
+              <div id="me-a1" class="me-ar"></div><div id="me-a2" class="me-ar"></div><div id="me-a3" class="me-ar"></div>
+            </div>
+            <div id="me-qa" class="paper">
+              <div class="me-ttl">QA checklist</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Event parameters</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Identifiers</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Consent behavior</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Deduplication</div>
+              <div class="me-ck"><div class="me-box"><div class="me-tick">&#10003;</div></div>Receiving platform</div>
+            </div>
+            <div id="me-code" class="mono">
+              <div class="demo">DEMO DATA</div>
+              <div>{</div>
+              <div>&nbsp;&nbsp;<span class="k">"event"</span>: <span class="s">"purchase"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"transaction_id"</span>: <span class="s">"TEST-1042"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"value"</span>: <span class="n">49.00</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"currency"</span>: <span class="s">"USD"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="k">"event_id"</span>: <span class="s">"evt_demo_7f3"</span></div>
+              <div>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["pop","c[0]+0.3",0.6],["tick","c[1]"],["tick","c[2]"],["pop","c[2]+0.4"],["pop","c[2]+0.7"],["pop","c[2]+1.0"],["pop","c[2]+1.3"],
+            ["tick","c[3]"],["tick","c[4]"],["whoosh","c[5]-0.5",0.7],["tick","c[5]+0.6"],["tick","c[5]+1.3"],["tick","c[5]+2.0"],["tick","c[5]+2.8"],
+            ["tick","c[6]+0.5"],["ding","c[6]+1.2"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,3.306,4.8,9.622,11.324,13.276,19.257],"d":24.343,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#me-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#me-ast", { scale: 0 }, { scale: 1, rotation: 180, duration: 0.8, ease: "back.out(1.6)" }, 0.4);
+          tl.to("#me-ast", { rotation: 540, duration: D - 1.2, ease: "none" }, 1.2);
+          tl.fromTo("#me-h", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, c[0]);
+          tl.fromTo(".me-st", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "back.out(1.6)" }, c[0] + 0.3);
+          tl.fromTo("#me-hl", { opacity: 0, scaleX: 0.3 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "back.out(1.6)" }, c[1]);
+          const go = (i, t) => tl.to("#me-hl", { x: i * 328, duration: 0.45, ease: "power3.inOut" }, t);
+          go(1, c[2]);
+          tl.fromTo(".me-tn", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.3, ease: "back.out(1.5)" }, c[2] + 0.4);
+          tl.fromTo(["#me-a1", "#me-a2", "#me-a3"], { scaleX: 0 }, { scaleX: 1, duration: 0.3, stagger: 0.3 }, c[2] + 0.6);
+          go(2, c[3]);
+          go(3, c[4]);
+          tl.to("#me-trace", { opacity: 0, y: -30, duration: 0.4 }, c[5] - 0.5);
+          tl.fromTo("#me-qa", { opacity: 0, y: 60, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.4)" }, c[5] - 0.2);
+          tl.fromTo("#me-code", { opacity: 0, y: 60, rotation: 2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.4)" }, c[5]);
+          const tt = [c[5] + 0.6, c[5] + 1.3, c[5] + 2.0, c[5] + 2.8, c[6] + 0.5];
+          gsap.utils.toArray("#me-qa .me-tick").forEach((el, i) => tl.fromTo(el, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, tt[i]));
+          go(4, c[6] + 1.2);
+          window.__timelines["method"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

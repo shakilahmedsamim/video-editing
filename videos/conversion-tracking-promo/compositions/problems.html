@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        .pr-ast { left: 96px; top: 84px; color: #fff; }
+        .pr-demo { right: 96px; top: 90px; }
+        #pr-h0 { position: absolute; left: 150px; top: 330px; width: 1500px; font-size: 130px; }
+        #pr-h0 .o { color: var(--orange); }
+        .pr-h { position: absolute; left: 150px; top: 250px; width: 780px; font-size: 124px; }
+        .pr-sub { position: absolute; left: 154px; top: 680px; width: 700px; font-size: 32px; font-weight: 600; line-height: 1.35; }
+        .pr-back { position: absolute; left: 1020px; top: 230px; width: 760px; height: 520px; transform: rotate(5deg); }
+        .pr-card { position: absolute; left: 1000px; top: 250px; width: 760px; height: 520px; padding: 40px 44px; }
+        .pr-card .lbl { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); }
+        /* 1 click id */
+        .zone { position: absolute; top: 130px; width: 300px; height: 300px; border: 3px dashed #d8c8de; border-radius: 18px; padding: 20px;
+          font-size: 24px; font-weight: 700; color: #7a5a86; }
+        #z1 { left: 44px; } #z2 { right: 44px; }
+        #wall { position: absolute; left: 377px; top: 110px; width: 8px; height: 340px; border-radius: 4px; background: var(--orange); }
+        #tok { position: absolute; left: 70px; top: 260px; font-size: 24px; padding: 10px 16px; border-radius: 10px; background: var(--magenta); color: #fff; }
+        #tokx { position: absolute; left: 345px; top: 250px; width: 70px; height: 70px; border-radius: 35px; background: var(--bad); color: #fff;
+          font-size: 44px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        /* 2 duplicates */
+        .ev { height: 84px; margin-top: 22px; border-radius: 14px; background: #f4eef6; display: flex; align-items: center; padding: 0 24px;
+          font-size: 24px; gap: 20px; }
+        .ev b { color: var(--magenta); }
+        #ev2 { border: 3px solid var(--bad); }
+        #ev2 .flag { margin-left: auto; font-family: Montserrat, sans-serif; font-size: 22px; font-weight: 800; padding: 8px 16px;
+          border-radius: 999px; background: var(--bad); color: #fff; }
+        #pr2-rows { margin-top: 30px; }
+        /* 3 timing */
+        #tline { position: absolute; left: 80px; right: 80px; top: 270px; height: 8px; border-radius: 4px; background: #e6dbe9; }
+        .tk { position: absolute; top: 247px; width: 54px; height: 54px; border-radius: 27px; background: #fff; border: 6px solid #c9b6cf; }
+        .tkl { position: absolute; top: 330px; width: 240px; margin-left: -93px; text-align: center; font-size: 24px; font-weight: 700; color: #7a5a86; }
+        #k1 { left: 80px; } #l1 { left: 80px; }
+        #k2 { left: 330px; border-color: var(--bad); background: var(--bad); } #l2 { left: 330px; color: var(--bad); }
+        #k3 { left: 600px; border-color: var(--ok); } #l3 { left: 600px; }
+        #early { position: absolute; left: 250px; top: 150px; padding: 10px 18px; border-radius: 999px; background: var(--bad); color: #fff; font-size: 22px; font-weight: 800; }
+        /* 4 lead fields */
+        .fld { position: absolute; left: 44px; width: 270px; height: 64px; border-radius: 12px; background: #f4eef6; font-size: 24px;
+          font-weight: 700; display: flex; align-items: center; padding: 0 20px; color: #7a5a86; }
+        .crm { position: absolute; right: 44px; width: 300px; height: 64px; border-radius: 12px; border: 3px solid #e6dbe9; font-size: 24px;
+          font-weight: 700; display: flex; align-items: center; padding: 0 20px; }
+        .crm em { margin-left: auto; font-style: normal; font-size: 20px; color: var(--ok); }
+        .crm.lost { border-color: var(--bad); } .crm.lost em { color: var(--bad); }
+        #arr { position: absolute; left: 344px; top: 270px; width: 0; height: 0; border-top: 26px solid transparent; border-bottom: 26px solid transparent;
+          border-left: 40px solid var(--magenta); }
+        #pr-end-h { position: absolute; left: 150px; top: 360px; width: 1620px; font-size: 128px; }
+        #pr-end-h .pill { padding: 0 34px; background: var(--orange); color: var(--ink); }
+      </style>
+
+      <div id="root" data-composition-id="problems" data-width="1920" data-height="1080">
+        <div id="pr-wipe" class="wipe">
+          <div class="fill" style="background: var(--plum)"></div>
+          <div class="ast pr-ast"><i></i><i></i><i></i></div>
+          <div id="pr-h0" class="big">Some problems need more than <span class="o">a tag.</span></div>
+
+          <div id="pr-p1" class="wipe">
+            <div class="fill" style="background: var(--orange)"></div>
+            <div class="demo pr-demo">SYNTHETIC EXAMPLE</div>
+            <div class="pr-h big" style="color: var(--ink)">Lost click IDs</div>
+            <div class="pr-sub" style="color: var(--ink)">A checkout boundary can complicate click ID capture.</div>
+            <div class="glass pr-back"></div>
+            <div class="paper pr-card"><div class="lbl">Checkout boundary</div>
+              <div id="z1" class="zone">Store pages</div><div id="z2" class="zone">Checkout</div>
+              <div id="wall"></div><div id="tok" class="mono">gclid=DEMO123</div><div id="tokx">&times;</div>
+            </div>
+          </div>
+
+          <div id="pr-p2" class="wipe">
+            <div class="fill" style="background: var(--lime)"></div>
+            <div class="demo pr-demo">SYNTHETIC EXAMPLE</div>
+            <div class="pr-h big" style="color: var(--ink)">Double purchases</div>
+            <div class="pr-sub" style="color: var(--ink)">A purchase event can fire more than once.</div>
+            <div class="glass pr-back"></div>
+            <div class="paper pr-card"><div class="lbl">Event log</div>
+              <div id="pr2-rows" class="mono">
+                <div id="ev1" class="ev"><b>purchase</b>order_id: TEST-1042</div>
+                <div id="ev2" class="ev"><b>purchase</b>order_id: TEST-1042<span class="flag">x2</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="pr-p3" class="wipe">
+            <div class="fill" style="background: var(--magenta)"></div>
+            <div class="demo pr-demo">SYNTHETIC EXAMPLE</div>
+            <div class="pr-h big">Events sent too early</div>
+            <div class="pr-sub">A server-side event can go out before an order qualifies.</div>
+            <div class="glass pr-back"></div>
+            <div class="paper pr-card"><div class="lbl">Server-side timeline</div>
+              <div id="tline"></div>
+              <div id="k1" class="tk"></div><div id="l1" class="tkl">order created</div>
+              <div id="k2" class="tk"></div><div id="l2" class="tkl">event sent</div>
+              <div id="k3" class="tk"></div><div id="l3" class="tkl">order qualifies</div>
+              <div id="early">too early</div>
+            </div>
+          </div>
+
+          <div id="pr-p4" class="wipe">
+            <div class="fill" style="background: var(--orange)"></div>
+            <div class="demo pr-demo">SYNTHETIC EXAMPLE</div>
+            <div class="pr-h big" style="color: var(--ink)">Missing lead data</div>
+            <div class="pr-sub" style="color: var(--ink)">A lead form can lose fields before they reach the CRM.</div>
+            <div class="glass pr-back"></div>
+            <div class="paper pr-card"><div class="lbl">Form to CRM</div>
+              <div class="fld" style="top:120px">name</div><div class="fld" style="top:200px">email</div>
+              <div class="fld" style="top:280px">phone</div><div class="fld" style="top:360px">city</div>
+              <div id="arr"></div>
+              <div class="crm" style="top:120px">name<em>ok</em></div><div class="crm" style="top:200px">email<em>ok</em></div>
+              <div id="cx1" class="crm lost" style="top:280px">phone<em>empty</em></div><div id="cx2" class="crm lost" style="top:360px">city<em>empty</em></div>
+            </div>
+          </div>
+
+          <div id="pr-p5" class="wipe">
+            <div class="fill" style="background: var(--plum)"></div>
+            <div class="ast pr-ast"><i></i><i></i><i></i></div>
+            <div id="pr-end-h" class="big">Each issue needs its <span class="pill">own diagnosis.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["pop","c[0]+0.1"],
+            ["whoosh","c[1]-0.4"],["swoosh","c[1]+0.3"],["swoosh","c[1]+0.9",0.7],["thud","c[1]+1.9"],
+            ["whoosh","c[2]-0.4"],["swoosh","c[2]+0.3"],["pop","c[2]+0.8"],["pop","c[2]+1.3"],["thud","c[2]+1.6"],
+            ["whoosh","c[3]-0.4"],["swoosh","c[3]+0.3"],["tick","c[3]+0.9"],["thud","c[3]+1.6"],["tick","c[3]+2.6"],
+            ["whoosh","c[4]-0.4"],["swoosh","c[4]+0.3"],["thud","c[4]+1.7"],["thud","c[4]+1.95",0.7],
+            ["whoosh","c[5]-0.4"],["pop","c[5]+0.5"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,4.118,8.309,11.22,16.594,22.02],"d":25.789,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          const wipe = (sel, t, at) => tl.fromTo(sel, { clipPath: `circle(0% at ${at})` }, { clipPath: `circle(150% at ${at})`, duration: 0.7, ease: "power2.inOut" }, t);
+          if (K.w) wipe("#pr-wipe", 0, "6% 94%");
+          tl.fromTo("#pr-wipe > .pr-ast", { scale: 0, rotation: 0 }, { scale: 1, rotation: 270, duration: 0.8, ease: "back.out(1.6)" }, 0.4);
+          tl.fromTo("#pr-h0", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[0]);
+          const panel = (n, t, at) => {
+            const p = `#pr-p${n}`;
+            wipe(p, t - 0.4, at);
+            tl.fromTo(`${p} .pr-h`, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, t + 0.2);
+            tl.fromTo(`${p} .pr-sub`, { opacity: 0 }, { opacity: 1, duration: 0.4 }, t + 0.6);
+            tl.fromTo(`${p} .pr-back`, { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, t + 0.25);
+            tl.fromTo(`${p} .pr-card`, { opacity: 0, x: 160, rotation: 6 }, { opacity: 1, x: 0, rotation: -2, duration: 0.65, ease: "back.out(1.3)" }, t + 0.35);
+            tl.fromTo(`${p} .pr-demo`, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t + 0.5);
+          };
+          panel(1, c[1], "94% 10%");
+          tl.fromTo("#tok", { x: 0 }, { x: 150, duration: 1.0, ease: "power2.out" }, c[1] + 0.9);
+          tl.fromTo("#tokx", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, c[1] + 1.9);
+          panel(2, c[2], "6% 94%");
+          tl.fromTo("#ev1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35 }, c[2] + 0.8);
+          tl.fromTo("#ev2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35 }, c[2] + 1.3);
+          tl.fromTo("#ev2 .flag", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, c[2] + 1.6);
+          panel(3, c[3], "94% 90%");
+          tl.fromTo(["#k1", "#l1"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, c[3] + 0.9);
+          tl.fromTo(["#k2", "#l2"], { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, c[3] + 1.6);
+          tl.fromTo("#early", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, c[3] + 1.8);
+          tl.fromTo(["#k3", "#l3"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, c[3] + 2.6);
+          panel(4, c[4], "6% 10%");
+          tl.fromTo(["#cx1", "#cx2"], { x: 0 }, { x: 8, duration: 0.06, repeat: 5, yoyo: true, stagger: 0.25 }, c[4] + 1.7);
+          wipe("#pr-p5", c[5] - 0.4, "50% 50%");
+          tl.fromTo("#pr-p5 .pr-ast", { scale: 0 }, { scale: 1, rotation: 180, duration: 0.7, ease: "back.out(1.6)" }, c[5]);
+          tl.fromTo("#pr-end-h", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[5] + 0.2);
+          tl.fromTo("#pr-end-h .pill", { backgroundColor: "rgba(244,165,28,0)" }, { backgroundColor: "rgba(244,165,28,1)", duration: 0.4 }, c[5] + 0.9);
+          window.__timelines["problems"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

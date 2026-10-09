@@ -1,0 +1,292 @@
+{
+  "total": 131.968,
+  "scenes": [
+    {
+      "id": "hook",
+      "start": 0.0,
+      "duration": 14.223,
+      "lines": [
+        {
+          "text": "When conversion tracking is wrong,",
+          "start": 0.5,
+          "end": 2.49,
+          "gstart": 0.5,
+          "gend": 2.49
+        },
+        {
+          "text": "ad platforms can optimize toward the wrong actions,",
+          "start": 2.89,
+          "end": 6.257,
+          "gstart": 2.89,
+          "gend": 6.257
+        },
+        {
+          "text": "or miss valuable leads and purchases.",
+          "start": 6.657,
+          "end": 9.281,
+          "gstart": 6.657,
+          "gend": 9.281
+        },
+        {
+          "text": "The challenge is finding exactly where the data breaks.",
+          "start": 9.681,
+          "end": 13.223,
+          "gstart": 9.681,
+          "gend": 13.223
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "start": 14.223,
+      "duration": 14.232,
+      "lines": [
+        {
+          "text": "I'm Shakil Ahmed Samim,",
+          "start": 0.4,
+          "end": 2.095,
+          "gstart": 14.623,
+          "gend": 16.318
+        },
+        {
+          "text": "a Conversion Tracking and Web Analytics Specialist.",
+          "start": 2.495,
+          "end": 5.786,
+          "gstart": 16.718,
+          "gend": 20.009
+        },
+        {
+          "text": "I help businesses diagnose tracking problems,",
+          "start": 6.186,
+          "end": 9.364,
+          "gstart": 20.409,
+          "gend": 23.587
+        },
+        {
+          "text": "and build measurement systems they can test and maintain.",
+          "start": 9.764,
+          "end": 13.232,
+          "gstart": 23.987,
+          "gend": 27.455
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "start": 28.455,
+      "duration": 18.854,
+      "lines": [
+        {
+          "text": "I work with GA4, Google Tag Manager,",
+          "start": 0.4,
+          "end": 3.767,
+          "gstart": 28.855,
+          "gend": 32.221
+        },
+        {
+          "text": "Google Ads conversion tracking, and Enhanced Conversions,",
+          "start": 4.167,
+          "end": 8.056,
+          "gstart": 32.621,
+          "gend": 36.511
+        },
+        {
+          "text": "Meta Pixel and the Conversions API,",
+          "start": 8.456,
+          "end": 11.416,
+          "gstart": 36.911,
+          "gend": 39.871
+        },
+        {
+          "text": "server-side tracking, ecommerce events,",
+          "start": 11.816,
+          "end": 14.451,
+          "gstart": 40.271,
+          "gend": 42.906
+        },
+        {
+          "text": "and CRM integrations such as HubSpot.",
+          "start": 14.851,
+          "end": 17.854,
+          "gstart": 43.306,
+          "gend": 46.309
+        }
+      ]
+    },
+    {
+      "id": "problems",
+      "start": 47.309,
+      "duration": 25.189,
+      "lines": [
+        {
+          "text": "Some problems need more than adding a tag.",
+          "start": 0.4,
+          "end": 3.118,
+          "gstart": 47.709,
+          "gend": 50.426
+        },
+        {
+          "text": "A checkout boundary can complicate click ID capture.",
+          "start": 3.518,
+          "end": 7.309,
+          "gstart": 50.826,
+          "gend": 54.617
+        },
+        {
+          "text": "A purchase event can fire more than once.",
+          "start": 7.709,
+          "end": 10.22,
+          "gstart": 55.017,
+          "gend": 57.529
+        },
+        {
+          "text": "A server-side integration can send an event before an order qualifies.",
+          "start": 10.62,
+          "end": 15.594,
+          "gstart": 57.929,
+          "gend": 62.903
+        },
+        {
+          "text": "And a lead form can lose important fields before they reach the CRM.",
+          "start": 15.994,
+          "end": 21.02,
+          "gstart": 63.303,
+          "gend": 68.328
+        },
+        {
+          "text": "Each issue needs its own diagnosis.",
+          "start": 21.42,
+          "end": 24.089,
+          "gstart": 68.728,
+          "gend": 71.398
+        }
+      ]
+    },
+    {
+      "id": "method",
+      "start": 72.498,
+      "duration": 23.743,
+      "lines": [
+        {
+          "text": "My workflow is straightforward.",
+          "start": 0.4,
+          "end": 2.306,
+          "gstart": 72.898,
+          "gend": 74.804
+        },
+        {
+          "text": "Audit the setup.",
+          "start": 2.706,
+          "end": 3.8,
+          "gstart": 75.204,
+          "gend": 76.297
+        },
+        {
+          "text": "Trace the event, from the user action, through the data layer and tags.",
+          "start": 4.2,
+          "end": 8.622,
+          "gstart": 76.697,
+          "gend": 81.119
+        },
+        {
+          "text": "Implement the fix,",
+          "start": 9.022,
+          "end": 10.324,
+          "gstart": 81.519,
+          "gend": 82.821
+        },
+        {
+          "text": "and test the full journey.",
+          "start": 10.724,
+          "end": 12.276,
+          "gstart": 83.221,
+          "gend": 84.774
+        },
+        {
+          "text": "I check event parameters, identifiers, consent behavior, and deduplication,",
+          "start": 12.676,
+          "end": 18.257,
+          "gstart": 85.174,
+          "gend": 90.755
+        },
+        {
+          "text": "and the receiving platform, wherever the available tools allow.",
+          "start": 18.657,
+          "end": 22.743,
+          "gstart": 91.155,
+          "gend": 95.241
+        }
+      ]
+    },
+    {
+      "id": "evidence",
+      "start": 96.241,
+      "duration": 18.576,
+      "lines": [
+        {
+          "text": "I focus on evidence, not just whether a tag fired.",
+          "start": 0.4,
+          "end": 4.274,
+          "gstart": 96.641,
+          "gend": 100.514
+        },
+        {
+          "text": "The goal is to confirm that the correct event,",
+          "start": 4.674,
+          "end": 7.297,
+          "gstart": 100.914,
+          "gend": 103.537
+        },
+        {
+          "text": "with the right values and rules,",
+          "start": 7.697,
+          "end": 9.571,
+          "gstart": 103.937,
+          "gend": 105.812
+        },
+        {
+          "text": "reaches the intended destination.",
+          "start": 9.971,
+          "end": 12.287,
+          "gstart": 106.212,
+          "gend": 108.528
+        },
+        {
+          "text": "I also document limitations, and anything that still needs review.",
+          "start": 12.687,
+          "end": 17.576,
+          "gstart": 108.928,
+          "gend": 113.817
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "start": 114.817,
+      "duration": 17.151,
+      "lines": [
+        {
+          "text": "If your tracking is unreliable, or your conversions don't reconcile,",
+          "start": 0.4,
+          "end": 5.234,
+          "gstart": 115.217,
+          "gend": 120.05
+        },
+        {
+          "text": "or your website and CRM aren't sharing the right data,",
+          "start": 5.634,
+          "end": 9.384,
+          "gstart": 120.45,
+          "gend": 124.201
+        },
+        {
+          "text": "let's review the setup, and find the next fix.",
+          "start": 9.784,
+          "end": 12.651,
+          "gstart": 124.601,
+          "gend": 127.468
+        }
+      ]
+    }
+  ]
+}

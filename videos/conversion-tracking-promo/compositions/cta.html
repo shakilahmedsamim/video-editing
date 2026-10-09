@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #ct-ast { right: 96px; top: 84px; color: #fff; }
+        #ct-h { position: absolute; left: 150px; top: 150px; font-size: 92px; color: var(--ink); }
+        #ct-list { position: absolute; left: 150px; top: 340px; display: flex; flex-direction: column; gap: 26px; }
+        .ct-p { height: 116px; padding: 0 40px 0 30px; display: flex; align-items: center; gap: 24px; font-size: 38px; font-weight: 800; }
+        .ct-p .x { width: 58px; height: 58px; border-radius: 29px; background: var(--magenta); color: #fff; display: flex; align-items: center;
+          justify-content: center; font-size: 30px; flex: none; }
+        #ct-end { background: var(--magenta); }
+        #ct-end-ast { left: 50%; top: 170px; margin-left: -28px; color: var(--orange); transform-origin: center; }
+        #ct-box { position: absolute; left: 0; right: 0; top: 300px; display: flex; flex-direction: column; align-items: center; }
+        #ct-name { font-size: 118px; text-transform: uppercase; letter-spacing: -0.02em; }
+        #ct-role { margin-top: 18px; font-size: 36px; font-weight: 600; }
+        #ct-btn { margin-top: 56px; height: 104px; padding: 0 56px; font-size: 38px; background: var(--orange); color: var(--ink); }
+        #ct-url { margin-top: 30px; font-size: 38px; font-weight: 700; }
+      </style>
+
+      <div id="root" data-composition-id="cta" data-width="1920" data-height="1080">
+        <div id="ct-wipe" class="wipe">
+          <div class="fill" style="background: var(--orange)"></div>
+          <div id="ct-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="ct-h" class="big">Sound familiar?</div>
+          <div id="ct-list">
+            <div id="ct-p1" class="paper ct-p"><div class="x">!</div>Tracking feels unreliable</div>
+            <div id="ct-p2" class="paper ct-p"><div class="x">!</div>Conversions do not reconcile</div>
+            <div id="ct-p3" class="paper ct-p"><div class="x">!</div>Website and CRM are out of sync</div>
+          </div>
+          <div id="ct-end" class="wipe">
+            <div id="ct-end-ast" class="ast"><i></i><i></i><i></i></div>
+            <div id="ct-box">
+              <div id="ct-name" class="big">Shakil Ahmed Samim</div>
+              <div id="ct-role">Conversion Tracking &amp; Web Analytics Specialist</div>
+              <div id="ct-btn" class="pill">Let's review your tracking setup</div>
+              <div id="ct-url">shakilas.com/portfolio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["swoosh","c[0]+0.1"],["pop","c[0]+0.4"],["pop","c[0]+2.4"],["pop","c[1]+0.3"],
+            ["whoosh","c[2]-0.4"],["pop","c[2]+0.6"],["pop","c[2]+1.3"],["ding","c[2]+1.4",0.8]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[1,6.234,10.384],"d":17.751,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#ct-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#ct-ast", { scale: 0 }, { scale: 1, rotation: 180, duration: 0.8, ease: "back.out(1.6)" }, 0.4);
+          tl.to("#ct-ast", { rotation: 540, duration: 8, ease: "none" }, 1.2);
+          tl.fromTo("#ct-h", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, c[0] + 0.1);
+          const p = (sel, t) => tl.fromTo(sel, { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.5, ease: "back.out(1.5)" }, t);
+          p("#ct-p1", c[0] + 0.4);
+          p("#ct-p2", c[0] + 2.4);
+          p("#ct-p3", c[1] + 0.3);
+          tl.fromTo("#ct-end", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(150% at 50% 50%)", duration: 0.8, ease: "power2.inOut" }, c[2] - 0.4);
+          tl.fromTo("#ct-end-ast", { scale: 0, rotation: 0 }, { scale: 1.4, rotation: 360, duration: 0.9, ease: "back.out(1.6)" }, c[2] + 0.2);
+          tl.to("#ct-end-ast", { rotation: 720, duration: D - c[2] - 1.1, ease: "none" }, c[2] + 1.1);
+          tl.fromTo("#ct-name", { opacity: 0, y: 50, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, c[2] + 0.5);
+          tl.fromTo("#ct-role", { opacity: 0 }, { opacity: 1, duration: 0.5 }, c[2] + 0.9);
+          tl.fromTo("#ct-btn", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, c[2] + 1.3);
+          tl.fromTo("#ct-url", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, c[2] + 1.6);
+          window.__timelines["cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

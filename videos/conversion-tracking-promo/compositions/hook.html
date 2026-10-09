@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #hk-ast { left: 96px; top: 84px; color: #fff; }
+        #hk-demo { right: 96px; top: 90px; }
+        #hk-h { position: absolute; left: 150px; top: 270px; width: 820px; font-size: 150px; }
+        #hk-h div { overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+        #hk-h span { display: block; }
+        #hk-h .o { color: var(--orange); }
+        #hk-cards { position: absolute; left: 1080px; top: 170px; width: 700px; height: 700px; }
+        .hk-card { position: absolute; width: 560px; padding: 34px 40px; }
+        .hk-card small { font-size: 22px; font-weight: 600; opacity: 0.75; }
+        .hk-card b { display: block; margin-top: 6px; font-size: 26px; font-weight: 700; }
+        .hk-card .num { font-size: 120px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; }
+        #hk-c1 { left: 0; top: 0; }
+        #hk-c2 { left: 140px; top: 230px; }
+        #hk-neq { position: absolute; left: 470px; top: 150px; width: 130px; height: 130px; border-radius: 65px; background: var(--orange);
+          color: var(--ink); font-size: 80px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 20px 40px rgba(42,15,53,0.3); }
+        #hk-c3 { position: absolute; left: 40px; top: 520px; width: 640px; white-space: nowrap; padding: 26px 32px; display: flex; align-items: center; gap: 20px; font-size: 28px; font-weight: 700; }
+        #hk-c3 .x { width: 52px; height: 52px; border-radius: 26px; background: var(--bad); color: #fff; display: flex; align-items: center;
+          justify-content: center; font-size: 30px; flex: none; }
+        #hk-c3 em { margin-left: auto; font-style: normal; color: var(--bad); font-size: 24px; }
+        /* break panel */
+        #hk-p2 { background: var(--orange); }
+        #hk-h2 { position: absolute; left: 150px; top: 300px; width: 860px; font-size: 136px; color: var(--ink); }
+        #hk-h2 .w { color: #fff; }
+        .hk-node { position: absolute; left: 1180px; width: 520px; height: 130px; padding: 0 36px; display: flex; flex-direction: column;
+          justify-content: center; font-size: 36px; font-weight: 800; }
+        .hk-node small { font-size: 22px; font-weight: 600; color: #7a5a86; margin-top: 4px; }
+        #hk-n1 { top: 170px; } #hk-n2 { top: 420px; } #hk-n3 { top: 670px; }
+        .hk-ln { position: absolute; left: 1436px; width: 8px; border-radius: 4px; background: var(--ink); transform-origin: top center; }
+        #hk-l1 { top: 300px; height: 120px; }
+        #hk-l2 { top: 550px; height: 120px; background: var(--bad); }
+        #hk-brk { position: absolute; left: 1394px; top: 566px; width: 92px; height: 92px; border-radius: 46px; background: var(--bad);
+          color: #fff; font-size: 52px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 0 0 10px rgba(226,61,91,0.25); }
+      </style>
+
+      <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+        <div id="hk-wipe" class="wipe">
+          <div class="fill" style="background: var(--magenta)"></div>
+          <div id="hk-ast" class="ast"><i></i><i></i><i></i></div>
+          <div id="hk-demo" class="demo">DEMO DATA</div>
+          <div id="hk-h" class="big">
+            <div><span>Wrong</span></div>
+            <div><span>conversion</span></div>
+            <div><span class="o">data?</span></div>
+          </div>
+          <div id="hk-cards">
+            <div id="hk-c1" class="glass hk-card"><small>Ad platform report</small><b>Purchases</b><div class="num">48</div></div>
+            <div id="hk-c2" class="paper hk-card"><small>Store backend</small><b>Completed orders</b><div class="num">31</div></div>
+            <div id="hk-neq">&ne;</div>
+            <div id="hk-c3" class="paper"><div class="x">&times;</div>Lead form submitted<em>not recorded</em></div>
+          </div>
+          <div id="hk-p2" class="wipe">
+            <div id="hk-h2" class="big">Where does the <span class="w">data break?</span></div>
+            <div id="hk-n1" class="paper hk-node">Website<small>user action</small></div>
+            <div id="hk-n2" class="paper hk-node">Tag Manager<small>tags and triggers</small></div>
+            <div id="hk-n3" class="paper hk-node">Destination<small>analytics, ads, CRM</small></div>
+            <div id="hk-l1" class="hk-ln"></div>
+            <div id="hk-l2" class="hk-ln"></div>
+            <div id="hk-brk">!</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["pop","c[0]+0.05",0.7],["pop","c[0]+0.25",0.7],["pop","c[0]+0.45",0.7],["swoosh","c[0]+0.9"],["swoosh","c[0]+1.1"],
+          ["thud","c[1]+0.1"],["thud","c[2]+0.1",0.8],["whoosh","c[3]-0.35"],["pop","c[3]+0.6"],["pop","c[3]+0.8"],["pop","c[3]+1.0"],["thud","c[3]+1.7"]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.5,2.89,6.657,9.681],"d":14.223,"w":0}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#hk-wipe", { clipPath: "circle(0% at 6% 94%)" }, { clipPath: "circle(150% at 6% 94%)", duration: K.w, ease: "power2.inOut" }, 0);
+          tl.fromTo("#hk-ast", { rotation: 0, scale: 0 }, { rotation: 360, scale: 1, duration: 1.2, ease: "back.out(1.6)" }, 0.1);
+          tl.to("#hk-ast", { rotation: 720, duration: D - 1.3, ease: "none" }, 1.3);
+          tl.fromTo("#hk-demo", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
+          tl.fromTo("#hk-h span", { yPercent: 110 }, { yPercent: 0, duration: 0.6, stagger: 0.2, ease: "power4.out" }, c[0]);
+          tl.fromTo("#hk-c1", { opacity: 0, x: 120, rotation: 6 }, { opacity: 1, x: 0, rotation: -3, duration: 0.7, ease: "power3.out" }, c[0] + 0.9);
+          tl.fromTo("#hk-c2", { opacity: 0, x: 120, rotation: 8 }, { opacity: 1, x: 0, rotation: 2, duration: 0.7, ease: "power3.out" }, c[0] + 1.1);
+          const n1 = { v: 0 }, n2 = { v: 0 };
+          const nums = document.querySelectorAll("#hk-cards .num");
+          tl.to(n1, { v: 48, duration: 1.0, ease: "power2.out", onUpdate: () => { nums[0].textContent = Math.round(n1.v); } }, c[0] + 1.0);
+          tl.to(n2, { v: 31, duration: 1.0, ease: "power2.out", onUpdate: () => { nums[1].textContent = Math.round(n2.v); } }, c[0] + 1.2);
+          tl.fromTo("#hk-neq", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, c[1] + 0.1);
+          tl.fromTo("#hk-c3", { opacity: 0, y: 60, rotation: -4 }, { opacity: 1, y: 0, rotation: -1, duration: 0.6, ease: "back.out(1.6)" }, c[2] + 0.1);
+          tl.fromTo("#hk-c3 .x", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, c[2] + 0.3);
+          // orange panel wipes in
+          const s = c[3] - 0.4;
+          tl.fromTo("#hk-p2", { clipPath: "circle(0% at 94% 10%)" }, { clipPath: "circle(150% at 94% 10%)", duration: 0.7, ease: "power2.inOut" }, s);
+          tl.fromTo("#hk-h2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, s + 0.5);
+          tl.fromTo(["#hk-n1", "#hk-n2", "#hk-n3"], { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.2, ease: "back.out(1.4)" }, s + 1.0);
+          tl.fromTo("#hk-l1", { scaleY: 0 }, { scaleY: 1, duration: 0.3 }, s + 1.6);
+          tl.fromTo("#hk-l2", { scaleY: 0 }, { scaleY: 1, duration: 0.3 }, s + 1.8);
+          tl.fromTo("#hk-brk", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(3)" }, s + 2.1);
+          tl.to("#hk-brk", { scale: 1.15, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, s + 2.6);
+          window.__timelines["hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
