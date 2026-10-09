@@ -5,6 +5,26 @@ description: Shakil's reusable video editing workflow on HyperFrames. Use for an
 
 # Video editor (Shakil's workflow)
 
+## FAST PATH (do this when the user says "make a video")
+
+Goal: from request to delivered MP4 with no re-research. Everything needed is already in this repo.
+
+1. `bash kit/setup.sh` (fresh session only, about 1 to 2 min).
+2. `kit/new-video.sh <name> promo` (or `dark`). Copies a finished template incl. scenes, scripts, SFX, music.
+3. Write `videos/<name>/script.json`: same scene ids, one entry per caption line. Hooks: `library/hooks.md`.
+   Keep each scene's line count the same as the template, or re-point its `c[i]` cues.
+4. Change the text inside `videos/<name>/compositions/*.html` (graphics catalog: `library/graphics.md`).
+5. `PREVIEW=1 kit/make.sh videos/<name>` then Read `snapshots/contact-sheet.jpg`, fix overlaps.
+6. `kit/make.sh videos/<name>` (AI voice) or `RECORDING=<file> kit/make.sh videos/<name>` (user's real voice,
+   see `library/voice.md`). Output: `videos/<name>/exports/<name>-1080p.mp4`.
+7. Send the MP4, update the Log below + root README table, commit, push.
+
+Measured timing (4 CPU cloud box, 4 render workers): a 1:51 video renders in about 2.5 min, so a 60 s video
+is about 1.5 min of render. Voice + build + SFX + music take under 30 s. The total is never "instant": the
+render is real frame-by-frame capture.
+
+Voice: the user said the FreeVC clone still sounds AI. Default to their own recording when they want "my voice".
+
 This repo turns a brief into a finished MP4 with HyperFrames (HTML + GSAP rendered to video).
 Upstream HyperFrames skills live next to this one in `.claude/skills/` (copied, never edited).
 This skill is the house layer on top: the workflow, the house rules, the pipeline scripts, and the
@@ -119,3 +139,4 @@ Ask the user before committing any of them.
 - 2026-10-09: Installed HyperFrames skills. Built `conversion-tracking-portfolio` (dark-tech, from the PDF playbook).
 - 2026-10-09: Built `conversion-tracking-promo` (color-block promo after the Outwitly reference) with SFX and upbeat music.
 - 2026-10-09: Added local voice clone (FreeVC) from the user's 58 s phone recording, `exports/conversion-tracking-promo-myvoice-1080p.mp4` (kept local).
+- 2026-10-09: Added `kit/` (setup, new-video, make with 4 render workers, voice.py recording mode) and `library/` (hooks, graphics, voice). User feedback: FreeVC clone still sounds AI, prefer real recording.
