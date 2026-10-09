@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2000px;height:500px;overflow:hidden}
+body{font-family:Poppins,sans-serif;background:radial-gradient(1200px 600px at 75% 10%,#2c2c2c 0%,#1e1e1e 45%,#161616 100%);color:#fff;position:relative}
+:root{--y:#FFE41A;--cream:#FFF4C8}
+.grain{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+.glow{position:absolute;width:700px;height:700px;left:430px;top:-160px;background:radial-gradient(circle,rgba(255,228,26,.10),transparent 60%)}
+.chip{position:absolute;left:124px;top:106px;height:38px;padding:0 22px 0 16px;background:var(--y);border-radius:20px;display:flex;align-items:center;gap:10px;color:#1a1a1a;font-size:19px;font-weight:500;letter-spacing:-.3px}
+.chip b{font-weight:700}
+/* text block */
+.txt{position:absolute;right:120px;top:0;height:500px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;text-align:right}
+.trust{display:flex;align-items:center;gap:14px;border:1.5px solid rgba(255,255,255,.55);border-radius:6px;padding:8px 20px;font-size:21px;margin-bottom:26px}
+.trust .st{color:var(--y);letter-spacing:3px;font-size:22px}
+.h1{font-size:30px;font-weight:500;color:#d9d9d9;letter-spacing:-.5px;line-height:1.1}
+.h1 b{color:#fff;font-weight:600}
+.h2{font-size:56px;font-weight:700;letter-spacing:-2px;line-height:1.08;margin-top:6px;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);-webkit-background-clip:text;color:transparent}
+.hl{display:inline-block;background:var(--y);color:#151515;border-radius:10px;padding:0 14px 2px;margin-top:6px;font-size:56px;font-weight:700;letter-spacing:-2px;line-height:1.1}
+.sub{font-size:24px;color:#e8e8e8;margin-top:16px;letter-spacing:-.3px}
+.sub em{font-style:normal;color:var(--y);font-weight:600}
+.circ{position:relative;display:inline-block;padding:0 6px;margin:0 16px}
+.circ svg{position:absolute;left:-14px;top:-10px;width:calc(100% + 28px);height:calc(100% + 20px)}
+.logos{display:flex;gap:34px;align-items:center;margin-top:26px}
+.lg{display:flex;align-items:center;gap:9px;font-size:16px;line-height:1.05;color:#eaeaea;text-align:left}
+.lg b{font-weight:600}
+/* HUD */
+
+.mono{font-family:'JetBrains Mono',monospace}
+</style></head><body>
+<div class="grain"></div><div class="glow"></div>
+
+<div class="chip"><svg width="28" height="26" viewBox="0 0 28 26"><path d="M14 2C7.4 2 2 6.3 2 11.6c0 2.9 1.6 5.5 4.2 7.3L5 24l5.6-3.1c1.1.3 2.2.4 3.4.4 6.6 0 12-4.3 12-9.7S20.6 2 14 2z" fill="none" stroke="#1a1a1a" stroke-width="2.2"/><circle cx="9" cy="11.6" r="1.7" fill="#1a1a1a"/><circle cx="14" cy="11.6" r="1.7" fill="#1a1a1a"/><circle cx="19" cy="11.6" r="1.7" fill="#1a1a1a"/></svg>Build Better <b>Let's Talk</b></div>
+
+<!-- CCTV viewfinder visual (page coordinates) -->
+<svg class="hud" width="2000" height="500" viewBox="0 0 2000 500" style="position:absolute;left:0;top:0">
+ <defs>
+  <linearGradient id="cone" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE41A" stop-opacity=".32"/><stop offset="1" stop-color="#FFE41A" stop-opacity="0"/></linearGradient>
+  <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".035"/></pattern>
+  <filter id="gl"><feGaussianBlur stdDeviation="6"/></filter>
+ </defs>
+ <rect x="560" y="46" width="470" height="410" rx="14" fill="rgba(255,255,255,.018)"/>
+ <rect x="560" y="46" width="470" height="410" fill="url(#scan)"/>
+ <g stroke="#fff" stroke-opacity=".75" stroke-width="3" fill="none" stroke-linecap="round">
+  <path d="M562 80V48h32"/><path d="M996 48h32v32"/><path d="M1028 422v32h-32"/><path d="M594 454H562v-32"/>
+ </g>
+ <circle cx="588" cy="73" r="7" fill="#FF3B30"/><circle cx="588" cy="73" r="12" fill="#FF3B30" opacity=".25"/>
+ <text x="604" y="79" class="mono" font-size="16" font-weight="700" fill="#fff" letter-spacing="1">REC</text>
+ <text x="650" y="79" class="mono" font-size="13" fill="#bdbdbd" letter-spacing="1.5">CAM 01 · YOUR CUSTOMER</text>
+ <!-- cone from lens -->
+ <path d="M948 112 L600 300 L830 452 Z" fill="url(#cone)"/>
+ <path d="M948 112 L600 300 M948 112 L830 452" stroke="#FFE41A" stroke-opacity=".3" stroke-width="1.2" stroke-dasharray="4 6"/>
+ <!-- camera -->
+ <g transform="translate(985,58)">
+  <rect x="10" y="-12" width="12" height="30" rx="2" fill="#3a3a3a"/>
+  <rect x="-6" y="-14" width="44" height="8" rx="3" fill="#555"/>
+  <g transform="rotate(-28 16 26)">
+   <rect x="-36" y="14" width="74" height="30" rx="7" fill="#e9e9e9"/>
+   <rect x="-36" y="14" width="74" height="9" rx="4" fill="#fff"/>
+   <rect x="-48" y="17" width="16" height="24" rx="4" fill="#2a2a2a"/>
+   <circle cx="-46" cy="29" r="7.5" fill="#111"/><circle cx="-46" cy="29" r="4" fill="#FFE41A"/>
+   <circle cx="28" cy="22" r="2.8" fill="#FF3B30"/>
+  </g>
+ </g>
+ <!-- lost path -->
+ <path d="M722 318 C 770 360, 830 370, 872 392" stroke="#777" stroke-width="2" stroke-dasharray="3 7" fill="none"/>
+ <g transform="translate(890,400)"><circle r="17" fill="#1b1b1b" stroke="#6a6a6a" stroke-width="2" stroke-dasharray="4 4"/><text y="7" text-anchor="middle" font-size="20" font-weight="700" fill="#888">?</text></g>
+ <text x="1016" y="440" class="mono" font-size="11" fill="#808080" text-anchor="end" letter-spacing="1">UNTRACKED = WASTED $</text>
+ <!-- tracked journey -->
+ <path d="M612 398 C 650 370, 690 340, 722 318 S 790 268, 822 250 S 880 200, 912 180" stroke="#FFE41A" stroke-width="4" fill="none" filter="url(#gl)" opacity=".75"/>
+ <path d="M612 398 C 650 370, 690 340, 722 318 S 790 268, 822 250 S 880 200, 912 180" stroke="#FFE41A" stroke-width="2.6" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+ <path d="M850 150 L900 172" stroke="#FFE41A" stroke-width="1.5" opacity=".7"/>
+</svg>
+<style>
+.node{position:absolute;display:flex;align-items:center;gap:10px;transform:translateY(-50%)}
+.dot{width:20px;height:20px;border-radius:50%;background:var(--y);box-shadow:0 0 0 6px rgba(255,228,26,.18),0 0 24px rgba(255,228,26,.6);flex:none}
+.tag{background:rgba(20,20,20,.9);border:1px solid rgba(255,228,26,.45);border-radius:8px;padding:5px 10px;font-size:14px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:6px;color:#fff}
+.tag i{font-style:normal;color:var(--y);font-family:'JetBrains Mono';font-size:11px;font-weight:700}
+.sale{position:absolute;left:598px;top:100px;background:var(--y);color:#141414;border-radius:12px;padding:10px 16px 10px 14px;box-shadow:0 10px 40px rgba(255,228,26,.25);line-height:1.2}
+.sale .amt{font-size:30px;font-weight:800;letter-spacing:-1px}
+.sale .src{font-family:'JetBrains Mono';font-size:11px;font-weight:700;margin-top:3px}
+</style>
+<div class="node" style="left:602px;top:398px"><div class="dot"></div><div class="tag"><i>01</i>Clicks your ad</div></div>
+<div class="node" style="left:712px;top:318px"><div class="dot"></div><div class="tag"><i>02</i>Visits site</div></div>
+<div class="node" style="left:812px;top:250px"><div class="dot"></div><div class="tag"><i>03</i>Adds to cart</div></div>
+<div class="node" style="left:899px;top:180px"><div class="dot" style="width:26px;height:26px"></div></div>
+<div class="sale"><div style="font-weight:700;font-size:13px">✓ SALE TRACKED</div><div class="amt">+$1,240</div><div class="src">SOURCE: Google Ads › Campaign B</div></div>
+
+<div class="txt">
+ <div class="trust">Trusted by advertisers <span class="st">★★★★★</span></div>
+ <div class="h1">You pay for <b>every click.</b></div>
+ <div class="h2">Do You Know Which Ad</div>
+ <div class="hl">Actually Makes You Money?</div>
+ <div class="sub">See every sale's real source. <span class="circ">Scale the winners<svg viewBox="0 0 200 50" preserveAspectRatio="none"><path d="M10 28 C 10 6, 190 4, 194 22 C 198 42, 40 48, 12 34 C 2 28, 30 10, 80 8" fill="none" stroke="#FFE41A" stroke-width="2"/></svg></span> <em>3X 5X revenue</em></div>
+ <div class="logos">
+  <div class="lg"><svg width="34" height="30" viewBox="0 0 34 30"><path d="M12 2l10 0 11 19-5 8z" fill="#3C8BD9"/><path d="M12 2 1 21l5 8 11-19z" fill="#FABC04"/><circle cx="6" cy="24" r="5.5" fill="#34A852"/></svg><span>Google<br>Ads</span></div>
+  <div class="lg"><svg width="28" height="30" viewBox="0 0 28 30"><rect x="19" y="0" width="8" height="30" rx="4" fill="#F9AB00"/><rect x="9.5" y="11" width="8" height="19" rx="4" fill="#E37400"/><circle cx="4" cy="26" r="4" fill="#E37400"/></svg><span>Google<br>Analytics</span></div>
+  <div class="lg"><svg width="30" height="30" viewBox="0 0 30 30"><path d="M15 1 29 15 15 29 1 15z" fill="#8AB4F8"/><path d="M15 1 22 8 8 22 1 15z" fill="#4285F4"/><circle cx="15" cy="15" r="4" fill="#fff"/></svg><span>Google<br>Tag Manager</span></div>
+  <div class="lg"><svg width="28" height="30" viewBox="0 0 28 30"><path d="M2 2h24l-14 13h14L2 28l10-13H2z" fill="#F0443A"/></svg><span style="font-size:26px;font-weight:700;letter-spacing:-.5px">Stape</span></div>
+  <div class="lg" style="border-left:1px solid #555;padding-left:22px"><span style="color:#bbb">Google<br><b style="color:#fff;font-size:19px">Partner</b></span></div>
+ </div>
+</div>
+</body></html>
