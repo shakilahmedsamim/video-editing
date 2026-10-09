@@ -20,6 +20,6 @@ Shakil's Claude + HyperFrames video editing workspace.
 
 | Folder | Type | Export |
 | --- | --- | --- |
-| `infographics/installed-not-working` | LinkedIn case-study infographic, 1080x1350 (HTML source) | `installed-not-working-1080x1350.png` |
+| `infographics/installed-not-working` | LinkedIn case-study infographic, 1080x1350 (HTML source) | `installed-not-working-1080x1350.png` + `@2x` (2160x2700), charcoal + yellow brand style |
 
 Each video folder has its own `README.md` with the exact rebuild commands.
