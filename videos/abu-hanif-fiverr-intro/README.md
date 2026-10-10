@@ -6,19 +6,21 @@ Final export: `exports/abu-hanif-fiverr-intro-1080p.mp4` (1920x1080, 30 fps, H.2
 Look: near-black navy, drifting particle field, glass panels, Inter, blue / cyan accents, blue word-highlight captions,
 blur-through scene transitions, slow camera push on every scene, cinematic music mode, restrained UI SFX.
 Portrait: the client's real photo (`assets/img/abu-hanif-cutout.png`, background removed with rembg `u2net_human_seg`,
-alpha eroded 2 px + 1.2 px blur to kill the white fringe) sits on the right of the name reveal and the end card, with a
-glow, ring, blur-in and a bottom + side mask fade. Photo and export are git-ignored (client data). Stats come from the brief.
+alpha eroded 2 px + 1.2 px blur to kill the white fringe) stays on the right side for the WHOLE video as its own layer
+(`compositions/portrait.html`, mounted under every scene): blur-in entrance, gentle float, breathing glow, slow dashed ring,
+a spinning cyan arc, a ring pulse on every scene change and a soft zoom spotlight during the name reveal and the CTA.
+All scene content lives in the left column (x 140 to 1080). Bottom + side mask fade on the photo. Photo and export are git-ignored (client data). Stats come from the brief.
 Dashboard numbers in the hook are labeled DEMO DATA, the outcome chart is labeled ILLUSTRATIVE.
 
 | Scene | Time | Visual |
 | --- | --- | --- |
 | hook | 0.0 to 3.7 | headline mask reveal, campaign dashboard with count-up, click stream where most signals break |
 | problem | 3.7 to 11.8 | Ads > Website > GTM > GA4 > CRM, warning badges, then links repair, checks, data pulses |
-| intro | 11.8 to 16.8 | name left (letter reveal from blur), portrait right in a glowing ring, floating tool chips |
+| intro | 11.8 to 16.8 | name left (letter reveal from blur), portrait spotlight, floating tool chips |
 | expertise | 16.8 to 27.2 | hub "Your data" with 6 nodes, SVG lines draw, pulses flow to the hub |
 | proof | 27.2 to 35.5 | 3 glass stat cards flip up with count-up (5+, 200+, $500K+), sparkline draws |
 | outcome | 35.5 to 42.1 | tangled red signals clear into a clean rising line and funnel bars, 3 kinetic lines |
-| cta | 42.1 to 50.0 | chips converge, text left, portrait right, "Let's work together.", button with light sweep |
+| cta | 42.1 to 50.0 | chips fly into the portrait, text left, "Let's work together.", button with light sweep |
 
 ## Rebuild
 
@@ -39,3 +41,6 @@ python3 -c "from rembg import remove,new_session; from PIL import Image; remove(
 ```
 Then crop to bbox, resize to about 1100 px, erode alpha (MinFilter 5) and blur 1.2 px. CSS mask:
 `linear-gradient(180deg,#000 62%,transparent 96%), linear-gradient(90deg,transparent 2%,#000 16%,#000 84%,transparent 98%)` with `mask-composite: intersect`.
+
+`scripts/build.mjs` mounts `compositions/portrait.html` automatically when it exists and injects the scene start times.
+`exports/*-share.mp4` is a smaller copy (CRF 21) for chat / Fiverr upload limits.

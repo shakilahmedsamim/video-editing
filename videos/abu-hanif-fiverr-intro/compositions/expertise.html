@@ -7,14 +7,14 @@
         #root { position: absolute; inset: 0; }
         #ex-w, #ex-cam { position: absolute; inset: 0; }
         #ex-k { position: absolute; left: 140px; top: 110px; }
-        #ex-h { position: absolute; left: 140px; top: 156px; width: 1640px; font-size: 76px; }
+        #ex-h { position: absolute; left: 140px; top: 156px; width: 940px; font-size: 64px; }
         #ex-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
-        #ex-hub { position: absolute; left: 820px; top: 520px; width: 280px; height: 140px; display: flex; flex-direction: column; align-items: center;
+        #ex-hub { position: absolute; left: 480px; top: 530px; width: 260px; height: 140px; display: flex; flex-direction: column; align-items: center;
           justify-content: center; font-size: 30px; font-weight: 800; border-color: rgba(94,224,255,0.5); background: #0c1a33;
           box-shadow: 0 0 60px rgba(76,141,255,0.35), 0 30px 80px rgba(0,0,0,0.45); }
         #ex-hub small { font-size: 18px; color: var(--muted); font-weight: 600; margin-top: 4px; }
-        .ex-n { position: absolute; width: 380px; height: 96px; margin-left: -190px; background: #0b1426; white-space: nowrap; margin-top: -48px; display: flex; align-items: center; gap: 14px;
-          padding: 0 22px; font-size: 26px; font-weight: 700; }
+        .ex-n { position: absolute; width: 290px; height: 84px; margin-left: -145px; background: #0b1426; white-space: nowrap; margin-top: -48px; display: flex; align-items: center; gap: 14px;
+          padding: 0 18px; font-size: 22px; font-weight: 700; }
         .ex-n i { width: 14px; height: 14px; border-radius: 7px; flex: none; }
       </style>
 
@@ -45,16 +45,16 @@
           const nodes = [
             ["Google Ads", "#4c8dff"], ["GTM", "#34d399"], ["GA4", "#fbbf24"],
             ["Enhanced Conversions", "#5ee0ff"], ["Server-side tracking", "#a78bfa"], ["Meta CAPI", "#f472b6"]];
-          const pos = [[420, 400], [960, 360], [1500, 400], [420, 820], [960, 860], [1500, 820]];
+          const pos = [[290, 390], [610, 360], [930, 390], [290, 820], [610, 850], [930, 820]];
           const at = [c[1] + 0.1, c[1] + 0.6, c[1] + 1.1, c[2] + 0.1, c[2] + 1.0, c[2] + 2.0];
           const svg = document.getElementById("ex-svg"), host = document.getElementById("ex-nodes");
           const NS = "http://www.w3.org/2000/svg";
           nodes.forEach(([label, col], i) => {
             const [x, y] = pos[i];
             const ln = document.createElementNS(NS, "line");
-            ln.setAttribute("x1", 960); ln.setAttribute("y1", 590); ln.setAttribute("x2", x); ln.setAttribute("y2", y);
+            ln.setAttribute("x1", 610); ln.setAttribute("y1", 600); ln.setAttribute("x2", x); ln.setAttribute("y2", y);
             ln.setAttribute("stroke", col); ln.setAttribute("stroke-width", "3"); ln.setAttribute("stroke-opacity", "0.7");
-            const len = Math.hypot(x - 960, y - 590);
+            const len = Math.hypot(x - 610, y - 600);
             ln.setAttribute("stroke-dasharray", len); ln.setAttribute("stroke-dashoffset", len);
             svg.appendChild(ln);
             const n = document.createElement("div"); n.className = "gl ex-n"; n.style.left = x + "px"; n.style.top = y + "px";
@@ -67,7 +67,7 @@
               p.setAttribute("cx", x); p.setAttribute("cy", y); p.setAttribute("opacity", "0"); svg.appendChild(p);
               const t0 = at[i] + 0.7 + k * 0.9;
               if (t0 + 0.9 < D - 0.6) {
-                tl.fromTo(p, { attr: { cx: x, cy: y, opacity: 0 } }, { attr: { cx: 960, cy: 590, opacity: 1 }, duration: 0.9, ease: "none" }, t0);
+                tl.fromTo(p, { attr: { cx: x, cy: y, opacity: 0 } }, { attr: { cx: 610, cy: 600, opacity: 1 }, duration: 0.9, ease: "none" }, t0);
                 tl.to(p, { attr: { opacity: 0 }, duration: 0.1 }, t0 + 0.9);
               }
             }

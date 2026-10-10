@@ -7,13 +7,13 @@
         #root { position: absolute; inset: 0; }
         #pf-w, #pf-cam { position: absolute; inset: 0; }
         #pf-k { position: absolute; left: 140px; top: 130px; }
-        #pf-h { position: absolute; left: 140px; top: 176px; font-size: 80px; }
+        #pf-h { position: absolute; left: 140px; top: 176px; width: 960px; font-size: 72px; }
         #pf-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
-        #pf-row { position: absolute; left: 140px; right: 140px; top: 380px; display: flex; gap: 40px; perspective: 1400px; }
-        .pf-c { flex: 1; height: 400px; padding: 46px 48px; display: flex; flex-direction: column; justify-content: flex-end; }
-        .pf-c b { font-size: 150px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
-        .pf-c span { margin-top: 18px; font-size: 32px; font-weight: 600; color: var(--muted); }
-        .pf-bar { height: 4px; width: 90px; border-radius: 2px; margin-bottom: auto; }
+        #pf-row { position: absolute; left: 140px; width: 940px; top: 320px; display: flex; flex-direction: column; gap: 22px; perspective: 1400px; }
+        .pf-c { height: 168px; padding: 0 44px; display: flex; flex-direction: row; align-items: center; gap: 34px; }
+        .pf-c b { width: 380px; font-size: 104px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
+        .pf-c > span { font-size: 34px; font-weight: 600; color: var(--muted); }
+        .pf-bar { height: 90px; width: 5px; border-radius: 3px; flex: none; }
       </style>
 
       <div id="root" data-composition-id="proof" data-width="1920" data-height="1080">
@@ -44,7 +44,7 @@
           tl.fromTo(path, { attr: { "stroke-dashoffset": L } }, { attr: { "stroke-dashoffset": 0 }, duration: D - 0.8, ease: "power1.inOut" }, 0.2);
           tl.fromTo("#pf-k", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
           tl.fromTo("#pf-h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
-          const card = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 80, rotationX: 25, transformOrigin: "50% 100%" }, { opacity: 1, y: 0, rotationX: 0, duration: 0.7, ease: "power3.out" }, t);
+          const card = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 80, rotationX: 25, transformOrigin: "50% 100%", x: -60 }, { opacity: 1, y: 0, x: 0, rotationX: 0, duration: 0.7, ease: "power3.out" }, t);
           const count = (id, to, t) => { const o = { v: 0 }; tl.to(o, { v: to, duration: 1.0, ease: "power2.out", onUpdate: () => { document.getElementById(id).textContent = Math.round(o.v); } }, t); };
           card("#pf-1", c[0] - 0.1); count("pf-n1", 5, c[0]);
           card("#pf-2", c[1] - 0.1); count("pf-n2", 200, c[1]);

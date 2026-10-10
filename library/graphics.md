@@ -54,3 +54,5 @@ checklist card with lime ticks, center-wipe end card. Camera punch-ins in its `i
 `expertise` hub-and-spoke SVG ecosystem with drawing lines and data pulses, `proof` 3 flip-up stat cards with count-up,
 `outcome` tangled signals to clean line + funnel bars, `cta` converging chips, end card, button light sweep.
 Particle field, glass `.gl`, `.kick`, `.hd`, `.grad` come from its `scripts/build.mjs`. Transitions: blur-through (0.6 s overlap).
+
+Persistent presenter portrait (`videos/abu-hanif-fiverr-intro/compositions/portrait.html`): a cut-out photo on the right for the whole video with glow, rings, float, scene-change pulse and spotlight zoom. Pair it with left-column scenes.

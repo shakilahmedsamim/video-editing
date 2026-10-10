@@ -35,6 +35,14 @@ const slots = T.scenes.map((sc, i) => {
   if (off) sfx.push({ name: "whoosh", t: r3(start), gain: 0.6 });
   return { id: sc.id, start: r3(start), dur: r3(dur), track: 1 + (i % 2) };
 });
+// persistent portrait layer (right side, whole video): inject scene starts + total
+if (fs.existsSync("compositions/portrait.html")) {
+  const starts = T.scenes.map((sc) => r3(sc.start));
+  const pf = "compositions/portrait.html";
+  fs.writeFileSync(pf, fs.readFileSync(pf, "utf8")
+    .replace(/\/\*SCENES\*\/[^]*?\/\*ENDSCENES\*\//, `/*SCENES*/${JSON.stringify(starts)}/*ENDSCENES*/`)
+    .replace(/\/\*TOTAL\*\/[^]*?\/\*ENDTOTAL\*\//, `/*TOTAL*/${r3(T.total)}/*ENDTOTAL*/`));
+}
 sfx.sort((a, b) => a.t - b.t);
 fs.writeFileSync("sfx.json", JSON.stringify({ total: T.total, events: sfx }, null, 2));
 
@@ -90,6 +98,7 @@ const particles = Array.from({ length: 70 }, () => { const z = rnd(); const sz =
   return `<i class="pt" style="left:${(rnd() * 2040).toFixed(0)}px;top:${(rnd() * 1200).toFixed(0)}px;width:${sz}px;height:${sz}px;opacity:0.3"></i>`; }).join("");
 
 // ---- index.html
+const portraitHtml = fs.existsSync("compositions/portrait.html") ? `      <div id="slot-portrait" data-composition-id="portrait" data-composition-src="compositions/portrait.html"\n        data-start="0" data-duration="${r3(T.total)}" data-track-index="4" data-width="${W}" data-height="${H}"></div>\n` : "";
 const slotHtml = slots.map((s) => `      <div id="slot-${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/${s.id}.html"
         data-start="${s.start}" data-duration="${s.dur}" data-track-index="${s.track}" data-width="${W}" data-height="${H}"></div>`).join("\n");
 fs.writeFileSync("index.html", `<!doctype html>
@@ -134,7 +143,7 @@ fs.writeFileSync("index.html", `<!doctype html>
   <body>
     <div id="root" data-composition-id="root" data-width="${W}" data-height="${H}" data-duration="${r3(T.total)}">
       <div id="bgl" class="clip" data-start="0" data-duration="${r3(T.total)}" data-track-index="0"><div id="pt">${particles}</div></div>
-${slotHtml}
+${portraitHtml}${slotHtml}
       <div id="slot-captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
         data-track-kind="captions" data-start="0" data-duration="${r3(T.total)}" data-track-index="5" data-width="${W}" data-height="${H}"></div>
       <audio id="vo" src="assets/audio/voice.wav" data-start="0" data-duration="${r3(T.total)}" data-track-index="10" data-volume="1"></audio>
