@@ -44,3 +44,15 @@ Then crop to bbox, resize to about 1100 px, erode alpha (MinFilter 5) and blur 1
 
 `scripts/build.mjs` mounts `compositions/portrait.html` automatically when it exists and injects the scene start times.
 `exports/*-share.mp4` is a smaller copy (CRF 21) for chat / Fiverr upload limits.
+
+## 4K export
+
+```bash
+npx hyperframes render --resolution landscape-4k --quality high --fps 30 --workers 4 --output renders/video-4k.mp4   # ~12 min here
+ffmpeg -y -i renders/video-4k.mp4 -c:v copy -af loudnorm=I=-16:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart exports/abu-hanif-fiverr-intro-4k.mp4
+# under-30 MB 4K copy for chat: 2-pass H.264 at 4300k
+ffmpeg -y -i exports/abu-hanif-fiverr-intro-4k.mp4 -c:v libx264 -preset slow -b:v 4300k -pass 1 -an -f null /dev/null
+ffmpeg -y -i exports/abu-hanif-fiverr-intro-4k.mp4 -c:v libx264 -preset slow -b:v 4300k -maxrate 8M -bufsize 16M -pass 2 -c:a aac -b:a 160k -movflags +faststart exports/abu-hanif-fiverr-intro-4k-share.mp4
+```
+The composition stays 1920x1080; Chrome renders at 2x DPR. Use source images at least 2x their on-screen size
+(the portrait cutout is 2000 px for a 720 px slot).

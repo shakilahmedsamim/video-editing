@@ -19,6 +19,7 @@ Goal: from request to delivered MP4 with no re-research. Everything needed is al
    see `library/voice.md`). Output: `videos/<name>/exports/<name>-1080p.mp4`.
 7. Send the MP4, update the Log below + root README table, commit, push.
 
+4K: add `--resolution landscape-4k` to the render (2x DPR, about 4.5x the 1080p render time; 50 s took 12 min). Images must be 2x their slot size.
 Measured timing (4 CPU cloud box, 4 render workers): a 1:51 video renders in about 2.5 min, so a 60 s video
 is about 1.5 min of render. Voice + build + SFX + music take under 30 s. The total is never "instant": the
 render is real frame-by-frame capture.
@@ -159,3 +160,4 @@ Client footage and exports stay git-ignored unless the user says to push them.
 - 2026-10-10: Built `videos/abu-hanif-fiverr-intro` from the 50 s high-end Fiverr intro PDF brief (dark premium, exact 50.0 s, render 1 min 31 s). Added `premium` template to kit/new-video.sh and a `cinematic` music mode (script.json "music").
 - 2026-10-10: Added Abu Hanif's real portrait (rembg cutout) to the right side of the intro and end card. Portrait and export git-ignored (client data). Cutout recipe in that project's README.
 - 2026-10-10: Abu Hanif intro: portrait now a persistent right-side layer for the full 50 s (`compositions/portrait.html`, auto-mounted by build.mjs) with float, glow, rings and scene-change pulses; all scenes relaid to the left column. Share copy at CRF 21 for the 30 MB chat limit.
+- 2026-10-10: Abu Hanif intro exported in 4K (3840x2160, 134 MB master, 28 MB 2-pass share copy). Portrait re-cut at 2000 px for 4K.
