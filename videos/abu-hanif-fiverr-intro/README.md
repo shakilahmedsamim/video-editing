@@ -5,18 +5,20 @@ Final export: `exports/abu-hanif-fiverr-intro-1080p.mp4` (1920x1080, 30 fps, H.2
 
 Look: near-black navy, drifting particle field, glass panels, Inter, blue / cyan accents, blue word-highlight captions,
 blur-through scene transitions, slow camera push on every scene, cinematic music mode, restrained UI SFX.
-No portrait was provided, so the name is revealed typographically (brief rule 8). Stats come from the brief.
+Portrait: the client's real photo (`assets/img/abu-hanif-cutout.png`, background removed with rembg `u2net_human_seg`,
+alpha eroded 2 px + 1.2 px blur to kill the white fringe) sits on the right of the name reveal and the end card, with a
+glow, ring, blur-in and a bottom + side mask fade. Photo and export are git-ignored (client data). Stats come from the brief.
 Dashboard numbers in the hook are labeled DEMO DATA, the outcome chart is labeled ILLUSTRATIVE.
 
 | Scene | Time | Visual |
 | --- | --- | --- |
 | hook | 0.0 to 3.7 | headline mask reveal, campaign dashboard with count-up, click stream where most signals break |
 | problem | 3.7 to 11.8 | Ads > Website > GTM > GA4 > CRM, warning badges, then links repair, checks, data pulses |
-| intro | 11.8 to 16.8 | ABU HANIF letter reveal from blur, glow, role line, floating tool chips |
+| intro | 11.8 to 16.8 | name left (letter reveal from blur), portrait right in a glowing ring, floating tool chips |
 | expertise | 16.8 to 27.2 | hub "Your data" with 6 nodes, SVG lines draw, pulses flow to the hub |
 | proof | 27.2 to 35.5 | 3 glass stat cards flip up with count-up (5+, 200+, $500K+), sparkline draws |
 | outcome | 35.5 to 42.1 | tangled red signals clear into a clean rising line and funnel bars, 3 kinetic lines |
-| cta | 42.1 to 50.0 | chips converge, question, "Let's work together.", button with light sweep, name |
+| cta | 42.1 to 50.0 | chips converge, text left, portrait right, "Let's work together.", button with light sweep |
 
 ## Rebuild
 
@@ -28,3 +30,12 @@ npx hyperframes render --quality high --fps 30 --workers 4 --output renders/vide
 ffmpeg -y -i renders/video.mp4 -c:v copy -af loudnorm=I=-16:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart exports/abu-hanif-fiverr-intro-1080p.mp4
 ```
 To hit an exact length: run voice.py, read the total, add the difference to the last scene's `tail`, run it again.
+
+## Portrait cutout (reuse for any client photo)
+
+```bash
+pip install "rembg[cpu]"     # model downloads from GitHub releases (works in the cloud box)
+python3 -c "from rembg import remove,new_session; from PIL import Image; remove(Image.open('in.jpg'), session=new_session('u2net_human_seg'), alpha_matting=True).save('cut.png')"
+```
+Then crop to bbox, resize to about 1100 px, erode alpha (MinFilter 5) and blur 1.2 px. CSS mask:
+`linear-gradient(180deg,#000 62%,transparent 96%), linear-gradient(90deg,transparent 2%,#000 16%,#000 84%,transparent 98%)` with `mask-composite: intersect`.

@@ -157,3 +157,4 @@ Client footage and exports stay git-ignored unless the user says to push them.
 - 2026-10-09: Added `kit/` (setup, new-video, make with 4 render workers, voice.py recording mode) and `library/` (hooks, graphics, voice). User feedback: FreeVC clone still sounds AI, prefer real recording.
 - 2026-10-10: Edited `videos/asad-fiverr-gig` (talking-head Fiverr gig, 53.5 s): OCR timing from burned captions, punch-ins, split screen, synced cards, music, SFX. Render 2 min 49 s. Footage kept local.
 - 2026-10-10: Built `videos/abu-hanif-fiverr-intro` from the 50 s high-end Fiverr intro PDF brief (dark premium, exact 50.0 s, render 1 min 31 s). Added `premium` template to kit/new-video.sh and a `cinematic` music mode (script.json "music").
+- 2026-10-10: Added Abu Hanif's real portrait (rembg cutout) to the right side of the intro and end card. Portrait and export git-ignored (client data). Cutout recipe in that project's README.

@@ -7,16 +7,21 @@
         #root { position: absolute; inset: 0; }
         #ct-w, #ct-cam { position: absolute; inset: 0; }
         .ct-f { position: absolute; padding: 14px 22px; font-size: 22px; font-weight: 700; border-radius: 14px; }
-        #ct-glow { position: absolute; left: 360px; top: 200px; width: 1200px; height: 620px; border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(76,141,255,0.25), transparent 65%); }
-        #ct-q { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-size: 66px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
-        #ct-a { position: absolute; left: 0; right: 0; top: 460px; text-align: center; font-size: 120px; font-weight: 800; letter-spacing: -0.04em; }
-        #ct-btn { position: absolute; left: 50%; top: 650px; width: 520px; margin-left: -260px; height: 96px; border-radius: 48px; overflow: hidden;
+        #ct-glow { position: absolute; left: 1060px; top: 160px; width: 860px; height: 860px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(76,141,255,0.3), rgba(76,141,255,0.06) 45%, transparent 68%); }
+        #ct-ring { position: absolute; left: 1190px; top: 250px; width: 600px; height: 600px; border-radius: 50%;
+          border: 2px solid rgba(94,224,255,0.4); box-shadow: 0 0 60px rgba(76,141,255,0.3), inset 0 0 60px rgba(76,141,255,0.18); }
+        #ct-ph { position: absolute; left: 1120px; top: 230px; width: 740px; height: 705px;
+          -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 96%), linear-gradient(90deg, transparent 2%, #000 16%, #000 84%, transparent 98%); -webkit-mask-composite: source-in; mask-image: linear-gradient(180deg, #000 62%, transparent 96%), linear-gradient(90deg, transparent 2%, #000 16%, #000 84%, transparent 98%); mask-composite: intersect; }
+        #ct-ph img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 30px rgba(76,141,255,0.35)); }
+        #ct-q { position: absolute; left: 140px; top: 260px; width: 1000px; font-size: 58px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+        #ct-a { position: absolute; left: 136px; top: 470px; white-space: nowrap; font-size: 98px; font-weight: 800; letter-spacing: -0.04em; }
+        #ct-btn { position: absolute; left: 140px; top: 640px; width: 520px; height: 96px; border-radius: 48px; overflow: hidden;
           background: linear-gradient(90deg, #2f6bff, #4c8dff); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800;
           box-shadow: 0 20px 60px rgba(76,141,255,0.45); }
         #ct-sh { position: absolute; top: 0; left: -160px; width: 120px; height: 96px; transform: skewX(-20deg);
           background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent); }
-        #ct-n { position: absolute; left: 0; right: 0; top: 790px; text-align: center; font-size: 28px; font-weight: 600; color: var(--muted); }
+        #ct-n { position: absolute; left: 140px; top: 780px; font-size: 28px; font-weight: 600; color: var(--muted); }
         #ct-n b { color: var(--text); }
       </style>
 
@@ -28,7 +33,9 @@
           <div class="gl ct-f" style="left:1480px; top:800px">Meta CAPI</div>
           <div class="gl ct-f" style="left:860px; top:120px">Server-side</div>
           <div id="ct-glow"></div>
-          <div id="ct-q">Need Google Ads or Conversion Tracking<br>done right?</div>
+          <div id="ct-ring"></div>
+          <div id="ct-ph"><img src="assets/img/abu-hanif-cutout.png" alt="Abu Hanif"></div>
+          <div id="ct-q">Need Google Ads or Conversion Tracking done right?</div>
           <div id="ct-a"><span class="grad">Let's work together.</span></div>
           <div id="ct-btn">Message me on Fiverr<div id="ct-sh"></div></div>
           <div id="ct-n"><b>Abu Hanif</b> | Google Ads &amp; Conversion Tracking Specialist</div>
@@ -46,9 +53,12 @@
           // brand elements converge to the center, then fade
           gsap.utils.toArray("#ct-w .ct-f").forEach((el, i) => {
             tl.fromTo(el, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 0.2 + i * 0.08);
-            tl.to(el, { x: 960 - (parseFloat(el.style.left) + 90), y: 540 - (parseFloat(el.style.top) + 30), scale: 0.3, opacity: 0, duration: 0.7, ease: "power3.in" }, c[0] - 0.2 + i * 0.04);
+            tl.to(el, { x: 1480 - (parseFloat(el.style.left) + 90), y: 540 - (parseFloat(el.style.top) + 30), scale: 0.3, opacity: 0, duration: 0.7, ease: "power3.in" }, c[0] - 0.2 + i * 0.04);
           });
           tl.fromTo("#ct-glow", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, c[0] + 0.3);
+          tl.fromTo("#ct-ring", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }, c[0] + 0.4);
+          tl.fromTo("#ct-ph", { opacity: 0, x: 80, filter: "blur(12px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, c[0] + 0.5);
+          tl.to("#ct-ph", { y: -10, duration: D - c[0] - 1.5, ease: "sine.inOut" }, c[0] + 1.4);
           tl.fromTo("#ct-q", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[0] + 0.1);
           tl.fromTo("#ct-a", { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, c[1] + 0.1);
           tl.fromTo("#ct-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, c[1] + 0.6);
