@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #pf-w, #pf-cam { position: absolute; inset: 0; }
+        #pf-k { position: absolute; left: 140px; top: 130px; }
+        #pf-h { position: absolute; left: 140px; top: 176px; font-size: 80px; }
+        #pf-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+        #pf-row { position: absolute; left: 140px; right: 140px; top: 380px; display: flex; gap: 40px; perspective: 1400px; }
+        .pf-c { flex: 1; height: 400px; padding: 46px 48px; display: flex; flex-direction: column; justify-content: flex-end; }
+        .pf-c b { font-size: 150px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
+        .pf-c span { margin-top: 18px; font-size: 32px; font-weight: 600; color: var(--muted); }
+        .pf-bar { height: 4px; width: 90px; border-radius: 2px; margin-bottom: auto; }
+      </style>
+
+      <div id="root" data-composition-id="proof" data-width="1920" data-height="1080">
+        <div id="pf-w"><div id="pf-cam">
+          <svg id="pf-svg" viewBox="0 0 1920 1080">
+            <path id="pf-path" d="M0 930 C 260 900, 380 960, 620 880 S 980 820, 1200 760 S 1600 700, 1920 600" fill="none" stroke="#4c8dff" stroke-opacity="0.35" stroke-width="4"/>
+          </svg>
+          <div id="pf-k" class="kick">Track record</div>
+          <div id="pf-h" class="hd">Experience you can <span class="grad">trust</span></div>
+          <div id="pf-row">
+            <div class="gl pf-c" id="pf-1"><div class="pf-bar" style="background:#4c8dff"></div><b><span id="pf-n1" style="font-size:inherit;color:inherit;margin:0">0</span>+</b><span>Years of experience</span></div>
+            <div class="gl pf-c" id="pf-2"><div class="pf-bar" style="background:#34d399"></div><b><span id="pf-n2" style="font-size:inherit;color:inherit;margin:0">0</span>+</b><span>Clients served</span></div>
+            <div class="gl pf-c" id="pf-3"><div class="pf-bar" style="background:#fbbf24"></div><b>$<span id="pf-n3" style="font-size:inherit;color:inherit;margin:0">0</span>K+</b><span>Ad spend managed</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["swoosh","c[0]-0.1",0.5],["tick","c[0]+0.9",0.5],["swoosh","c[1]-0.1",0.5],["tick","c[1]+0.9",0.5],["swoosh","c[2]-0.1",0.5],["ding","c[2]+1.4",0.45]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.9,3.163,4.998],"d":8.98,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#pf-w", { opacity: 0, scale: 1.04, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.w, ease: "power2.out" }, 0);
+          tl.fromTo("#pf-cam", { scale: 1 }, { scale: 1.04, duration: D, ease: "none" }, 0);
+          const path = document.getElementById("pf-path"); const L = path.getTotalLength();
+          path.setAttribute("stroke-dasharray", L);
+          tl.fromTo(path, { attr: { "stroke-dashoffset": L } }, { attr: { "stroke-dashoffset": 0 }, duration: D - 0.8, ease: "power1.inOut" }, 0.2);
+          tl.fromTo("#pf-k", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+          tl.fromTo("#pf-h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+          const card = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 80, rotationX: 25, transformOrigin: "50% 100%" }, { opacity: 1, y: 0, rotationX: 0, duration: 0.7, ease: "power3.out" }, t);
+          const count = (id, to, t) => { const o = { v: 0 }; tl.to(o, { v: to, duration: 1.0, ease: "power2.out", onUpdate: () => { document.getElementById(id).textContent = Math.round(o.v); } }, t); };
+          card("#pf-1", c[0] - 0.1); count("pf-n1", 5, c[0]);
+          card("#pf-2", c[1] - 0.1); count("pf-n2", 200, c[1]);
+          card("#pf-3", c[2] - 0.1); count("pf-n3", 500, c[2] + 0.4);
+          tl.to("#pf-w", { opacity: 0, scale: 0.98, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, D - 0.6);
+          window.__timelines["proof"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

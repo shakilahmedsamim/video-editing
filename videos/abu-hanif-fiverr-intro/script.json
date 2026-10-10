@@ -1,0 +1,73 @@
+{
+  "voice": "am_michael",
+  "speed": 1.06,
+  "music": "cinematic",
+  "scenes": [
+    {
+      "id": "hook",
+      "lead": 0.4,
+      "tail": 0.5,
+      "lines": [
+        "Getting clicks,",
+        "but not enough conversions?"
+      ]
+    },
+    {
+      "id": "problem",
+      "lead": 0.3,
+      "tail": 0.5,
+      "lines": [
+        "The problem is often your tracking.",
+        "Broken signals between your ads, website and CRM leave campaigns guessing."
+      ]
+    },
+    {
+      "id": "intro",
+      "lead": 0.3,
+      "tail": 0.5,
+      "lines": [
+        "I'm Abu Hanif,",
+        "a Google Ads and Conversion Tracking Specialist."
+      ]
+    },
+    {
+      "id": "expertise",
+      "lead": 0.3,
+      "tail": 0.5,
+      "lines": [
+        "I build reliable tracking systems",
+        "across Google Ads, GTM and GA4,",
+        "Enhanced Conversions, server-side tracking and Meta CAPI."
+      ]
+    },
+    {
+      "id": "proof",
+      "lead": 0.3,
+      "tail": 0.5,
+      "lines": [
+        "Five plus years of experience.",
+        "Two hundred plus clients.",
+        "And over five hundred thousand dollars in ad spend managed."
+      ]
+    },
+    {
+      "id": "outcome",
+      "lead": 0.3,
+      "tail": 0.5,
+      "lines": [
+        "Accurate data,",
+        "better optimization,",
+        "and more confidence in every campaign decision."
+      ]
+    },
+    {
+      "id": "cta",
+      "lead": 0.3,
+      "tail": 3.15,
+      "lines": [
+        "Need Google Ads or conversion tracking done right?",
+        "Let's work together."
+      ]
+    }
+  ]
+}

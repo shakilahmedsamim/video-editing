@@ -46,3 +46,11 @@ Name lower-third with role pill, side chip stacks (services, audiences), big sta
 full-screen color slide with circle wipe in and out, "How I work" step card with sliding orange highlight,
 split screen (footage into a rounded frame + headline and chips on magenta), button with cursor click,
 checklist card with lime ticks, center-wipe end card. Camera punch-ins in its `index.html`.
+
+## Dark premium agency (`videos/abu-hanif-fiverr-intro/compositions/`)
+
+`hook` dashboard + count-up + breaking click stream, `problem` 5-node pipeline that breaks then repairs with pulses,
+`intro` letter-by-letter name reveal from blur with glow and floating chips (use when no portrait),
+`expertise` hub-and-spoke SVG ecosystem with drawing lines and data pulses, `proof` 3 flip-up stat cards with count-up,
+`outcome` tangled signals to clean line + funnel bars, `cta` converging chips, end card, button light sweep.
+Particle field, glass `.gl`, `.kick`, `.hd`, `.grad` come from its `scripts/build.mjs`. Transitions: blur-through (0.6 s overlap).

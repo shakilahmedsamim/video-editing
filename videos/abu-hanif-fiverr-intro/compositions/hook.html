@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #hk-w, #hk-cam { position: absolute; inset: 0; }
+        #hk-h { position: absolute; left: 140px; top: 120px; width: 1640px; font-size: 104px; }
+        #hk-h div { overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+        #hk-h span { display: block; }
+        #hk-dash { position: absolute; left: 140px; top: 470px; width: 1640px; height: 400px; padding: 34px 40px; }
+        #hk-top { display: flex; align-items: center; gap: 18px; }
+        #hk-top .demo { position: static; background: rgba(251,191,36,0.12); color: var(--warn); }
+        #hk-m { display: flex; gap: 60px; margin-top: 26px; }
+        .hk-k small { display: block; font-size: 22px; color: var(--muted); font-weight: 600; }
+        .hk-k b { display: block; margin-top: 4px; font-size: 76px; font-weight: 800; letter-spacing: -0.03em; }
+        #hk-conv b { color: var(--warn); }
+        #hk-lane { position: absolute; left: 40px; right: 40px; bottom: 50px; height: 90px; border-top: 1px dashed rgba(255,255,255,0.12); }
+        .hk-d { position: absolute; left: 0; top: 40px; width: 14px; height: 14px; border-radius: 7px; background: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
+        #hk-goal { position: absolute; right: 10px; top: 18px; width: 58px; height: 58px; border-radius: 29px; border: 3px solid var(--ok);
+          box-shadow: 0 0 24px rgba(52,211,153,0.5); }
+      </style>
+
+      <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+        <div id="hk-w"><div id="hk-cam">
+          <div id="hk-h" class="hd">
+            <div><span>Getting clicks,</span></div>
+            <div><span>but not enough <span class="grad" style="display:inline">conversions?</span></span></div>
+          </div>
+          <div id="hk-dash" class="gl">
+            <div id="hk-top"><div class="kick">Campaign overview</div><div class="demo">DEMO DATA</div></div>
+            <div id="hk-m">
+              <div class="hk-k"><small>Clicks</small><b id="hk-n1">0</b></div>
+              <div class="hk-k" id="hk-conv"><small>Conversions</small><b id="hk-n2">0</b></div>
+            </div>
+            <div id="hk-lane"><div id="hk-goal"></div></div>
+          </div>
+        </div></div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["swoosh",0.05,0.6],["pop","c[0]+0.05",0.5],["tick",0.9,0.5],["tick",1.2,0.5],["thud","c[1]+0.6",0.55]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.4,1.714],"d":3.696,"w":0}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#hk-w", { opacity: 0, scale: 1.04, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.w, ease: "power2.out" }, 0);
+          tl.fromTo("#hk-cam", { scale: 1.08 }, { scale: 1, duration: D, ease: "power2.out" }, 0);
+          tl.fromTo("#hk-h > div > span", { yPercent: 110 }, { yPercent: 0, duration: 0.55, ease: "power4.out", stagger: c[1] - c[0] }, c[0]);
+          tl.fromTo("#hk-dash", { opacity: 0, y: 80, rotationX: 18, transformPerspective: 1200 }, { opacity: 1, y: 0, rotationX: 0, duration: 0.8, ease: "power3.out" }, 0.05);
+          const a = { v: 0 }, b = { v: 0 };
+          tl.to(a, { v: 12480, duration: 2.6, ease: "power2.out", onUpdate: () => { document.getElementById("hk-n1").textContent = Math.round(a.v).toLocaleString("en-US"); } }, 0.5);
+          tl.to(b, { v: 38, duration: 2.6, ease: "power2.out", onUpdate: () => { document.getElementById("hk-n2").textContent = Math.round(b.v); } }, 0.5);
+          // click stream: most signals break on the way, few reach the goal
+          const lane = document.getElementById("hk-lane");
+          for (let i = 0; i < 16; i++) {
+            const d = document.createElement("div"); d.className = "hk-d"; lane.appendChild(d);
+            const t0 = 0.4 + i * 0.16, breaks = i % 4 !== 0;
+            if (breaks) {
+              tl.fromTo(d, { x: 0, opacity: 0 }, { x: 560 + (i % 3) * 220, opacity: 1, duration: 1.1, ease: "none" }, t0);
+              tl.to(d, { backgroundColor: "#f2555a", boxShadow: "0 0 14px #f2555a", scale: 1.6, opacity: 0, duration: 0.3 }, t0 + 1.1);
+            } else {
+              tl.fromTo(d, { x: 0, opacity: 0 }, { x: 1490, opacity: 1, duration: 1.6, ease: "none" }, t0);
+              tl.to(d, { opacity: 0, duration: 0.2 }, t0 + 1.6);
+            }
+          }
+          tl.fromTo("#hk-goal", { scale: 1 }, { scale: 1.25, duration: 0.25, yoyo: true, repeat: 3 }, 2.0);
+          tl.to("#hk-w", { opacity: 0, scale: 0.98, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, D - 0.6);
+          window.__timelines["hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #in-w, #in-cam { position: absolute; inset: 0; }
+        #in-glow { position: absolute; left: 460px; top: 260px; width: 1000px; height: 500px; border-radius: 50%;
+          background: radial-gradient(ellipse, rgba(76,141,255,0.28), transparent 65%); }
+        #in-k { position: absolute; left: 0; right: 0; top: 330px; text-align: center; }
+        #in-name { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-size: 168px; font-weight: 800; letter-spacing: 0.04em; }
+        #in-name span { display: inline-block; }
+        #in-line { position: absolute; left: 610px; top: 600px; width: 700px; height: 3px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+        #in-role { position: absolute; left: 0; right: 0; top: 640px; text-align: center; font-size: 42px; font-weight: 600; color: var(--text); }
+        #in-role b { color: var(--blue); font-weight: 700; }
+        .in-c { position: absolute; padding: 16px 26px; font-size: 26px; font-weight: 700; border-radius: 16px; }
+        .in-c i { display: inline-block; width: 12px; height: 12px; border-radius: 6px; margin-right: 12px; vertical-align: 2px; }
+      </style>
+
+      <div id="root" data-composition-id="intro" data-width="1920" data-height="1080">
+        <div id="in-w"><div id="in-cam">
+          <div id="in-glow"></div>
+          <div id="in-k" class="kick">Meet your specialist</div>
+          <div id="in-name"></div>
+          <div id="in-line"></div>
+          <div id="in-role"><b>Google Ads</b> &amp; <b>Conversion Tracking</b> Specialist</div>
+          <div class="gl in-c" id="in-c1" style="left:230px; top:200px"><i style="background:#4c8dff"></i>Google Ads</div>
+          <div class="gl in-c" id="in-c2" style="left:1480px; top:240px"><i style="background:#34d399"></i>GTM</div>
+          <div class="gl in-c" id="in-c3" style="left:1420px; top:800px"><i style="background:#fbbf24"></i>GA4</div>
+          <div class="gl in-c" id="in-c4" style="left:300px; top:790px"><i style="background:#5ee0ff"></i>Conversions</div>
+        </div></div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["swoosh","c[0]-0.1",0.5],["ding","c[0]+0.7",0.35],["pop","c[1]+0.1",0.45],["pop","c[1]+0.5",0.35],["pop","c[1]+0.7",0.35],["pop","c[1]+0.9",0.35],["pop","c[1]+1.1",0.35]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.9,2.25],"d":5.684,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#in-w", { opacity: 0, scale: 1.04, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.w, ease: "power2.out" }, 0);
+          tl.fromTo("#in-cam", { scale: 1.06 }, { scale: 1, duration: D, ease: "power1.out" }, 0);
+          const nm = document.getElementById("in-name");
+          "ABU HANIF".split("").forEach((ch) => { const s = document.createElement("span"); s.innerHTML = ch === " " ? "&nbsp;" : ch; nm.appendChild(s); });
+          tl.fromTo("#in-glow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, c[0] - 0.3);
+          tl.fromTo("#in-k", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[0] - 0.3);
+          tl.fromTo("#in-name span", { opacity: 0, y: 60, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, stagger: 0.05, ease: "power3.out" }, c[0]);
+          tl.fromTo("#in-line", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.8, ease: "power3.inOut" }, c[0] + 0.6);
+          tl.fromTo("#in-role", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, c[1] + 0.1);
+          ["#in-c1", "#in-c2", "#in-c3", "#in-c4"].forEach((s, i) => {
+            tl.fromTo(s, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, c[1] + 0.5 + i * 0.2);
+            tl.to(s, { y: i % 2 ? 14 : -14, x: i < 2 ? 10 : -10, duration: 2.4, yoyo: true, repeat: 1, ease: "sine.inOut" }, c[1] + 0.9);
+          });
+          tl.to("#in-w", { opacity: 0, scale: 0.98, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, D - 0.6);
+          window.__timelines["intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

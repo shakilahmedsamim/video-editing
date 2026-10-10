@@ -1,4 +1,6 @@
-"""Synthesize an original, upbeat, light pop bed (100 BPM) sized to timings.json.
+"""Synthesize an original music bed sized to timings.json. Style from script.json "music":
+  "pop" (default): upbeat light pop, 100 BPM, C G Am F.
+  "cinematic": darker tech / motivational, 92 BPM, Am F C G, soft pad, softer drums.
 
 Kick on every beat, soft clap on 2 and 4, offbeat hats, plucked chords (C G Am F), sub bass.
 No samples, no licensing. Usage: python3 scripts/music.py -> assets/audio/music.wav
@@ -8,7 +10,8 @@ import numpy as np
 import soundfile as sf
 
 SR = 44100
-BPM = 100
+STYLE = json.load(open("script.json")).get("music", "pop") if __import__("os").path.exists("script.json") else "pop"
+BPM = 92 if STYLE == "cinematic" else 100
 total = json.load(open("timings.json"))["total"]
 n = int(total * SR)
 beat = 60 / BPM
@@ -43,6 +46,13 @@ def bass(m, sec):
     return np.sin(2 * np.pi * hz(m) * t) * a * 0.35
 
 prog = [(60, [60, 64, 67, 72]), (55, [55, 59, 62, 67]), (57, [57, 60, 64, 69]), (53, [53, 57, 60, 65])]
+if STYLE == "cinematic":
+    prog = [(57, [57, 60, 64, 69]), (53, [53, 57, 60, 65]), (60, [60, 64, 67, 72]), (55, [55, 59, 62, 67])]
+
+def pad(notes, sec):
+    t = np.arange(int(sec * SR)) / SR
+    a = np.minimum(1, t / 1.2) * np.minimum(1, (sec - t) / 1.0)
+    return sum(np.sin(2 * np.pi * hz(m) * t) + 0.3 * np.sin(2 * np.pi * hz(m) * 1.003 * t) for m in notes) * a * 0.05
 bars = int(total / (4 * beat)) + 2
 for b in range(bars):
     root, ch = prog[b % 4]
@@ -51,11 +61,13 @@ for b in range(bars):
         add(kick * 0.8, t0 + k * beat)
         add(hat, t0 + k * beat + beat / 2)
         if k in (1, 3):
-            add(clap, t0 + k * beat)
+            add(clap * (0.45 if STYLE == "cinematic" else 1), t0 + k * beat)
     add(bass(root - 24, 4 * beat * 0.95), t0)
+    if STYLE == "cinematic":
+        add(pad([n - 12 for n in ch[:3]], 4 * beat + 1.0), t0)
     pattern = [0, 2, 1, 3, 2, 1, 3, 2]  # eighth-note arpeggio
     for k, idx in enumerate(pattern):
-        add(pluck(ch[idx]), t0 + k * beat / 2)
+        add(pluck(ch[idx]) * (0.7 if STYLE == "cinematic" else 1), t0 + k * beat / 2)
 
 out = out[:n]
 tt = np.arange(n) / SR
@@ -63,4 +75,4 @@ out *= np.clip(np.minimum(tt / 1.5, (total - tt) / 3.0), 0, 1)
 out = np.tanh(out * 1.2)
 out = out / np.max(np.abs(out)) * 0.6
 sf.write("assets/audio/music.wav", np.stack([out, out], 1).astype(np.float32), SR)
-print("music", round(total, 2), "s @", BPM, "bpm")
+print("music", STYLE, round(total, 2), "s @", BPM, "bpm")

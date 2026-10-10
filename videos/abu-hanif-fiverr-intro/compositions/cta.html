@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #ct-w, #ct-cam { position: absolute; inset: 0; }
+        .ct-f { position: absolute; padding: 14px 22px; font-size: 22px; font-weight: 700; border-radius: 14px; }
+        #ct-glow { position: absolute; left: 360px; top: 200px; width: 1200px; height: 620px; border-radius: 50%;
+          background: radial-gradient(ellipse, rgba(76,141,255,0.25), transparent 65%); }
+        #ct-q { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-size: 66px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+        #ct-a { position: absolute; left: 0; right: 0; top: 460px; text-align: center; font-size: 120px; font-weight: 800; letter-spacing: -0.04em; }
+        #ct-btn { position: absolute; left: 50%; top: 650px; width: 520px; margin-left: -260px; height: 96px; border-radius: 48px; overflow: hidden;
+          background: linear-gradient(90deg, #2f6bff, #4c8dff); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800;
+          box-shadow: 0 20px 60px rgba(76,141,255,0.45); }
+        #ct-sh { position: absolute; top: 0; left: -160px; width: 120px; height: 96px; transform: skewX(-20deg);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent); }
+        #ct-n { position: absolute; left: 0; right: 0; top: 790px; text-align: center; font-size: 28px; font-weight: 600; color: var(--muted); }
+        #ct-n b { color: var(--text); }
+      </style>
+
+      <div id="root" data-composition-id="cta" data-width="1920" data-height="1080">
+        <div id="ct-w"><div id="ct-cam">
+          <div class="gl ct-f" style="left:180px; top:180px">Google Ads</div>
+          <div class="gl ct-f" style="left:1560px; top:220px">GA4</div>
+          <div class="gl ct-f" style="left:240px; top:780px">GTM</div>
+          <div class="gl ct-f" style="left:1480px; top:800px">Meta CAPI</div>
+          <div class="gl ct-f" style="left:860px; top:120px">Server-side</div>
+          <div id="ct-glow"></div>
+          <div id="ct-q">Need Google Ads or Conversion Tracking<br>done right?</div>
+          <div id="ct-a"><span class="grad">Let's work together.</span></div>
+          <div id="ct-btn">Message me on Fiverr<div id="ct-sh"></div></div>
+          <div id="ct-n"><b>Abu Hanif</b> | Google Ads &amp; Conversion Tracking Specialist</div>
+        </div></div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["whoosh","c[0]-0.2",0.5],["swoosh","c[0]+0.1",0.5],["pop","c[1]+0.1",0.5],["pop","c[1]+0.6",0.5],["ding","c[1]+1.0",0.5]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.9,4.239],"d":8.506,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#ct-w", { opacity: 0, scale: 1.04, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.w, ease: "power2.out" }, 0);
+          tl.fromTo("#ct-cam", { scale: 1.05 }, { scale: 1, duration: D, ease: "power1.out" }, 0);
+          // brand elements converge to the center, then fade
+          gsap.utils.toArray("#ct-w .ct-f").forEach((el, i) => {
+            tl.fromTo(el, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 0.2 + i * 0.08);
+            tl.to(el, { x: 960 - (parseFloat(el.style.left) + 90), y: 540 - (parseFloat(el.style.top) + 30), scale: 0.3, opacity: 0, duration: 0.7, ease: "power3.in" }, c[0] - 0.2 + i * 0.04);
+          });
+          tl.fromTo("#ct-glow", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, c[0] + 0.3);
+          tl.fromTo("#ct-q", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[0] + 0.1);
+          tl.fromTo("#ct-a", { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, c[1] + 0.1);
+          tl.fromTo("#ct-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, c[1] + 0.6);
+          tl.fromTo("#ct-sh", { x: 0 }, { x: 800, duration: 1.0, repeat: 1, repeatDelay: 1.0, ease: "power2.inOut" }, c[1] + 1.2);
+          tl.fromTo("#ct-n", { opacity: 0 }, { opacity: 1, duration: 0.5 }, c[1] + 1.0);
+          window.__timelines["cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

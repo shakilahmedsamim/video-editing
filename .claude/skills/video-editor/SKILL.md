@@ -10,7 +10,7 @@ description: Shakil's reusable video editing workflow on HyperFrames. Use for an
 Goal: from request to delivered MP4 with no re-research. Everything needed is already in this repo.
 
 1. `bash kit/setup.sh` (fresh session only, about 1 to 2 min).
-2. `kit/new-video.sh <name> promo` (or `dark`). Copies a finished template incl. scenes, scripts, SFX, music.
+2. `kit/new-video.sh <name> promo` (or `dark`, or `premium` for a dark agency-style Fiverr intro). Copies a finished template incl. scenes, scripts, SFX, music.
 3. Write `videos/<name>/script.json`: same scene ids, one entry per caption line. Hooks: `library/hooks.md`.
    Keep each scene's line count the same as the template, or re-point its `c[i]` cues.
 4. Change the text inside `videos/<name>/compositions/*.html` (graphics catalog: `library/graphics.md`).
@@ -60,6 +60,7 @@ Video type notes:
 | Project | Style | Use when |
 | --- | --- | --- |
 | `videos/conversion-tracking-portfolio` | **dark-tech**: navy, blue accent, Inter, calm fades, ambient pad | serious / technical / B2B explainer |
+| `videos/abu-hanif-fiverr-intro` | **dark premium agency**: particles, glass panels, Inter, blue/cyan, blur transitions, cinematic music, exact 50 s | Fiverr gig intro, high-end SaaS / agency feel |
 | `videos/conversion-tracking-promo` | **color-block promo** (after the Outwitly reference): magenta, orange, lime, plum, cream, Montserrat 800, paper cards, asterisk mark, circle wipes, word-highlight captions, upbeat music, SFX | energetic agency / personal-brand promo |
 
 Copy one: `cp -r videos/conversion-tracking-promo videos/<new>` then delete `renders/ snapshots/ exports/`,
@@ -155,3 +156,4 @@ Client footage and exports stay git-ignored unless the user says to push them.
 - 2026-10-09: Added local voice clone (FreeVC) from the user's 58 s phone recording, `exports/conversion-tracking-promo-myvoice-1080p.mp4` (kept local).
 - 2026-10-09: Added `kit/` (setup, new-video, make with 4 render workers, voice.py recording mode) and `library/` (hooks, graphics, voice). User feedback: FreeVC clone still sounds AI, prefer real recording.
 - 2026-10-10: Edited `videos/asad-fiverr-gig` (talking-head Fiverr gig, 53.5 s): OCR timing from burned captions, punch-ins, split screen, synced cards, music, SFX. Render 2 min 49 s. Footage kept local.
+- 2026-10-10: Built `videos/abu-hanif-fiverr-intro` from the 50 s high-end Fiverr intro PDF brief (dark premium, exact 50.0 s, render 1 min 31 s). Added `premium` template to kit/new-video.sh and a `cinematic` music mode (script.json "music").

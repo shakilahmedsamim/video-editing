@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; }
+        #oc-w, #oc-cam { position: absolute; inset: 0; }
+        #oc-k { position: absolute; left: 140px; top: 220px; }
+        #oc-t { position: absolute; left: 140px; top: 270px; width: 760px; }
+        .oc-l { font-size: 72px; white-space: nowrap; font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; }
+        .oc-l.b { color: var(--blue); } .oc-l.g { color: var(--ok); }
+        #oc-p { position: absolute; left: 960px; top: 190px; width: 820px; height: 640px; padding: 34px 40px; }
+        #oc-p .demo { position: absolute; right: 30px; top: 30px; background: rgba(251,191,36,0.12); color: var(--warn); }
+        #oc-svg { position: absolute; left: 40px; top: 90px; width: 740px; height: 300px; }
+        #oc-lbl { position: absolute; left: 40px; top: 36px; font-size: 22px; font-weight: 700; color: var(--muted); }
+        #oc-lbl2 { position: absolute; left: 40px; top: 36px; font-size: 22px; font-weight: 700; color: var(--ok); }
+        .oc-bar { position: absolute; left: 40px; height: 54px; border-radius: 12px; transform-origin: left center; display: flex; align-items: center;
+          padding-left: 20px; font-size: 22px; font-weight: 700; }
+      </style>
+
+      <div id="root" data-composition-id="outcome" data-width="1920" data-height="1080">
+        <div id="oc-w"><div id="oc-cam">
+          <div id="oc-k" class="kick">The outcome</div>
+          <div id="oc-t">
+            <div class="oc-l" id="oc-1">Accurate data.</div>
+            <div class="oc-l b" id="oc-2">Better optimization.</div>
+            <div class="oc-l g" id="oc-3">More confidence.</div>
+          </div>
+          <div id="oc-p" class="gl">
+            <div class="demo">ILLUSTRATIVE</div>
+            <div id="oc-lbl">Unclear attribution</div>
+            <div id="oc-lbl2">Clean conversion signals</div>
+            <svg id="oc-svg" viewBox="0 0 740 300"></svg>
+            <div class="oc-bar" id="oc-b1" style="top:420px; width:700px; background:rgba(76,141,255,0.85)">Clicks</div>
+            <div class="oc-bar" id="oc-b2" style="top:490px; width:470px; background:rgba(94,224,255,0.85); color:#05202a">Leads</div>
+            <div class="oc-bar" id="oc-b3" style="top:560px; width:300px; background:rgba(52,211,153,0.9); color:#04261a">Conversions</div>
+          </div>
+        </div></div>
+      </div>
+
+      <script>
+        (function () {
+          const SFX = /*SFX*/[["thud","0.7",0.35],["whoosh","c[0]+0.1",0.5],["tick","c[0]+0.5",0.5],["tick","c[1]+0.1",0.5],["pop","c[1]+0.3",0.4],["pop","c[1]+0.5",0.4],["pop","c[1]+0.7",0.4],["ding","c[2]+0.3",0.45]]/*ENDSFX*/; // read by scripts/build.mjs
+          const K = /*CUES*/{"c":[0.9,2.199,3.88],"d":7.147,"w":0.6}/*END*/;
+          const c = K.c, D = K.d;
+          const tl = gsap.timeline({ paused: true });
+          if (K.w) tl.fromTo("#oc-w", { opacity: 0, scale: 1.04, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: K.w, ease: "power2.out" }, 0);
+          tl.fromTo("#oc-cam", { scale: 1 }, { scale: 1.04, duration: D, ease: "none" }, 0);
+          const svg = document.getElementById("oc-svg"), NS = "http://www.w3.org/2000/svg";
+          // messy, tangled signals (deterministic)
+          let s = 11; const r = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+          const messy = [];
+          for (let i = 0; i < 9; i++) {
+            const p = document.createElementNS(NS, "path");
+            let d = `M ${r() * 100} ${r() * 300}`;
+            for (let k = 0; k < 4; k++) d += ` Q ${r() * 740} ${r() * 300}, ${r() * 740} ${r() * 300}`;
+            p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", i % 3 ? "#f2555a" : "#8e9ab3");
+            p.setAttribute("stroke-width", "3"); p.setAttribute("stroke-opacity", "0.6"); svg.appendChild(p); messy.push(p);
+          }
+          // clean rising line
+          const clean = document.createElementNS(NS, "path");
+          clean.setAttribute("d", "M 0 270 C 140 250, 220 230, 320 190 S 520 120, 740 40");
+          clean.setAttribute("fill", "none"); clean.setAttribute("stroke", "#34d399"); clean.setAttribute("stroke-width", "6");
+          svg.appendChild(clean);
+          const L = 900; clean.setAttribute("stroke-dasharray", L); clean.setAttribute("stroke-dashoffset", L);
+          tl.fromTo("#oc-p", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+          tl.fromTo(messy, { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.04 }, 0.5);
+          tl.to(messy, { x: 6, duration: 0.08, repeat: 7, yoyo: true }, 0.8);
+          tl.fromTo("#oc-lbl2", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+          tl.fromTo("#oc-k", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+          tl.fromTo("#oc-1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, c[0]);
+          // clean up the signal
+          tl.to(messy, { opacity: 0, scale: 0.9, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.03 }, c[0] + 0.1);
+          tl.to("#oc-lbl", { opacity: 0, duration: 0.3 }, c[0] + 0.1);
+          tl.to("#oc-lbl2", { opacity: 1, duration: 0.3 }, c[0] + 0.4);
+          tl.to(clean, { attr: { "stroke-dashoffset": 0 }, duration: 1.2, ease: "power2.out" }, c[0] + 0.4);
+          tl.fromTo("#oc-2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, c[1]);
+          tl.fromTo(["#oc-b1", "#oc-b2", "#oc-b3"], { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, stagger: 0.2, ease: "power3.out" }, c[1] + 0.3);
+          tl.fromTo("#oc-3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, c[2]);
+          tl.to("#oc-w", { opacity: 0, scale: 0.98, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, D - 0.6);
+          window.__timelines["outcome"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

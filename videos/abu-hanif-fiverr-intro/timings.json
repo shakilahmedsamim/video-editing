@@ -1,0 +1,174 @@
+{
+  "total": 50.001,
+  "source": "tts",
+  "scenes": [
+    {
+      "id": "hook",
+      "start": 0.0,
+      "duration": 3.696,
+      "lines": [
+        {
+          "text": "Getting clicks,",
+          "start": 0.4,
+          "end": 1.394,
+          "gstart": 0.4,
+          "gend": 1.394
+        },
+        {
+          "text": "but not enough conversions?",
+          "start": 1.714,
+          "end": 3.196,
+          "gstart": 1.714,
+          "gend": 3.196
+        }
+      ]
+    },
+    {
+      "id": "problem",
+      "start": 3.696,
+      "duration": 8.053,
+      "lines": [
+        {
+          "text": "The problem is often your tracking.",
+          "start": 0.3,
+          "end": 2.307,
+          "gstart": 3.996,
+          "gend": 6.003
+        },
+        {
+          "text": "Broken signals between your ads, website and CRM leave campaigns guessing.",
+          "start": 2.627,
+          "end": 7.553,
+          "gstart": 6.323,
+          "gend": 11.25
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "start": 11.75,
+      "duration": 5.084,
+      "lines": [
+        {
+          "text": "I'm Abu Hanif,",
+          "start": 0.3,
+          "end": 1.33,
+          "gstart": 12.05,
+          "gend": 13.08
+        },
+        {
+          "text": "a Google Ads and Conversion Tracking Specialist.",
+          "start": 1.65,
+          "end": 4.584,
+          "gstart": 13.4,
+          "gend": 16.334
+        }
+      ]
+    },
+    {
+      "id": "expertise",
+      "start": 16.834,
+      "duration": 10.333,
+      "lines": [
+        {
+          "text": "I build reliable tracking systems",
+          "start": 0.3,
+          "end": 2.496,
+          "gstart": 17.134,
+          "gend": 19.33
+        },
+        {
+          "text": "across Google Ads, GTM and GA4,",
+          "start": 2.816,
+          "end": 5.839,
+          "gstart": 19.65,
+          "gend": 22.673
+        },
+        {
+          "text": "Enhanced Conversions, server-side tracking and Meta CAPI.",
+          "start": 6.159,
+          "end": 9.833,
+          "gstart": 22.993,
+          "gend": 26.667
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "start": 27.167,
+      "duration": 8.38,
+      "lines": [
+        {
+          "text": "Five plus years of experience.",
+          "start": 0.3,
+          "end": 2.243,
+          "gstart": 27.467,
+          "gend": 29.41
+        },
+        {
+          "text": "Two hundred plus clients.",
+          "start": 2.563,
+          "end": 4.078,
+          "gstart": 29.73,
+          "gend": 31.245
+        },
+        {
+          "text": "And over five hundred thousand dollars in ad spend managed.",
+          "start": 4.398,
+          "end": 7.88,
+          "gstart": 31.565,
+          "gend": 35.047
+        }
+      ]
+    },
+    {
+      "id": "outcome",
+      "start": 35.547,
+      "duration": 6.547,
+      "lines": [
+        {
+          "text": "Accurate data,",
+          "start": 0.3,
+          "end": 1.279,
+          "gstart": 35.847,
+          "gend": 36.826
+        },
+        {
+          "text": "better optimization,",
+          "start": 1.599,
+          "end": 2.96,
+          "gstart": 37.146,
+          "gend": 38.507
+        },
+        {
+          "text": "and more confidence in every campaign decision.",
+          "start": 3.28,
+          "end": 6.047,
+          "gstart": 38.827,
+          "gend": 41.594
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "start": 42.094,
+      "duration": 7.906,
+      "lines": [
+        {
+          "text": "Need Google Ads or conversion tracking done right?",
+          "start": 0.3,
+          "end": 3.319,
+          "gstart": 42.394,
+          "gend": 45.413
+        },
+        {
+          "text": "Let's work together.",
+          "start": 3.639,
+          "end": 4.756,
+          "gstart": 45.733,
+          "gend": 46.851
+        }
+      ]
+    }
+  ]
+}
