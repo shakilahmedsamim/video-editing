@@ -25,3 +25,8 @@ videos/etheorie-walkthrough/assets/shots/
 videos/etheorie-walkthrough/assets/audio/
 videos/etheorie-walkthrough/exports/
 videos/*/.hyperframes/artifacts/
+
+# hyperframes local render state
+videos/*/.hyperframes/video-state.json
+videos/*/.hyperframes/render-outputs.json
+videos/*/.hyperframes/history-id
