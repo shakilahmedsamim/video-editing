@@ -61,6 +61,7 @@ Video type notes:
 | Project | Style | Use when |
 | --- | --- | --- |
 | `videos/conversion-tracking-portfolio` | **dark-tech**: navy, blue accent, Inter, calm fades, ambient pad | serious / technical / B2B explainer |
+| `videos/etheorie-walkthrough` | **screen walkthrough** (Apple style): screenshots in a rounded card, cursor glide + click ripple + outline, camera zoom, spotlight, breadcrumb, step badge, 2-line caption, all from `steps.json` | client tutorials, "where to click" guides, SOP videos from screenshots |
 | `videos/abu-hanif-fiverr-intro` | **dark premium agency**: particles, glass panels, Inter, blue/cyan, blur transitions, cinematic music, exact 50 s | Fiverr gig intro, high-end SaaS / agency feel |
 | `videos/conversion-tracking-promo` | **color-block promo** (after the Outwitly reference): magenta, orange, lime, plum, cream, Montserrat 800, paper cards, asterisk mark, circle wipes, word-highlight captions, upbeat music, SFX | energetic agency / personal-brand promo |
 
@@ -161,3 +162,4 @@ Client footage and exports stay git-ignored unless the user says to push them.
 - 2026-10-10: Added Abu Hanif's real portrait (rembg cutout) to the right side of the intro and end card. Portrait and export git-ignored (client data). Cutout recipe in that project's README.
 - 2026-10-10: Abu Hanif intro: portrait now a persistent right-side layer for the full 50 s (`compositions/portrait.html`, auto-mounted by build.mjs) with float, glow, rings and scene-change pulses; all scenes relaid to the left column. Share copy at CRF 21 for the 30 MB chat limit.
 - 2026-10-10: Abu Hanif intro exported in 4K (3840x2160, 134 MB master, 28 MB 2-pass share copy). Portrait re-cut at 2000 px for 4K.
+- 2026-10-15: Built `videos/etheorie-walkthrough` from a zip (PROMPT.md + 17 screenshots): data-driven screen walkthrough, 3:52, IDs and dates blurred by scripts/mask.py. Screenshots, VO and export git-ignored (client data).

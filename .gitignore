@@ -19,3 +19,9 @@ videos/asad-fiverr-gig/exports/
 # client portrait + export with the portrait: kept local, not pushed (ask before committing)
 videos/abu-hanif-fiverr-intro/assets/img/
 videos/abu-hanif-fiverr-intro/exports/
+
+# client screenshots / voice / exports for etheorie: kept local
+videos/etheorie-walkthrough/assets/shots/
+videos/etheorie-walkthrough/assets/audio/
+videos/etheorie-walkthrough/exports/
+videos/*/.hyperframes/artifacts/

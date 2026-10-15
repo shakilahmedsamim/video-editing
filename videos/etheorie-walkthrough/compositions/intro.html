@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>#root { position: absolute; inset: 0; }</style>
+      <div id="root" data-composition-id="intro" data-width="1920" data-height="1080"><div id="intro-w" class="wrap center"><div class="ttl" id="intro-t">eTheorie Event Tracking</div><div class="sub" id="intro-s">A walkthrough of where to find every event</div>
+      <div class="chips"><div class="chip" id="intro-c0"><b>1</b>Tag Manager Web</div><div class="chip" id="intro-c1"><b>2</b>Tag Manager Server</div><div class="chip" id="intro-c2"><b>3</b>Google Analytics 4</div><div class="chip" id="intro-c3"><b>4</b>Google Ads</div><div class="chip" id="intro-c4"><b>5</b>Meta</div><div class="chip" id="intro-c5"><b>6</b>TikTok</div></div></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#intro-w", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+          tl.to("#intro-w", { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 9.615);
+          tl.fromTo("#intro-t", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+          tl.fromTo("#intro-s", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);
+          tl.fromTo("#intro-c0", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.8);
+          tl.fromTo("#intro-c1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.35);
+          tl.fromTo("#intro-c2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.9);
+          tl.fromTo("#intro-c3", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.45);
+          tl.fromTo("#intro-c4", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4);
+          tl.fromTo("#intro-c5", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.55);
+          window.__timelines["intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

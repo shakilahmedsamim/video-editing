@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>#root { position: absolute; inset: 0; }</style>
+      <div id="root" data-composition-id="s12" data-width="1920" data-height="1080">
+      <div id="s12-w" class="wrap">
+        <div class="topbar"><div class="badge">Step 12</div><div class="crumb"><span class="">Google Analytics</span><span class="sep">›</span><span class="">Admin</span><span class="sep">›</span><span class="">Events</span><span class="sep">›</span><span class="cur">Recent events</span></div></div>
+        <div class="card"><div class="scale"><div id="s12-cam" class="cam">
+          <img class="shot" src="assets/shots/11_ga4_recent_events_part2.jpg" alt="">
+          <div id="s12-sp0" class="spot" style="left:282px;top:236px;width:877px;height:48px"></div><div id="s12-sp1" class="spot" style="left:282px;top:272px;width:877px;height:48px"></div><div id="s12-sp2" class="spot" style="left:282px;top:345px;width:877px;height:48px"></div><div id="s12-sp3" class="spot" style="left:282px;top:381px;width:877px;height:48px"></div><div id="s12-sp4" class="spot" style="left:282px;top:527px;width:877px;height:48px"></div><div id="s12-sp5" class="spot" style="left:282px;top:600px;width:877px;height:48px"></div><div id="s12-sp6" class="spot" style="left:914px;top:644px;width:77px;height:34px"></div>
+        </div></div></div>
+        <div class="cap"><div class="act">Scroll down</div><div class="show">Show your client: leads, sign ups, logins, pricing and purchases, 22 events in total</div></div>
+      </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s12-w", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+          tl.to("#s12-w", { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 12.3);
+          tl.fromTo("#s12-cam", { x: 0, y: 110, scale: 1 }, { x: 0, y: 0, scale: 1, duration: 1.4, ease: "power2.inOut" }, 0.5);
+          tl.to("#s12-cam", { x: -234.729, y: -0.619, scale: 1.414, duration: 1.1, ease: "power2.inOut" }, 2.1);
+          tl.fromTo("#s12-sp0", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 2.6);
+          tl.to("#s12-sp0", { opacity: 0, duration: 0.35 }, 4);
+          tl.fromTo("#s12-sp1", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 4.05);
+          tl.to("#s12-sp1", { opacity: 0, duration: 0.35 }, 5.1);
+          tl.fromTo("#s12-sp2", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 5.15);
+          tl.to("#s12-sp2", { opacity: 0, duration: 0.35 }, 6.2);
+          tl.fromTo("#s12-sp3", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 6.25);
+          tl.to("#s12-sp3", { opacity: 0, duration: 0.35 }, 7.3);
+          tl.fromTo("#s12-sp4", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 7.35);
+          tl.to("#s12-sp4", { opacity: 0, duration: 0.35 }, 8.4);
+          tl.fromTo("#s12-sp5", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 8.45);
+          tl.to("#s12-cam", { x: -1025.75, y: -660.6, scale: 1.9, duration: 1.1, ease: "power2.inOut" }, 9.4);
+          tl.to("#s12-sp5", { opacity: 0, duration: 0.35 }, 9.5);
+          tl.fromTo("#s12-sp6", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 9.9);
+          window.__timelines["s12"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

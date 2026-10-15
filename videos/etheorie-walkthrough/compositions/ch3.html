@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>#root { position: absolute; inset: 0; }</style>
+      <div id="root" data-composition-id="ch3" data-width="1920" data-height="1080"><div id="ch3-w" class="wrap center"><div class="chn" id="ch3-n">Chapter 3</div><div class="ttl" id="ch3-t">Google Analytics 4</div><div class="sub" id="ch3-u">analytics.google.com</div></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#ch3-w", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+          tl.to("#ch3-w", { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 2.2);
+          tl.fromTo("#ch3-n", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+          tl.fromTo("#ch3-t", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.45);
+          tl.fromTo("#ch3-u", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.9);
+          window.__timelines["ch3"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

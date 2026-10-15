@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>#root { position: absolute; inset: 0; }</style>
+      <div id="root" data-composition-id="outro" data-width="1920" data-height="1080"><div id="outro-w" class="wrap center"><div class="ttl" id="outro-t">Everything is live</div><div class="rows"><div class="row" id="outro-r0"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Tag Manager Web:</b><span class="rv">live</span></div><div class="row" id="outro-r1"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Tag Manager Server:</b><span class="rv">live</span></div><div class="row" id="outro-r2"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Google Analytics 4:</b><span class="rv">all events arriving, purchase is the key event</span></div><div class="row" id="outro-r3"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Google Ads:</b><span class="rv">11 conversions, purchase is primary</span></div><div class="row" id="outro-r4"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Meta:</b><span class="rv">all events active</span></div><div class="row" id="outro-r5"><span class="ck"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M4.5 10.5 L8.5 14.2 L15.5 6.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>TikTok:</b><span class="rv">all events active</span></div></div></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#outro-w", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+          tl.fromTo("#outro-t", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.3);
+          tl.fromTo("#outro-r0", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.1);
+          tl.fromTo("#outro-r1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.7);
+          tl.fromTo("#outro-r2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 2.3);
+          tl.fromTo("#outro-r3", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 2.9);
+          tl.fromTo("#outro-r4", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 3.5);
+          tl.fromTo("#outro-r5", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 4.1);
+          window.__timelines["outro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

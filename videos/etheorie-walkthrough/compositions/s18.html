@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>#root { position: absolute; inset: 0; }</style>
+      <div id="root" data-composition-id="s18" data-width="1920" data-height="1080">
+      <div id="s18-w" class="wrap">
+        <div class="topbar"><div class="badge">Step 18</div><div class="crumb"><span class="">TikTok</span><span class="sep">›</span><span class="">Events Manager</span><span class="sep">›</span><span class="">Etheorie Pixel</span><span class="sep">›</span><span class="cur">Overview</span></div></div>
+        <div class="card"><div class="scale"><div id="s18-cam" class="cam">
+          <img class="shot" src="assets/shots/17_tiktok_events.jpg" alt="">
+          <div id="s18-sp0" class="spot" style="left:248px;top:114px;width:216px;height:562px"></div><div id="s18-sp1" class="spot" style="left:924px;top:114px;width:149px;height:562px"></div>
+        </div></div></div>
+        <div class="cap"><div class="act">Scroll to the events table</div><div class="show">Show your client: the same events as Meta, all active</div></div>
+      </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s18-w", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+          tl.to("#s18-w", { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 7.6);
+          tl.fromTo("#s18-cam", { x: 0, y: 110, scale: 1 }, { x: 0, y: 0, scale: 1, duration: 1.4, ease: "power2.inOut" }, 0.5);
+          tl.to("#s18-cam", { x: 0, y: -30.054, scale: 1.041, duration: 1.1, ease: "power2.inOut" }, 2.1);
+          tl.fromTo("#s18-sp0", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 2.6);
+          tl.to("#s18-cam", { x: -64.202, y: -30.054, scale: 1.041, duration: 1.1, ease: "power2.inOut" }, 4.7);
+          tl.to("#s18-sp0", { opacity: 0, duration: 0.35 }, 4.8);
+          tl.fromTo("#s18-sp1", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 5.2);
+          window.__timelines["s18"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -56,3 +56,7 @@ checklist card with lime ticks, center-wipe end card. Camera punch-ins in its `i
 Particle field, glass `.gl`, `.kick`, `.hd`, `.grad` come from its `scripts/build.mjs`. Transitions: blur-through (0.6 s overlap).
 
 Persistent presenter portrait (`videos/abu-hanif-fiverr-intro/compositions/portrait.html`): a cut-out photo on the right for the whole video with glow, rings, float, scene-change pulse and spotlight zoom. Pair it with left-column scenes.
+
+## Screen walkthrough (`videos/etheorie-walkthrough`)
+
+Generated per step by `scripts/build.mjs` from `steps.json`: macOS cursor glide, click ripple, rounded blue outline on the clicked element, camera zoom to a rect (auto zoom factor, clamped to the screenshot edges), slow downward pan, spotlight that dims the rest to 40 percent, scroll-in motion, breadcrumb bar, step badge, two-line caption, intro chips, event pill groups, chapter cards, checklist outro.
